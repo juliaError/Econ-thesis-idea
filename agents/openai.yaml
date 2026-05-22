@@ -1,7 +1,7 @@
 interface:
   display_name: "毕业论文 idea 打磨器"
-  short_description: "Thesis Idea Builder：打磨经济学毕业论文 idea、数据可行性、识别设计和论文蓝图"
-  default_prompt: "Use $thesis-idea as my Thesis Idea Builder. Evaluate my economics thesis idea, check whether prior papers, public databases, or authorized channels support the data path, give a green/yellow/red verdict and proceed/pivot/park/kill/upgrade/downgrade decision, then turn viable ideas into a thesis blueprint with structure, main regression, variables, data, tables, figures, a first-week validation plan, and advisor memo."
+  short_description: "Thesis Idea Builder：总控路由、ideation 初评、文献拥挤度、候选题池和论文蓝图"
+  default_prompt: "Use $thesis-idea as my Thesis Idea Builder. Start from my raw interest, advisor direction, policy, variable, or vague intuition. Use the master router: preserve my raw wording, create a provisional idea card, run an initial ideation review, then check literature crowding, data feasibility, and identification before any thesis blueprint. If the exact topic is crowded, branch from the original X/Y through horizontal, vertical, and reverse searches, keep viable backup candidates, and let me select one branch. After I select one candidate, stop broad ideation and refine it into a minimum viable economics design: data path, identification, variables, sample, main regression, tables, figures, first-week validation plan, and advisor memo. For multi-step projects, ask me once whether to add a local project-agent routing rule for this skill; do not publish agent instruction files."
 
 policy:
   allow_implicit_invocation: true

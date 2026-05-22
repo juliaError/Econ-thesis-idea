@@ -4,6 +4,27 @@
 
 Use this file at the beginning of a `thesis-idea` task. Classify the user, the paper type, and the ambition level before judging the idea.
 
+For multi-step work, use this file under the control of `references/00_master_router.md`.
+
+## Raw Interest Intake
+
+Users may start with a personal interest, advisor direction, policy, variable, phenomenon, or a very colloquial intuition. Do not require a polished academic topic before beginning.
+
+Before the first full diagnosis, preserve the user's raw wording and create a provisional idea card:
+
+```text
+raw_wording:
+possible_economic_object:
+possible_X:
+possible_Y:
+possible_mechanism:
+possible_setting:
+claim_type:
+main_missing_piece:
+```
+
+Use the card to help the initial ideation review. Do not over-academicize the idea so early that the user's original curiosity, constraint, or advisor requirement disappears.
+
 ## Default Modes
 
 ### Thesis Rescue Mode
@@ -12,14 +33,16 @@ Use by default for undergraduate and master's students, course papers, opening r
 
 Priority order:
 
-1. obtainable data;
-2. clear question;
-3. basic identification or credible descriptive strategy;
-4. interpretable results;
-5. literature positioning.
+1. literature crowding and whether the topic should be stopped before focusing;
+2. obtainable data;
+3. clear question;
+4. basic identification or credible descriptive strategy;
+5. interpretable results;
+6. literature positioning.
 
 Required output:
 
+- literature crowding level for crowded thesis topics;
 - whether the original topic is too broad;
 - one-sentence research question;
 - feasibility color and decision;
@@ -110,3 +133,5 @@ If the idea is descriptive:
 ```text
 How does [outcome/fact] vary across [groups/space/time], and what economic mechanism might explain it?
 ```
+
+Use big-noun compression after the raw interest card and initial ideation review, not as a premature final title. If several translations are plausible, show 2-3 options and ask the user to choose or correct the intended object.

@@ -9,6 +9,8 @@ Always separate feasibility from decision.
 
 Do not use a warm tone to hide a red verdict.
 
+Candidate-branch tables may temporarily use `verify` or `refine` as workflow statuses, but the final recommendation must still map back to one of the six decisions above.
+
 ## Green
 
 Use `green` when most conditions hold:
@@ -43,6 +45,7 @@ Use `red` when current investment is not justified:
 - key variable cannot be measured;
 - data are unavailable or cleaning cost exceeds the deadline;
 - the idea has broad concepts but no economics question;
+- the closest literature already uses the same X, Y, data, unit, period, and method, and the student has no new data, setting, measurement, mechanism, or identification;
 - identification is clearly endogenous and not repairable;
 - sample is too small for the intended design;
 - policy rollout is selected directly on the outcome;

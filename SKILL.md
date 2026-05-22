@@ -1,6 +1,6 @@
 ---
 name: thesis-idea
-description: "Use when a graduate student, early-stage researcher, or thesis writer needs help with an economics thesis or paper idea, including Chinese requests about 毕业论文 idea 打磨器, 毕业论文选题, 硕士论文 idea, 研究生开题, 老师给的题目, or 经济学研究设计. Diagnose feasibility, pressure-test and polish a teacher-suggested topic or vague intuition, require obtainable data from prior literature or public databases for empirical projects, and turn viable ideas into a paper blueprint covering structure, main regression, variables, data, tables, figures, section purposes, first-week validation, and advisor memo."
+description: "Use when a graduate student, early-stage researcher, or thesis writer needs help with an economics thesis or paper idea, including Chinese requests about 毕业论文 idea 打磨器, 毕业论文选题, 硕士论文 idea, 研究生开题, 老师给的题目, or 经济学研究设计. Start from raw interests, advisor directions, policies, variables, phenomena, or vague intuitions; run an initial ideation review; then route through literature crowding, candidate branching, data feasibility, identification diagnosis, and thesis blueprint. For crowded topics such as digitalization, common prosperity, digital finance, green finance, ESG, smart cities, or pilot policies, search Chinese and English literature before narrowing the title; stop, park, or pivot if prior papers already exhaust the idea."
 ---
 
 # 毕业论文 idea 打磨器 / Thesis Idea Builder
@@ -9,7 +9,7 @@ description: "Use when a graduate student, early-stage researcher, or thesis wri
 
 Use this skill as an economics idea reviewer, advisor simulator, and RA project manager for thesis and early research ideas: 经济学 idea 审稿人 + 导师模拟器 + RA 项目经理.
 
-Public description: 面向正在为毕业论文选题感到痛苦的研究生和研究初学者，用于诊断、压力测试和打磨经济学论文 idea，将模糊直觉、老师给的题目或初步研究兴趣转化为更可行的研究问题、识别思路、数据路径和论文蓝图。
+Public description: 面向正在为毕业论文选题感到痛苦的研究生和研究初学者，用于先判断文献拥挤度和可行性，再诊断、压力测试和打磨经济学论文 idea，将有空间的模糊直觉、老师给的题目或初步研究兴趣转化为更可行的研究问题、识别思路、数据路径和论文蓝图。
 
 The public posture is modest: help with thesis idea formation. The internal standard is strict: evaluate the idea with the discipline of a serious economics paper, without promising publication level or replacing literature review, advisor judgment, or empirical verification.
 
@@ -27,24 +27,53 @@ Use this skill when the user asks about:
 
 Do not use this skill as the only basis for claims about novelty, policy facts, data availability, or journal fit. Those require literature search, source checking, local files, or empirical work.
 
-## V2 Workflow
+## Project-Level Skill Pinning
+
+For multi-step thesis idea, opening-report, topic-search, candidate-screening, or research-design workflows, check whether the nearest project-level `AGENTS.md` or `CLAUDE.md` already contains a `thesis-idea` routing rule.
+
+If no such rule exists, ask the user once whether to add a persistent local rule. Do not edit `AGENTS.md`, `CLAUDE.md`, or any agent-instruction note without explicit user approval. Do not stage, commit, push, publish, or upload agent-instruction documents.
+
+Recommended local rule text:
+
+```markdown
+## Thesis Idea Builder Skill Routing
+
+For economics thesis topic selection, advisor-given directions, opening-report ideas, crowded-topic screening, data feasibility checks, identification diagnosis, candidate-branch selection, and thesis-blueprint planning, first route through `thesis-idea` / 毕业论文 idea 打磨器 / Thesis Idea Builder.
+
+Keep `thesis-idea` active throughout the idea-screening task. At the start of each substantive phase, reclassify the current stage through its master router: raw interest intake, ideation review, literature crowding gate, crowded-topic pivot lab, selected-topic refinement, data feasibility, identification diagnosis, verdict, or thesis blueprint.
+
+Do not substitute economics writing skills for `thesis-idea`. Writing skills may be used only after a feasible idea needs to become proposal prose, paper prose, table/figure presentation, or journal-facing text.
+```
+
+After adding the rule, include a clear marker heading so future agents can detect it and avoid asking again.
+
+## V5 Master Workflow
 
 Default flow:
 
-1. **Profile and mode**: infer the user's stage, deadline, data access, method level, advisor preference, and ambition level; then choose thesis rescue, research-design strengthening, or top-field/top-journal mode. See `references/01_modes_and_inputs.md`.
-2. **Paper type**: classify the idea as empirical, policy evaluation, measurement/facts, theory, policy report, or high-ambition research idea before diagnosing it. See `references/01_modes_and_inputs.md` and `references/04_identification_diagnostics.md`.
-3. **One-sentence question**: compress vague nouns into a testable relationship: `Does X affect Y, through mechanism Z, in setting P, using variation V?`
-4. **Data feasibility gate**: do not mark an empirical idea ready unless obtainable data paths appear in prior literature, public databases, local materials, or authorized channels. See `references/03_data_feasibility.md`.
-5. **Identification and pressure test**: search for usable variation before naming a method. See `references/04_identification_diagnostics.md`.
-6. **Verdict and decision**: give both a feasibility color and an action decision. See `references/02_verdict_rules.md`.
-7. **Blueprint and validation**: for feasible or repaired ideas, produce the thesis blueprint, first-week validation plan, advisor memo, and upgrade path. See `references/05_output_templates.md`.
-8. **Design pattern check**: when helpful, map the idea to a reusable research design pattern. See `references/06_research_design_patterns.md`.
+1. **Master routing**: for multi-step work, load `references/00_master_router.md` first. It owns stage order, candidate-bank state, and handoffs between modules.
+2. **Profile and mode**: infer the user's stage, deadline, data access, method level, advisor preference, and ambition level; then choose thesis rescue, research-design strengthening, or top-field/top-journal mode. See `references/01_modes_and_inputs.md`.
+3. **Raw interest intake**: accept a user's interest, advisor direction, policy, variable, phenomenon, or vague intuition. Preserve the user's wording, then create a provisional academic translation without locking the final title. See `references/00_master_router.md` and `references/01_modes_and_inputs.md`.
+4. **Initial ideation review**: score the early idea on novelty, clarity, feasibility, effectiveness, and impact. Treat novelty as provisional until literature is checked. Use the weakest dimensions to decide the next route.
+5. **Paper type**: classify the idea as empirical, policy evaluation, measurement/facts, theory, policy report, or high-ambition research idea before diagnosing it. See `references/01_modes_and_inputs.md` and `references/04_identification_diagnostics.md`.
+6. **Literature crowding gate for thesis topics**: for master's students, thesis rescue mode, and crowded China topics such as digitalization, common prosperity, digital finance, green finance, smart cities, low-carbon pilots, ESG, high-quality development, rural revitalization, and new quality productive forces, search Chinese and English literature before narrowing the title. If the closest papers already exhaust the question, data, method, and mechanism, say so and recommend `park`, `kill`, or a major pivot. See `references/07_literature_crowding_gate.md`.
+7. **Crowded topic pivot lab**: when the original topic is `high` or `saturated` but the user still wants to preserve part of the interest, branch from the original X/Y through horizontal, vertical, and reverse searches before building any new thesis. Save viable branches in a candidate bank. See `references/08_crowded_topic_pivot_lab.md`.
+8. **User selection and fallback**: ask the user to choose one preferred branch when multiple viable candidates remain. Keep the others as fallback branches for the current task.
+9. **Selected-topic refinement**: after the user chooses one candidate branch, stop broad search and compress that candidate into a minimum viable research design: data availability, identification, variable map, sample construction, main regression, and table/figure plan. See `references/09_selected_topic_refinement.md`.
+10. **One-sentence question**: only after the ideation review, crowding gate, pivot lab, or selected-topic refinement, compress vague nouns into a testable relationship: `Does X affect Y, through mechanism Z, in setting P, using variation V?`
+11. **Data feasibility gate**: do not mark an empirical idea ready unless obtainable data paths appear in prior literature, public databases, local materials, or authorized channels. See `references/03_data_feasibility.md`.
+12. **Identification and pressure test**: search for usable variation before naming a method. See `references/04_identification_diagnostics.md`.
+13. **Verdict and decision**: give both a feasibility color and an action decision. See `references/02_verdict_rules.md`.
+14. **Blueprint and validation**: for feasible or repaired ideas, produce the thesis blueprint, first-week validation plan, advisor memo, and upgrade path. See `references/05_output_templates.md`.
+15. **Design pattern check**: when helpful, map the idea to a reusable research design pattern. See `references/06_research_design_patterns.md`.
 
 If the user gives too little information, still provide an initial diagnosis from available facts, then ask at most one high-impact question.
 
 ## Hard Gates
 
 - **Empirical data gate**: empirical `proceed` requires a credible data path from relevant prior papers, public databases, local files, or authorized channels.
+- **Crowded-literature gate**: for master's thesis ideas in crowded literatures, do not proceed to title polishing or a full blueprint until closest Chinese and English papers have been checked. If the idea is only an old X-Y combination with a standard index, standard panel FE/DID, and no new data, setting, mechanism, or measurement, recommend stopping, changing topic, or downgrading.
+- **No unconstrained brainstorming**: for saturated topics, alternative directions must branch from the original X, Y, mechanism, or reverse causality and then pass literature, data, design, and defense filters before becoming thesis candidates.
 - **Theory gate**: pure-theory `proceed` requires modelable primitives, nontrivial propositions or comparative statics, and a clear theory contribution.
 - **No fake certainty**: do not invent papers, data access, policies, coefficients, institutional facts, variable definitions, results, or citations.
 - **No method decoration**: do not recommend DID, IV, RDD, shift-share, or event study unless the required variation and assumptions are named.
@@ -64,6 +93,12 @@ For empirical ideas, check data access before intellectual excitement:
 
 For one idea, default to:
 
+0a. **总控路由状态**: current stage, selected candidate, backup candidates, next route, and blocking gate.
+0b. **初始 ideation 评测**: novelty, clarity, feasibility, effectiveness, impact, weakest dimensions, and next action.
+0c. **文献拥挤度 gate**: low / medium / high / saturated, closest literature pattern, defense risk, and whether to continue.
+0d. **拥挤题目生发**: if the original topic is too crowded but the user wants alternatives, screen horizontal, vertical, and reverse branches before selecting a new candidate.
+0e. **候选题池**: primary branch, backup branches, why they are kept, and when to return to them.
+0f. **选中题目精炼**: after the user selects one candidate, freeze that branch and convert it into a minimum viable design instead of reopening broad ideation.
 1. **一句话重写**: a testable research question.
 2. **论文类型与模式**: paper type and ambition mode.
 3. **可行性判定**: `green / yellow / red` plus `proceed / pivot / park / kill / upgrade / downgrade`.
@@ -80,20 +115,26 @@ For multiple ideas, use the screening table in `references/05_output_templates.m
 
 ## Coordination
 
+- Use `references/00_master_router.md` as the total router. Child reference files should expose triggers, outputs, and handoff status; they should not form a complicated mesh of mutual routing.
 - Pair with `empirical-econ-workflow` when the next step involves data cleaning, variable construction, regressions, diagnostics, or reproducible code.
 - Route to `econ-writing-workflow` once a feasible design needs to become paper prose, proposal text, full draft, or table/figure presentation.
+- Use `econ-research-ideation-skill` as the standalone refinement module when a selected idea needs a deeper minimum viable empirical design rather than more topic search.
 - Keep author-facing diagnostic labels out of paper-facing prose, table notes, figure notes, appendix notes, and footnotes.
 
 ## References
 
 Load only the relevant files:
 
+- `references/00_master_router.md`: total routing, project state, initial ideation review, candidate bank, user selection, and handoff rules.
 - `references/01_modes_and_inputs.md`: user modes, paper types, input fields, missing-information rule.
 - `references/02_verdict_rules.md`: green/yellow/red feasibility and proceed/pivot/park/kill/upgrade/downgrade decisions.
 - `references/03_data_feasibility.md`: data gate, variable map, authorized channels, platform-lead boundary, unsupported claims.
 - `references/04_identification_diagnostics.md`: usable-variation search and method-specific diagnostics.
 - `references/05_output_templates.md`: single idea, batch screening, first-week plan, advisor memo, thesis blueprint.
 - `references/06_research_design_patterns.md`: reusable economics research design templates.
+- `references/07_literature_crowding_gate.md`: Chinese/English literature search-first rule, crowded-topic stop rules, and ways to find remaining thesis space.
+- `references/08_crowded_topic_pivot_lab.md`: branch from a saturated topic through horizontal, vertical, and reverse searches, then screen adjacent thesis candidates.
+- `references/09_selected_topic_refinement.md`: after a candidate is selected, freeze broad search and refine it into a minimum viable economics research design.
 
 ## Academic Integrity Boundary
 
