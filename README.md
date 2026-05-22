@@ -6,6 +6,14 @@
 
 `thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It helps graduate students and early-stage researchers turn vague ideas, advisor-suggested topics, or first research intuitions into more feasible research questions, data paths, identification plans, and thesis blueprints.
 
+## 模型要求提示
+
+AI 选题和研究设计对大模型的推理、知识组织、识别诊断和不确定性处理要求很高。建议优先使用当前最强的大模型：优先使用 GPT-5.5 Thinking 以上模型，以及 Claude 4.7 以上模型。DeepSeek 可以在中国大陆内部无法使用前两个模型时作为备选，但目前效果仍然不够好，尤其是在数据可行性、识别压力测试和论文蓝图细化上需要更谨慎地人工核查。
+
+## Model Recommendation
+
+AI-assisted topic selection and research design place high demands on a model's reasoning, knowledge organization, identification diagnostics, and uncertainty handling. Prefer the strongest available models: currently GPT-5.5 Thinking or above, and Claude 4.7 or above. DeepSeek can be used as a fallback when the first two model families are not accessible in mainland China, but its results are still not strong enough for this task; data feasibility, identification pressure-testing, and thesis-blueprint details require especially careful human checking.
+
 ## 不使用 AI Agent 时
 
 如果你不使用 Codex skill 或其他 AI agent，也可以直接复制主目录里的 [`WEB_AI_PROMPT.md`](WEB_AI_PROMPT.md) 到网页版 AI 中使用。
