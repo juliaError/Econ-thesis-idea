@@ -18,22 +18,6 @@ If you do not use the Codex skill or another AI agent, you can copy [`WEB_AI_PRO
 
 Web AI tools have context limits. A safer approach is to put this prompt into the AI tool's background, custom instructions, project instructions, or similar settings. If the platform does not support that, paste the prompt before starting a new idea-polishing session. After a long conversation, a long break, a new chat window, or when the model starts drifting from the rules, upload or paste the prompt again.
 
-## 名称与技术标识
-
-中文展示名：毕业论文 idea 打磨器
-
-英文名：Thesis Idea Builder
-
-技术标识：`thesis-idea`
-
-## Name And Slug
-
-Chinese display name: 毕业论文 idea 打磨器
-
-English name: Thesis Idea Builder
-
-Technical slug: `thesis-idea`
-
 ## 核心功能
 
 - 面向经济学毕业论文选题和研究设计。
