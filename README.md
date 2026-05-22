@@ -6,6 +6,18 @@
 
 `thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It helps graduate students and early-stage researchers turn vague ideas, advisor-suggested topics, or first research intuitions into more feasible research questions, data paths, identification plans, and thesis blueprints.
 
+## 不使用 AI Agent 时
+
+如果你不使用 Codex skill 或其他 AI agent，也可以直接复制主目录里的 [`WEB_AI_PROMPT.md`](WEB_AI_PROMPT.md) 到网页版 AI 中使用。
+
+网页版 AI 有上下文限制。更稳妥的做法是把这份 prompt 放进 AI 的背景、个性化设置、项目说明或 Custom instructions 中；如果平台不支持，就在每次开始新的 idea 打磨前粘贴一次。长对话后、隔了一段时间后、换窗口后，或模型输出开始偏离规则时，请重新上传或粘贴这份 prompt。
+
+## Without An AI Agent
+
+If you do not use the Codex skill or another AI agent, you can copy [`WEB_AI_PROMPT.md`](WEB_AI_PROMPT.md) from the repository root into a web AI chat and use it directly.
+
+Web AI tools have context limits. A safer approach is to put this prompt into the AI tool's background, custom instructions, project instructions, or similar settings. If the platform does not support that, paste the prompt before starting a new idea-polishing session. After a long conversation, a long break, a new chat window, or when the model starts drifting from the rules, upload or paste the prompt again.
+
 ## 名称与技术标识
 
 中文展示名：毕业论文 idea 打磨器
