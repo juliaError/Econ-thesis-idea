@@ -256,11 +256,11 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 
 This skill is for research design support. It does not replace advisor judgment, literature review, source verification, data access checks, empirical execution, or the student's own academic responsibility. It must not fabricate papers, citations, policies, data, coefficients, institutional facts, variables, or results.
 
-## 致谢与开发说明 🤝
+## 致谢与开发说明 🤖
 
 本项目由仓库维护者发起、设计和维护。Codex 参与了公开 skill 的结构化整理、规则拆分、README 与网页版 prompt 草拟、验证流程和本地同步。关键取舍、研究标准、公开边界和最终维护责任仍由项目维护者承担。这个说明只是透明记录 AI 辅助开发的作用，不表示把学术判断、数据核查或论文责任外包给 AI。
 
-## Acknowledgements And Development Note 🤝
+## Acknowledgements And Development Note 🤖
 
 This project was initiated, designed, and maintained by the repository maintainer. Codex assisted with structuring the public skill, splitting rules into references, drafting the README and web AI prompt, validation workflow, and local synchronization. Key design choices, research standards, public boundaries, and final maintenance responsibility remain with the maintainer. This note records AI-assisted development transparently; it does not outsource academic judgment, data verification, or thesis responsibility to AI.
 
