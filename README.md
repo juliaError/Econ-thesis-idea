@@ -1,32 +1,32 @@
-# 毕业论文 idea 打磨器
+# 毕业论文 idea 打磨器 🎓
 
-`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它用总控路由把原始兴趣、逐 idea / 逐轮五维评分、论文类型路由、IRIS-style 分支比较、文献拥挤度、三维题目搜选、数据/模型/测度可行性、识别诊断和论文蓝图串起来：先帮助研究生和研究初学者判断题目是否已经被中英文文献挤满；如果原题过于拥挤但兴趣仍有价值，再从原题的 X、Y、机制或反向因果中生发相邻方向，最后把仍有空间的 idea 转化为更可行的研究问题、数据路径、模型路径、识别方案或论文蓝图。
+`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它用总控路由把原始兴趣、逐 idea / 逐轮五维评分、论文类型路由、IRIS-style 分支比较、文献拥挤度、三维题目搜选、数据/模型/测度可行性、识别诊断和论文蓝图串起来：先帮助研究生和研究初学者判断题目是否已经被中英文文献挤满；如果原题过于拥挤但兴趣仍有价值，再从原题的 X、Y、机制或反向因果中生发相邻方向；最后把仍有空间的 idea 转化为更可行的研究问题、数据路径、模型路径、识别方案或论文蓝图。它想做的事很简单：少一点空泛题目，多一点能真的往前走的研究设计。
 
-# Thesis Idea Builder
+# Thesis Idea Builder 🎓
 
-`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It uses a master router to connect raw-interest intake, per-idea and per-iteration five-dimensional scoring, paper-type routing, IRIS-style branch comparison, literature crowding, three-dimensional topic branching, data/model/measurement feasibility, identification diagnosis, and thesis blueprints. It first checks whether a topic is already crowded in Chinese and English literature; if the exact topic is saturated but the underlying interest is still useful, it branches from the original X, Y, mechanism, or reverse causal direction to find adjacent options, then turns viable ideas into research questions, data paths, model paths, identification plans, or thesis blueprints.
+`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It uses a master router to connect raw-interest intake, per-idea and per-iteration five-dimensional scoring, paper-type routing, IRIS-style branch comparison, literature crowding, three-dimensional topic branching, data/model/measurement feasibility, identification diagnosis, and thesis blueprints. It first checks whether a topic is already crowded in Chinese and English literature; if the exact topic is saturated but the underlying interest is still useful, it branches from the original X, Y, mechanism, or reverse causal direction to find adjacent options; then it turns viable ideas into research questions, data paths, model paths, identification plans, or thesis blueprints. The goal is simple: fewer empty topic lists, more research designs that can actually move forward.
 
-## 模型要求提示
+## 模型要求提示 🧠
 
 AI 选题和研究设计对大模型的推理、知识组织、识别诊断和不确定性处理要求很高。建议优先使用当前最强的大模型：优先使用 GPT-5.5 Thinking 以上模型，以及 Claude 4.7 以上模型。DeepSeek 可以在中国大陆内部无法使用前两个模型时作为备选，但目前效果仍然不够好，尤其是在数据可行性、识别压力测试和论文蓝图细化上需要更谨慎地人工核查。
 
-## Model Recommendation
+## Model Recommendation 🧠
 
 AI-assisted topic selection and research design place high demands on a model's reasoning, knowledge organization, identification diagnostics, and uncertainty handling. Prefer the strongest available models: currently GPT-5.5 Thinking or above, and Claude 4.7 or above. DeepSeek can be used as a fallback when the first two model families are not accessible in mainland China, but its results are still not strong enough for this task; data feasibility, identification pressure-testing, and thesis-blueprint details require especially careful human checking.
 
-## 不使用 AI Agent 时
+## 不使用 AI Agent 时 🌐
 
 如果你不使用 Codex skill 或其他 AI agent，也可以直接复制主目录里的 [`WEB_AI_PROMPT.md`](WEB_AI_PROMPT.md) 到网页版 AI 中使用。
 
 网页版 AI 有上下文限制。更稳妥的做法是把这份 prompt 放进 AI 的背景、个性化设置、项目说明或 Custom instructions 中；如果平台不支持，就在每次开始新的 idea 打磨前粘贴一次。长对话后、隔了一段时间后、换窗口后，或模型输出开始偏离规则时，请重新上传或粘贴这份 prompt。
 
-## Without An AI Agent
+## Without An AI Agent 🌐
 
 If you do not use the Codex skill or another AI agent, you can copy [`WEB_AI_PROMPT.md`](WEB_AI_PROMPT.md) from the repository root into a web AI chat and use it directly.
 
 Web AI tools have context limits. A safer approach is to put this prompt into the AI tool's background, custom instructions, project instructions, or similar settings. If the platform does not support that, paste the prompt before starting a new idea-polishing session. After a long conversation, a long break, a new chat window, or when the model starts drifting from the rules, upload or paste the prompt again.
 
-## 核心功能
+## 核心功能 ✨
 
 - 面向经济学毕业论文选题和研究设计。
 - 不生成空泛题目，而是诊断、压力测试和打磨 idea。
@@ -42,7 +42,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - 数据可得性验证拆分为 AI agent 能做的证据核查和用户必须确认的权限/下载/授权核查。
 - 输出红黄绿判定、行动决策、第一周验证、导师 memo、论文结构、主回归或模型蓝图、变量/测度/命题/参数、数据和图表安排。
 
-## Core Features
+## Core Features ✨
 
 - Serves economics thesis topic selection and research design.
 - Does not generate empty topic lists; it diagnoses, pressure-tests, and polishes an idea.
@@ -58,7 +58,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - Splits data feasibility verification into agent-side evidence checks and user-side access, download, and authorization confirmation.
 - Outputs feasibility colors, action decisions, first-week validation, advisor memo, paper structure, main regression or model blueprint, variables/measures/propositions/parameters, data, tables, and figures.
 
-## 工作流程
+## 工作流程 🧭
 
 1. 先用总控路由记录当前阶段、活跃候选题、备选候选题、阻塞风险和下一步模块。
 2. 接受用户的原始兴趣、导师方向、政策、变量、现象或口语化直觉，保留原话并生成临时 idea card。
@@ -77,7 +77,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 15. 在每轮结尾用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
 16. 对可行或修复后的 idea，产出类型匹配的论文蓝图：经验回归、测度事实、理论模型、结构/量化模型或混合设计。
 
-## Core Workflow
+## Core Workflow 🧭
 
 1. Use the master router to track the current stage, active candidate, backup candidates, blocking risk, and next module.
 2. Accept the user's raw interest, advisor direction, policy, variable, phenomenon, or colloquial intuition; preserve the wording and create a temporary idea card.
@@ -96,23 +96,23 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 15. End each round with a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
 16. For viable or repaired ideas, produce a type-matched thesis blueprint: empirical regression, measurement/facts, theory model, structural/quantitative model, or mixed design.
 
-## 数据可行性规则
+## 数据可行性规则 🔎
 
-对经验研究来说，题目有意思还不够。除非数据路径现实可行，否则这个 skill 不应把 idea 判定为可以推进。
+对经验研究来说，题目有意思还不够。除非数据路径现实可行，否则这个 skill 不应把 idea 判定为可以推进。先过数据门槛，再谈识别和论文蓝图。
 
 可接受的数据路径包括：相关既有论文、公开数据库、用户已有本地材料、导师组或课题组权限、学院或图书馆权限、论文复现材料、数据管理方、合规第三方数据服务，或其他授权渠道。
 
 对中国相关题目，英文中国研究和中文经济学或管理学期刊文章是重要数据先例。小红书、微信公众号、Xiaohongshu、WeChat public accounts 等平台只能用于搜索或发帖求助数据来源线索。平台回复只是线索，不是已经验证的数据。使用任何由此发现的数据前，必须核查来源、授权、隐私风险、引用规则、可复现性，以及能否合法、合规、合伦理地用于毕业论文。
 
-## Data Feasibility Rule
+## Data Feasibility Rule 🔎
 
-For empirical ideas, intellectual excitement is not enough. The skill should not mark an idea ready unless the data path is realistic.
+For empirical ideas, intellectual excitement is not enough. The skill should not mark an idea ready unless the data path is realistic. Data feasibility comes before identification claims and thesis blueprints.
 
 Acceptable data paths include relevant prior papers, public databases, user-owned local materials, advisor or research-team access, school or library access, replication archives, data owners, compliant third-party services, or other authorized channels.
 
 For China-related topics, English-language China papers and Chinese economics or management journal articles are important data precedents. 小红书, 微信公众号, Xiaohongshu, WeChat public accounts, and similar platforms may be used only to search or ask for data-source leads. Platform replies are leads, not validated data. Before using any discovered dataset, verify provenance, authorization, privacy risk, citation rules, reproducibility, and legal or ethical fit for a thesis.
 
-## 默认输出
+## 默认输出 📦
 
 对于单个 idea，默认输出包括：
 
@@ -135,7 +135,7 @@ For China-related topics, English-language China papers and Chinese economics or
 - 升级和降级路径。
 - 是否继续打磨：建议继续打磨、建议冻结当前版本、可以推进也可继续升级，或建议暂停/更换路线。
 
-## Output Contract
+## Output Contract 📦
 
 For a single idea, the default output includes:
 
@@ -158,7 +158,7 @@ For a single idea, the default output includes:
 - upgrade and downgrade path.
 - a natural-language stop-or-continue judgment.
 
-## 安装
+## 安装 🚀
 
 将这个仓库克隆到本地 Codex skills 目录：
 
@@ -169,7 +169,7 @@ git clone https://github.com/juliaError/Econ-thesis-idea.git ~/.codex/skills/the
 
 安装后，重启或刷新 Codex，让 skill 列表重新加载。
 
-## Install
+## Install 🚀
 
 Clone this repository into your local Codex skills directory:
 
@@ -180,7 +180,7 @@ git clone https://github.com/juliaError/Econ-thesis-idea.git ~/.codex/skills/the
 
 After installation, restart or refresh Codex so the skill list is reloaded.
 
-## 使用
+## 使用 🛠️
 
 中文示例：
 
@@ -190,7 +190,7 @@ After installation, restart or refresh Codex so the skill list is reloaded.
 如果原题太拥挤但我仍想保留部分兴趣，请从原题的 X、Y、机制和反向因果出发，按横向、纵向、逆向三个维度生发相邻方向，并筛选哪些值得继续验证。
 ```
 
-## Use
+## Use 🛠️
 
 English example:
 
@@ -200,7 +200,7 @@ If this is a crowded topic such as digitalization, common prosperity, digital fi
 If the exact topic is too crowded but I still want to preserve part of the interest, branch from the original X, Y, mechanisms, and reverse causal direction through horizontal, vertical, and reverse searches, then screen which adjacent directions deserve validation.
 ```
 
-## 仓库结构
+## 仓库结构 🗂️
 
 这个仓库只包含 `thesis-idea` standalone skill 和公开说明文件。
 
@@ -224,7 +224,7 @@ If the exact topic is too crowded but I still want to preserve part of the inter
     └── 11_paper_type_gates.md
 ```
 
-## Repository Structure
+## Repository Structure 🗂️
 
 This repository contains only the standalone `thesis-idea` skill and public-facing documentation.
 
@@ -248,30 +248,38 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
     └── 11_paper_type_gates.md
 ```
 
-## 边界
+## 边界 ⚠️
 
 这个 skill 用于研究设计辅助。它不能替代导师判断、文献综述、来源核查、数据权限检查、实证执行，或学生自己的学术责任。它不得编造论文、引用、政策、数据、系数、制度事实、变量或结果。
 
-## Boundaries
+## Boundaries ⚠️
 
 This skill is for research design support. It does not replace advisor judgment, literature review, source verification, data access checks, empirical execution, or the student's own academic responsibility. It must not fabricate papers, citations, policies, data, coefficients, institutional facts, variables, or results.
 
-## 灵感来源与引用
+## 致谢与开发说明 🤝
+
+本项目由仓库维护者发起、设计和维护。Codex 参与了公开 skill 的结构化整理、规则拆分、README 与网页版 prompt 草拟、验证流程和本地同步。关键取舍、研究标准、公开边界和最终维护责任仍由项目维护者承担。这个说明只是透明记录 AI 辅助开发的作用，不表示把学术判断、数据核查或论文责任外包给 AI。
+
+## Acknowledgements And Development Note 🤝
+
+This project was initiated, designed, and maintained by the repository maintainer. Codex assisted with structuring the public skill, splitting rules into references, drafting the README and web AI prompt, validation workflow, and local synchronization. Key design choices, research standards, public boundaries, and final maintenance responsibility remain with the maintainer. This note records AI-assisted development transparently; it does not outsource academic judgment, data verification, or thesis responsibility to AI.
+
+## 灵感来源与引用 📚
 
 本项目的 IRIS-style idea tree 只是在抽象层面受 IRIS 论文启发：Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`。
 
 本项目没有包含 IRIS 的源码路径、源码映射、源码、prompt、UI、README 文案或运行说明；也不是 IRIS 的复刻版。本项目只借鉴“多维度评估、迭代 refinement、MCTS/UCT 分支探索”这些论文层面的公开方法思想，并将其重新设计为经济学毕业论文选题与研究设计流程。
 
-## Inspiration And Citation
+## Inspiration And Citation 📚
 
 The IRIS-style idea tree in this project is inspired only at the abstract method level by: Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`.
 
 This project does not include IRIS source paths, source mappings, source code, prompts, UI, README wording, or setup instructions, and it is not a reimplementation of IRIS. It only adapts publicly described methodological ideas such as multi-dimensional evaluation, iterative refinement, and MCTS/UCT branch exploration into an economics thesis topic-selection and research-design workflow.
 
-## 许可
+## 许可 📄
 
 本仓库原创内容采用 Creative Commons Attribution-NonCommercial 4.0 International（CC BY-NC 4.0）许可。商业使用需要取得仓库维护者的单独书面许可。详情见 `LICENSE`。
 
-## License
+## License 📄
 
 Original content in this repository is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use requires separate written permission from the repository maintainer. See `LICENSE` for details.
