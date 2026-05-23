@@ -225,11 +225,11 @@ Use these gates before a full blueprint:
 4. Verdict rules: `references/02_verdict_rules.md`.
 5. Research design patterns when useful: `references/06_research_design_patterns.md`.
 
-Only move to a full thesis blueprint when the idea is green or repairable yellow. For red ideas, recommend pivot, park, kill, downgrade, or a strict theory route.
+Only move to a full thesis blueprint when the idea is green or repairable yellow and the `是否继续打磨` judgment says `建议冻结当前版本` or `可以推进，也可继续升级`. If the judgment says `建议继续打磨`, stop with next-iteration options. For red ideas, recommend pivot, park, kill, downgrade, or a strict theory route.
 
 ## Stage 8: Thesis Blueprint
 
-Route to `references/05_output_templates.md` for:
+Route to `references/05_output_templates.md` for downstream planning only after the stop-or-continue gate allows it:
 
 - single idea diagnosis;
 - batch screening;
@@ -271,6 +271,6 @@ Use these status rules:
 - 可以推进，也可继续升级: the idea can proceed as a thesis, but one more iteration could improve ambition, novelty, data grounding, model, mechanism, identification, or quantification.
 - 建议暂停或更换路线: data, literature, identification, measurement, structural, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or a different paper type.
 
-Do not show internal route codes. Ask the user to choose a next action only when real choice is needed. If freezing is recommended, say so directly and move to blueprint or first-week validation.
+Do not show internal route codes. Treat this section as the routing gate before downstream planning. If the judgment is `建议继续打磨`, stop the response here with concrete next-iteration options; do not output a first-week validation plan, advisor memo, or full thesis blueprint in the same round unless the user explicitly asks for a provisional sketch. If freezing is recommended, say so directly and then move to blueprint or first-week validation.
 
 When MCTS was skipped because one branch was obviously blocked or obviously freezable, include a natural-language question about whether to use the three-dimensional branching module. Do this even when no further MCTS choice is needed, because the real user choice may be whether to accept the verdict or search for adjacent alternatives.

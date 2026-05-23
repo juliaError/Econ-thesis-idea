@@ -65,7 +65,7 @@ Default flow:
 12. **Data and access split**: for data-using ideas, separate agent-side evidence checks from user-side access confirmation. Do not say data are available when only a literature precedent or platform lead exists. See `references/03_data_feasibility.md`.
 13. **Identification, model, or measurement pressure test**: search for usable variation for causal empirical work; for measurement, theory, or structural/quantitative work, apply the relevant type-specific gate instead. See `references/04_identification_diagnostics.md` and `references/11_paper_type_gates.md`.
 14. **Verdict and decision**: give both a feasibility color and an action decision. See `references/02_verdict_rules.md`.
-15. **Blueprint and validation**: for feasible or repaired ideas, produce the thesis blueprint, first-week validation plan, advisor memo, and upgrade path. See `references/05_output_templates.md`.
+15. **Stop-or-continue gate before planning**: after scoring, gates, and feasibility verdict, output `是否继续打磨` before any first-week validation plan, advisor memo, or full thesis blueprint. If the judgment is `建议继续打磨`, stop there with next-iteration options and do not output downstream planning sections unless the user explicitly asks for a provisional sketch. If the judgment is `建议冻结当前版本` or `可以推进，也可继续升级`, then produce the thesis blueprint, first-week validation plan, advisor memo, and upgrade path. See `references/05_output_templates.md`.
 16. **Design pattern check**: when helpful, map the idea to a reusable research design pattern. See `references/06_research_design_patterns.md`.
 
 If the user gives too little information, still provide an initial diagnosis from available facts, then ask at most one high-impact question.
@@ -80,7 +80,7 @@ For every idea, every candidate branch, and every refinement iteration, always i
 - effectiveness;
 - impact.
 
-Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. End each substantive response with a public-facing stop-or-continue judgment under `是否继续打磨`, not an internal status code.
+Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. Put the public-facing stop-or-continue judgment under `是否继续打磨` before any first-week validation plan, advisor memo, or thesis blueprint, not at the end after those sections.
 
 If tree exploration is skipped because there is only one branch and it is clearly blocked, or because the current version is clearly ready to freeze, do not silently stop. State the reason, then ask whether the user wants to call the three-dimensional branching module to search adjacent new ideas from the original X, Y, mechanism, or reverse causal direction. For clearly freezable ideas, frame this as optional exploration; for clearly blocked ideas, frame it as the recommended pivot option.
 
@@ -124,15 +124,8 @@ For one idea, default to:
 1. **一句话重写**: a testable research question.
 2. **论文类型与模式**: empirical causal, measurement/facts, theory, structural/quantitative, policy report, or mixed; plus ambition mode.
 3. **可行性判定**: `green / yellow / red` plus `proceed / pivot / park / kill / upgrade / downgrade`.
-4. **最小可行论文版本**: title, core question, and type-specific minimum version.
-5. **数据/模型/测度对象表**: variables, measurement rule, primitives, moments, sources, or model objects as relevant.
-6. **识别/测度/理论/量化选项**: required variation, validation, model primitives, moments, assumptions, threats, or feasibility as relevant.
-7. **不能声称什么**: causal, mechanism, policy, external-validity, or novelty claims that are not supported.
-8. **论文蓝图**: empirical regression blueprint, measurement/facts blueprint, theory model blueprint, structural/quantitative blueprint, or mixed blueprint.
-9. **第一周验证计划**: 3-7 day validation tasks.
-10. **导师汇报 memo**: a short advisor-facing summary.
-11. **升级/降级路径**: thesis, excellent thesis, working paper, and top-field/top-journal versions where relevant.
-12. **迭代状态判断**: use public labels only; recommend whether to continue polishing, freeze the current version, optionally upgrade, or pause/change route.
+4. **是否继续打磨**: use public labels only; recommend whether to continue polishing, freeze the current version, optionally upgrade, or pause/change route. This is a gate before downstream planning, not a closing afterthought.
+5. **条件性下游输出**: output the minimum viable thesis version, data/model/measurement map, design options, unsupported claims, thesis blueprint, first-week validation plan, advisor memo, and upgrade/downgrade path only when `是否继续打磨` says `建议冻结当前版本` or `可以推进，也可继续升级`. If it says `建议继续打磨`, do not output those downstream sections; instead ask the user to choose the next iteration action.
 
 For multiple ideas, use the screening table in `references/05_output_templates.md` and recommend one primary path.
 

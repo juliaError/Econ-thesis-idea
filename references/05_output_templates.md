@@ -70,7 +70,18 @@ Use this section only when branch exploration is used. Do not show node visits/v
 - Decision: proceed / pivot / park / kill / upgrade / downgrade
 - Binding constraint:
 
-## 4. Minimum Viable Thesis Version
+## 4. 是否继续打磨
+Required for every substantive output. Put this section here, before any thesis blueprint, first-week validation plan, or advisor memo.
+
+- 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
+- 理由：
+- 建议下一步：
+- 若判断为“建议继续打磨”：stop the output after this section and give 2-4 next-iteration options. Do not output sections 5-12 in this round unless the user explicitly asks for a provisional sketch.
+- 若判断为“建议冻结当前版本”或“可以推进，也可继续升级”：continue to sections 5-12.
+- 若判断为“建议暂停或更换路线”：do not output a full blueprint for the current branch; offer pivot, downgrade, park/kill, or candidate-bank options.
+- 若因单一方向明显红灯或明显可冻结而跳过 MCTS：说明跳过原因，并询问是否调用三维生发模块，沿原始 X、Y、机制或反向因果寻找相邻新方向；若当前版本可冻结，把该询问写成可选升级，而不是强制继续。
+
+## 5. Minimum Viable Thesis Version
 - Title:
 - Core question:
 - Type-specific minimum version:
@@ -79,7 +90,7 @@ Use this section only when branch exploration is used. Do not show node visits/v
 - Theory: agents, choices, constraints, timing, friction, equilibrium, proposition.
 - Structural/quantitative: model block, data moments, estimation/calibration, fit, counterfactual.
 
-## 5. Data / Model / Measurement Map
+## 6. Data / Model / Measurement Map
 | Component | Object | Source or model role | Agent-side evidence | User-side confirmation | Difficulty | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | Outcome / fact / target moment | | | | | | |
@@ -89,7 +100,7 @@ Use this section only when branch exploration is used. Do not show node visits/v
 | Unit / agent / state | | | | | | |
 | Time / timing / horizon | | | | | | |
 
-## 6. Design Options
+## 7. Design Options
 | Route | Required object | Main assumption | Main threat | Feasibility |
 | --- | --- | --- | --- | --- |
 | Empirical causal | variation / comparison | | | |
@@ -98,10 +109,10 @@ Use this section only when branch exploration is used. Do not show node visits/v
 | Structural/quantitative | moments / parameters / counterfactual | | | |
 | Policy report | evidence / option / implementation | | | |
 
-## 7. What Not To Claim
+## 8. What Not To Claim
 [Unsupported causal, mechanism, policy, novelty, or external-validity claims.]
 
-## 8. Thesis Blueprint
+## 9. Thesis Blueprint
 - Section plan:
 - Main regression, measurement design, model proposition, or structural block:
 - Main table, figure, proposition, or counterfactual:
@@ -110,7 +121,7 @@ Use this section only when branch exploration is used. Do not show node visits/v
 - Figures:
 - Appendix:
 
-## 9. First-Week Validation Plan
+## 10. First-Week Validation Plan
 Day 1:
 Day 2:
 Day 3:
@@ -119,26 +130,17 @@ Day 5:
 Day 6:
 Day 7:
 
-## 10. Advisor Memo
+## 11. Advisor Memo
 [200-300 Chinese characters or a concise English paragraph, depending on the user's language.]
 
-## 11. Upgrade And Downgrade Path
+## 12. Upgrade And Downgrade Path
 - Thesis version:
 - Excellent thesis version:
 - Working paper version:
 - Top-field/top-journal version:
-
-## 12. 是否继续打磨
-Required for every substantive output. The decision controls whether more iteration is needed or merely optional.
-
-- 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
-- 理由：
-- 建议下一步：
-- 若因单一方向明显红灯或明显可冻结而跳过 MCTS：说明跳过原因，并询问是否调用三维生发模块，沿原始 X、Y、机制或反向因果寻找相邻新方向；若当前版本可冻结，把该询问写成可选升级，而不是强制继续。
-- 如果需要用户选择，给出自然语言选项，例如继续打磨当前分支、换一个相邻方向、先查文献、先确认数据权限、按模型重写、从候选题池选择、暂停或放弃。
 ```
 
-For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 4-11 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
+For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 5-12 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
 
 If the original idea is `high`/`saturated` but the user wants nearby alternatives, output the pivot lab before sections 1-11:
 
@@ -159,7 +161,7 @@ Do not claim yet:
 If the recommended branch is selected, then rewrite it into a formal one-sentence research question.
 ```
 
-Only continue to a full thesis blueprint for a branch with `proceed` or `verify`.
+Only continue to a full thesis blueprint for a branch with `proceed` or `verify` and a `是否继续打磨` judgment of `建议冻结当前版本` or `可以推进，也可继续升级`.
 
 After the user selects one branch, update the candidate bank and mark non-selected viable branches as `backup`. If the selected branch fails the data or identification gate, return to the highest-quality backup rather than restarting from zero.
 
@@ -185,6 +187,8 @@ After the user selects one branch, update the candidate bank and mark non-select
 ```
 
 ## First-Week Validation Plan
+
+Use this only after the output has already judged `是否继续打磨` as `建议冻结当前版本` or `可以推进，也可继续升级`. If the judgment is `建议继续打磨`, do not produce this plan yet; ask the user to choose the next refinement action first.
 
 Default plan:
 

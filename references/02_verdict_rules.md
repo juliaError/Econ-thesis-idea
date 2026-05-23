@@ -89,4 +89,4 @@ End with a user-facing iteration decision using natural language only:
 - 可以推进，也可继续升级;
 - 建议暂停或更换路线.
 
-Ask the user to choose a next action only when continuation is required or genuinely useful. If the current version is ready, recommend freezing it and moving to blueprint or first-week validation. Do not expose internal route labels.
+Put this iteration decision before any thesis blueprint, first-week validation plan, or advisor memo. Ask the user to choose a next action only when continuation is required or genuinely useful. If the judgment is `建议继续打磨`, do not output downstream planning sections yet; give the next refinement options instead. If the current version is ready, recommend freezing it and moving to blueprint or first-week validation. Do not expose internal route labels.

@@ -50,8 +50,7 @@ Required output:
 - data and variable map;
 - usable baseline model;
 - what not to claim;
-- first-week validation plan;
-- advisor memo.
+- first-week validation plan and advisor memo, but only after `是否继续打磨` says the idea is ready to freeze or proceed.
 
 ### Research-Design Strengthening Mode
 

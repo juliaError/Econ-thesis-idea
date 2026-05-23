@@ -179,7 +179,7 @@ Use `c = 1.4` by default. Use a lower `c` when the user has a tight deadline and
 
 ## Stop-Or-Continue Judgment
 
-End each substantive ideation response with a stop-or-continue judgment, but do not expose internal route codes in user-facing output:
+Each substantive ideation response must include a stop-or-continue judgment before downstream planning sections. Do not expose internal route codes in user-facing output:
 
 ```markdown
 ## 是否继续打磨
@@ -196,7 +196,7 @@ Use these rules:
 - 可以推进，也可继续升级: the idea can proceed, but one more iteration could improve ambition, novelty, data grounding, model, mechanism, identification, or quantification.
 - 建议暂停或更换路线: the branch is blocked by saturated literature, unavailable data, unrepairable identification, failed measurement, failed structural mapping, or failed theory route.
 
-When the choice is ambiguous, run a 2-5 step MCTS/UCT comparison and summarize it as "小规模分支比较". If the case is obvious, state why MCTS was skipped. Ask the user to choose an action only when a real choice remains. If freezing is recommended, move to thesis blueprint or first-week validation while mentioning that the user may optionally pursue a higher-ambition version.
+When the choice is ambiguous, run a 2-5 step MCTS/UCT comparison and summarize it as "小规模分支比较". If the case is obvious, state why MCTS was skipped. Ask the user to choose an action only when a real choice remains. If the judgment is `建议继续打磨`, stop with the next-iteration options and do not output a first-week validation plan, advisor memo, or full thesis blueprint in the same round. If freezing is recommended, move to thesis blueprint or first-week validation while mentioning that the user may optionally pursue a higher-ambition version.
 
 When MCTS is skipped because there is only one branch and it is clearly data-red, type-gate-red, theory/model-red, or already ready to freeze, do not expose a technical skip label. Use natural language:
 

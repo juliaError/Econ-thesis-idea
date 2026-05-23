@@ -123,6 +123,6 @@ Then give a user-facing iteration decision:
 是否需要用户选择:
 ```
 
-Only `green + green` should proceed directly to a full blueprint. Yellow requires validation. Red requires repair, downgrade, pivot, or park.
+Only `green + green` with a `建议冻结当前版本` or `可以推进，也可继续升级` iteration judgment should proceed directly to a full blueprint. Yellow requires another validation or refinement choice first unless the judgment explicitly says the thesis can proceed. Red requires repair, downgrade, pivot, or park.
 
 Return to `references/00_master_router.md` with: score state, paper-type gate, data/model/measurement/theory gate, identification gate if relevant, decision, next action, and whether to use a backup branch.

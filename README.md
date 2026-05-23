@@ -1,10 +1,10 @@
 # 毕业论文 idea 打磨器 🎓
 
-`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它帮助研究生和研究初学者把模糊兴趣、导师给的题目、政策、变量或现象，转化为更清楚、更可验证、更适合继续推进的研究问题。它会先检查题目是否太拥挤、数据或模型路径是否现实、识别和测度是否站得住，再把可行的 idea 打磨成论文结构、变量/命题、数据、图表和第一周验证计划。它想做的事很简单：少一点空泛题目，多一点能真的往前走的研究设计。
+`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它帮助研究生和研究初学者把模糊兴趣、导师给的题目、政策、变量或现象，转化为更清楚、更可验证、更适合继续推进的研究问题。它会先检查题目是否太拥挤、数据或模型路径是否现实、识别和测度是否站得住，并先判断是否还需要继续打磨；只有当 idea 足够成熟时，才继续整理论文结构、变量/命题、数据、图表和第一周验证计划。它想做的事很简单：少一点空泛题目，多一点能真的往前走的研究设计。
 
 # Thesis Idea Builder 🎓
 
-`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It helps graduate students and early-stage researchers turn vague interests, advisor-given topics, policies, variables, or phenomena into clearer, more testable research questions. It first checks whether a topic is too crowded, whether the data or model path is realistic, and whether the identification or measurement logic is defensible; then it turns viable ideas into thesis structures, variables or propositions, data plans, tables and figures, and first-week validation tasks. The goal is simple: fewer empty topic lists, more research designs that can actually move forward.
+`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It helps graduate students and early-stage researchers turn vague interests, advisor-given topics, policies, variables, or phenomena into clearer, more testable research questions. It first checks whether a topic is too crowded, whether the data or model path is realistic, and whether the identification or measurement logic is defensible, then decides whether the idea still needs polishing. Only mature ideas move on to thesis structures, variables or propositions, data plans, tables and figures, and first-week validation tasks. The goal is simple: fewer empty topic lists, more research designs that can actually move forward.
 
 ## 模型要求提示 🧠
 
@@ -33,7 +33,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - 检查题目是否太拥挤、数据是否现实可得、识别或模型路径是否站得住。
 - 每轮给出五维评分：新意、清晰度、可行性、有效性和影响。
 - 支持经验因果、测度/事实、理论、结构/量化、政策报告和混合型论文。
-- 输出可行性判断、下一步行动、第一周验证计划、导师 memo 和论文蓝图。
+- 先判断是否继续打磨；成熟后再输出第一周验证计划、导师 memo 和论文蓝图。
 
 ## Core Features ✨
 
@@ -42,7 +42,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - Checks whether a topic is too crowded, whether data access is realistic, and whether the identification or model path is defensible.
 - Gives five-dimensional scores in each round: novelty, clarity, feasibility, effectiveness, and impact.
 - Supports empirical causal, measurement/facts, theory, structural/quantitative, policy report, and mixed thesis designs.
-- Outputs feasibility judgments, next actions, first-week validation, advisor memos, and thesis blueprints.
+- Decides whether to keep polishing first; mature ideas then receive first-week validation plans, advisor memos, and thesis blueprints.
 
 ## 安装 🚀
 
@@ -199,14 +199,12 @@ For China-related topics, English-language China papers and Chinese economics or
 - 更清楚的一句话研究问题；
 - 论文类型和可行性判断；
 - 五维评分和最需要补强的地方；
+- 是否继续打磨，以及下一轮最该做什么；
 - 文献拥挤度、近似文献和答辩风险；
 - 可行的数据、测度、模型或理论路径；
 - 识别、测度、理论或结构/量化方案及主要威胁；
 - 现在不能声称的内容；
-- 第一周验证计划；
-- 导师 memo；
-- 论文蓝图，包括结构、主回归或模型蓝图、变量/测度/命题/参数、数据、表格和图形安排；
-- 升级、降级或转向建议。
+- 如果已经建议冻结或可以推进，再输出第一周验证计划、导师 memo、论文蓝图，以及升级、降级或转向建议。
 
 ## Output Contract 📦
 
@@ -215,14 +213,12 @@ For a single idea, the default output includes:
 - a clearer one-sentence research question;
 - paper type and feasibility judgment;
 - five-dimensional scores and the weakest parts to improve;
+- whether to keep polishing and what the next iteration should do;
 - literature crowding, close papers, and defense risks;
 - feasible data, measurement, model, or theory paths;
 - identification, measurement, theory, or structural/quantitative options and major threats;
 - claims the user should not make yet;
-- first-week validation plan;
-- advisor memo;
-- thesis blueprint with structure, main regression or model blueprint, variables/measures/propositions/parameters, data, tables, and figures;
-- upgrade, downgrade, or pivot suggestions.
+- if the idea is ready to freeze or proceed, first-week validation plan, advisor memo, thesis blueprint, and upgrade/downgrade/pivot suggestions.
 
 ## 边界 ⚠️
 
@@ -328,8 +324,8 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 12. 按论文类型执行门槛：经验因果看数据与识别；测度/事实看概念、测量、覆盖与验证；理论看主体、约束、时序、均衡和命题；结构/量化看模型-数据映射、矩、估计/校准、拟合和反事实。
 13. 对使用数据的 idea，区分 agent 证据核查和用户权限确认；先寻找可用变异、测度验证、理论机制或模型矩，再讨论 DID、IV、RDD、固定效应、结构估计、校准或仿真。
 14. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
-15. 在每轮结尾用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
-16. 对可行或修复后的 idea，产出类型匹配的论文蓝图：经验回归、测度事实、理论模型、结构/量化模型或混合设计。
+15. 立即用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
+16. 只有在建议冻结或可以推进时，才产出类型匹配的论文蓝图和第一周验证计划；若建议继续打磨，则停在下一轮选项。
 
 ### Core Workflow 🧭
 
@@ -347,8 +343,8 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 12. Apply type-specific gates: empirical causal ideas need data and identification; measurement/facts ideas need concept, measurement, coverage, and validation; theory ideas need agents, constraints, timing, equilibrium, and propositions; structural/quantitative ideas need model-data mapping, moments, estimation/calibration, fit, and counterfactuals.
 13. For data-using ideas, separate agent-side evidence checks from user-side access confirmation; search for usable variation, measurement validation, theory mechanism, or model moments before naming DID, IV, RDD, fixed effects, structural estimation, calibration, or simulation.
 14. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
-15. End each round with a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
-16. For viable or repaired ideas, produce a type-matched thesis blueprint: empirical regression, measurement/facts, theory model, structural/quantitative model, or mixed design.
+15. Immediately give a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
+16. Produce a type-matched thesis blueprint and first-week validation plan only when the idea is ready to freeze or proceed; if it still needs polishing, stop with next-iteration options.
 
 ### 开发说明 🤖
 
