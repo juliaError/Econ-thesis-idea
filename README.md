@@ -232,100 +232,6 @@ For a single idea, the default output includes:
 
 This skill is for research design support. It does not replace advisor judgment, literature review, source verification, data access checks, empirical execution, or the student's own academic responsibility. It must not fabricate papers, citations, policies, data, coefficients, institutional facts, variables, or results.
 
-## 仓库结构 🗂️
-
-这个仓库只包含 `thesis-idea` standalone skill 和公开说明文件。
-
-```text
-.
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-└── references/
-    ├── 00_master_router.md
-    ├── 01_modes_and_inputs.md
-    ├── 02_verdict_rules.md
-    ├── 03_data_feasibility.md
-    ├── 04_identification_diagnostics.md
-    ├── 05_output_templates.md
-    ├── 06_research_design_patterns.md
-    ├── 07_literature_crowding_gate.md
-    ├── 08_crowded_topic_pivot_lab.md
-    ├── 09_selected_topic_refinement.md
-    ├── 10_iris_ideation_loop.md
-    └── 11_paper_type_gates.md
-```
-
-## Repository Structure 🗂️
-
-This repository contains only the standalone `thesis-idea` skill and public-facing documentation.
-
-```text
-.
-├── SKILL.md
-├── agents/
-│   └── openai.yaml
-└── references/
-    ├── 00_master_router.md
-    ├── 01_modes_and_inputs.md
-    ├── 02_verdict_rules.md
-    ├── 03_data_feasibility.md
-    ├── 04_identification_diagnostics.md
-    ├── 05_output_templates.md
-    ├── 06_research_design_patterns.md
-    ├── 07_literature_crowding_gate.md
-    ├── 08_crowded_topic_pivot_lab.md
-    ├── 09_selected_topic_refinement.md
-    ├── 10_iris_ideation_loop.md
-    └── 11_paper_type_gates.md
-```
-
-## 工作流程 🧭
-
-1. 先用总控路由记录当前阶段、活跃候选题、备选候选题、阻塞风险和下一步模块。
-2. 接受用户的原始兴趣、导师方向、政策、变量、现象或口语化直觉，保留原话并生成临时 idea card。
-3. 对每个 idea、候选分支和迭代版本做五维评分：novelty、clarity、feasibility、effectiveness、impact，并根据最弱项决定下一步。
-4. 当存在多个可能方向时，运行小规模 IRIS-style MCTS/UCT 分支比较：生成 research brief，先评分每个方向，再执行 review/refine/refresh/retrieve 等动作；内部可记录 visits/value，但对外只总结为“小规模分支比较”和推荐路线。
-5. 如果只有一个方向且明显红灯或明显可冻结，可以不跑 MCTS，但要说明原因，并询问是否调用三维生发模块寻找相邻新方向。
-6. 判断用户阶段、截止时间、数据权限、方法水平、导师偏好和目标层级。
-7. 对硕士生和拥挤题目先执行文献拥挤度 gate：查中英文接近文献，判断是否已有相同 X、Y、数据、方法和机制。
-8. 若原题 `high/saturated` 但用户仍想保留部分兴趣，进入拥挤题目生发模块：横向拆 X/Y、纵向追机制链、逆向问“什么导致 X/Y”。生发阶段用“可读研究问题 + 关键对象”，不要过度压缩成难懂的一句话。
-9. 对多个可行分支建立候选题池，让用户选择一个主线，同时保留其他方向作为备选。
-10. 用户选中一个候选题后，冻结该分支，不再继续泛化生发。
-11. 将选中候选题改写成一句可检验的经济学研究问题，并压成最小可行设计。
-12. 按论文类型执行门槛：经验因果看数据与识别；测度/事实看概念、测量、覆盖与验证；理论看主体、约束、时序、均衡和命题；结构/量化看模型-数据映射、矩、估计/校准、拟合和反事实。
-13. 对使用数据的 idea，区分 agent 证据核查和用户权限确认；先寻找可用变异、测度验证、理论机制或模型矩，再讨论 DID、IV、RDD、固定效应、结构估计、校准或仿真。
-14. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
-15. 在每轮结尾用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
-16. 对可行或修复后的 idea，产出类型匹配的论文蓝图：经验回归、测度事实、理论模型、结构/量化模型或混合设计。
-
-## Core Workflow 🧭
-
-1. Use the master router to track the current stage, active candidate, backup candidates, blocking risk, and next module.
-2. Accept the user's raw interest, advisor direction, policy, variable, phenomenon, or colloquial intuition; preserve the wording and create a temporary idea card.
-3. Score every idea, candidate branch, and iteration version on novelty, clarity, feasibility, effectiveness, and impact, then route by the weakest dimensions.
-4. When several possible directions exist, run a small IRIS-style MCTS/UCT branch comparison: generate research briefs, score every branch before advancing it, and apply review/refine/refresh/retrieve actions. Visits/value may be tracked internally, but user-facing output should summarize this as a small branch comparison and recommendation.
-5. If there is only one direction and it is clearly blocked or clearly ready to freeze, MCTS may be skipped, but the output must explain why and ask whether to call the three-dimensional branching module for adjacent alternatives.
-6. Classify the user's stage, deadline, data access, method level, advisor preference, and ambition level.
-7. For master's students and crowded topics, run a literature crowding gate first: inspect close Chinese and English papers and check whether the same X, Y, data, method, and mechanism already exist.
-8. If the original idea is `high/saturated` but the user wants to preserve part of the interest, run the crowded topic pivot lab: horizontal X/Y splitting, vertical mechanism-chain search, and reverse-causality search. In this stage, use readable research questions plus key objects instead of over-compressed one-sentence questions.
-9. Build a candidate bank for viable branches, ask the user to choose one primary branch, and keep other directions as backups.
-10. After the user selects one candidate, freeze that branch instead of continuing broad ideation.
-11. Rewrite the selected candidate into a testable economics question and compress it into a minimum viable design.
-12. Apply type-specific gates: empirical causal ideas need data and identification; measurement/facts ideas need concept, measurement, coverage, and validation; theory ideas need agents, constraints, timing, equilibrium, and propositions; structural/quantitative ideas need model-data mapping, moments, estimation/calibration, fit, and counterfactuals.
-13. For data-using ideas, separate agent-side evidence checks from user-side access confirmation; search for usable variation, measurement validation, theory mechanism, or model moments before naming DID, IV, RDD, fixed effects, structural estimation, calibration, or simulation.
-14. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
-15. End each round with a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
-16. For viable or repaired ideas, produce a type-matched thesis blueprint: empirical regression, measurement/facts, theory model, structural/quantitative model, or mixed design.
-
-## 开发说明 🤖
-
-本项目由仓库维护者发起、设计和维护。Codex 参与了公开 skill 的结构化整理、规则拆分、README 与网页版 prompt 草拟、验证流程和本地同步。关键取舍、研究标准、公开边界和最终维护责任仍由项目维护者承担。这个说明只是透明记录 AI 辅助开发的作用，不表示把学术判断、数据核查或论文责任外包给 AI。
-
-## Development Note 🤖
-
-This project was initiated, designed, and maintained by the repository maintainer. Codex assisted with structuring the public skill, splitting rules into references, drafting the README and web AI prompt, validation workflow, and local synchronization. Key design choices, research standards, public boundaries, and final maintenance responsibility remain with the maintainer. This note records AI-assisted development transparently; it does not outsource academic judgment, data verification, or thesis responsibility to AI.
-
 ## 致谢与引用 📚
 
 本项目感谢 IRIS 论文带来的方法启发。IRIS 将研究 idea 的生成、评估和改进组织成可交互、可迭代、可比较的过程；这一思路启发了本项目在“毕业论文 idea 打磨器”中设计多维评分、连续 refinement 和小规模 MCTS/UCT 分支比较。
@@ -349,3 +255,105 @@ For clarity about citation boundaries: this repository is a redesign for economi
 ## License 📄
 
 Original content in this repository is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use requires separate written permission from the repository maintainer. See `LICENSE` for details.
+
+## 给开发者看的内容 🧩
+
+以下内容主要给想理解、维护或二次开发这个 skill 的开发者看。普通使用者可以跳过。
+
+## For Developers 🧩
+
+The following sections are mainly for people who want to understand, maintain, or extend this skill. Regular users can skip them.
+
+### 仓库结构 🗂️
+
+这个仓库只包含 `thesis-idea` standalone skill 和公开说明文件。
+
+```text
+.
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+└── references/
+    ├── 00_master_router.md
+    ├── 01_modes_and_inputs.md
+    ├── 02_verdict_rules.md
+    ├── 03_data_feasibility.md
+    ├── 04_identification_diagnostics.md
+    ├── 05_output_templates.md
+    ├── 06_research_design_patterns.md
+    ├── 07_literature_crowding_gate.md
+    ├── 08_crowded_topic_pivot_lab.md
+    ├── 09_selected_topic_refinement.md
+    ├── 10_iris_ideation_loop.md
+    └── 11_paper_type_gates.md
+```
+
+### Repository Structure 🗂️
+
+This repository contains only the standalone `thesis-idea` skill and public-facing documentation.
+
+```text
+.
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+└── references/
+    ├── 00_master_router.md
+    ├── 01_modes_and_inputs.md
+    ├── 02_verdict_rules.md
+    ├── 03_data_feasibility.md
+    ├── 04_identification_diagnostics.md
+    ├── 05_output_templates.md
+    ├── 06_research_design_patterns.md
+    ├── 07_literature_crowding_gate.md
+    ├── 08_crowded_topic_pivot_lab.md
+    ├── 09_selected_topic_refinement.md
+    ├── 10_iris_ideation_loop.md
+    └── 11_paper_type_gates.md
+```
+
+### 工作流程 🧭
+
+1. 先用总控路由记录当前阶段、活跃候选题、备选候选题、阻塞风险和下一步模块。
+2. 接受用户的原始兴趣、导师方向、政策、变量、现象或口语化直觉，保留原话并生成临时 idea card。
+3. 对每个 idea、候选分支和迭代版本做五维评分：novelty、clarity、feasibility、effectiveness、impact，并根据最弱项决定下一步。
+4. 当存在多个可能方向时，运行小规模 IRIS-style MCTS/UCT 分支比较：生成 research brief，先评分每个方向，再执行 review/refine/refresh/retrieve 等动作；内部可记录 visits/value，但对外只总结为“小规模分支比较”和推荐路线。
+5. 如果只有一个方向且明显红灯或明显可冻结，可以不跑 MCTS，但要说明原因，并询问是否调用三维生发模块寻找相邻新方向。
+6. 判断用户阶段、截止时间、数据权限、方法水平、导师偏好和目标层级。
+7. 对硕士生和拥挤题目先执行文献拥挤度 gate：查中英文接近文献，判断是否已有相同 X、Y、数据、方法和机制。
+8. 若原题 `high/saturated` 但用户仍想保留部分兴趣，进入拥挤题目生发模块：横向拆 X/Y、纵向追机制链、逆向问“什么导致 X/Y”。生发阶段用“可读研究问题 + 关键对象”，不要过度压缩成难懂的一句话。
+9. 对多个可行分支建立候选题池，让用户选择一个主线，同时保留其他方向作为备选。
+10. 用户选中一个候选题后，冻结该分支，不再继续泛化生发。
+11. 将选中候选题改写成一句可检验的经济学研究问题，并压成最小可行设计。
+12. 按论文类型执行门槛：经验因果看数据与识别；测度/事实看概念、测量、覆盖与验证；理论看主体、约束、时序、均衡和命题；结构/量化看模型-数据映射、矩、估计/校准、拟合和反事实。
+13. 对使用数据的 idea，区分 agent 证据核查和用户权限确认；先寻找可用变异、测度验证、理论机制或模型矩，再讨论 DID、IV、RDD、固定效应、结构估计、校准或仿真。
+14. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
+15. 在每轮结尾用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
+16. 对可行或修复后的 idea，产出类型匹配的论文蓝图：经验回归、测度事实、理论模型、结构/量化模型或混合设计。
+
+### Core Workflow 🧭
+
+1. Use the master router to track the current stage, active candidate, backup candidates, blocking risk, and next module.
+2. Accept the user's raw interest, advisor direction, policy, variable, phenomenon, or colloquial intuition; preserve the wording and create a temporary idea card.
+3. Score every idea, candidate branch, and iteration version on novelty, clarity, feasibility, effectiveness, and impact, then route by the weakest dimensions.
+4. When several possible directions exist, run a small IRIS-style MCTS/UCT branch comparison: generate research briefs, score every branch before advancing it, and apply review/refine/refresh/retrieve actions. Visits/value may be tracked internally, but user-facing output should summarize this as a small branch comparison and recommendation.
+5. If there is only one direction and it is clearly blocked or clearly ready to freeze, MCTS may be skipped, but the output must explain why and ask whether to call the three-dimensional branching module for adjacent alternatives.
+6. Classify the user's stage, deadline, data access, method level, advisor preference, and ambition level.
+7. For master's students and crowded topics, run a literature crowding gate first: inspect close Chinese and English papers and check whether the same X, Y, data, method, and mechanism already exist.
+8. If the original idea is `high/saturated` but the user wants to preserve part of the interest, run the crowded topic pivot lab: horizontal X/Y splitting, vertical mechanism-chain search, and reverse-causality search. In this stage, use readable research questions plus key objects instead of over-compressed one-sentence questions.
+9. Build a candidate bank for viable branches, ask the user to choose one primary branch, and keep other directions as backups.
+10. After the user selects one candidate, freeze that branch instead of continuing broad ideation.
+11. Rewrite the selected candidate into a testable economics question and compress it into a minimum viable design.
+12. Apply type-specific gates: empirical causal ideas need data and identification; measurement/facts ideas need concept, measurement, coverage, and validation; theory ideas need agents, constraints, timing, equilibrium, and propositions; structural/quantitative ideas need model-data mapping, moments, estimation/calibration, fit, and counterfactuals.
+13. For data-using ideas, separate agent-side evidence checks from user-side access confirmation; search for usable variation, measurement validation, theory mechanism, or model moments before naming DID, IV, RDD, fixed effects, structural estimation, calibration, or simulation.
+14. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
+15. End each round with a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
+16. For viable or repaired ideas, produce a type-matched thesis blueprint: empirical regression, measurement/facts, theory model, structural/quantitative model, or mixed design.
+
+### 开发说明 🤖
+
+本项目由仓库维护者发起、设计和维护。Codex 参与了公开 skill 的结构化整理、规则拆分、README 与网页版 prompt 草拟、验证流程和本地同步。关键取舍、研究标准、公开边界和最终维护责任仍由项目维护者承担。这个说明只是透明记录 AI 辅助开发的作用，不表示把学术判断、数据核查或论文责任外包给 AI。
+
+### Development Note 🤖
+
+This project was initiated, designed, and maintained by the repository maintainer. Codex assisted with structuring the public skill, splitting rules into references, drafting the README and web AI prompt, validation workflow, and local synchronization. Key design choices, research standards, public boundaries, and final maintenance responsibility remain with the maintainer. This note records AI-assisted development transparently; it does not outsource academic judgment, data verification, or thesis responsibility to AI.
