@@ -4,6 +4,8 @@ Use this module after the user has chosen one candidate topic from the literatur
 
 This module is called by `references/00_master_router.md`. It should freeze one selected candidate, refine that branch, and return gate statuses to the router. If the selected branch fails, return to the candidate bank rather than restarting broad topic search.
 
+The selected candidate and each refined version must retain the five-dimensional score record: novelty, clarity, feasibility, effectiveness, and impact. When a refinement changes the idea, report the score change from the previous version and the next route.
+
 ## When To Trigger
 
 Trigger this module when the user says things like:
@@ -31,6 +33,24 @@ biggest_uncertainty:
 ```
 
 Do not re-open broad ideation unless the data or identification gate fails.
+
+Immediately after freezing the candidate, include:
+
+```markdown
+## Selected Branch IRIS Review
+| Criterion | Score | Feedback |
+| --- | --- | --- |
+| Novelty | /10 | |
+| Clarity | /10 | |
+| Feasibility | /10 | |
+| Effectiveness | /10 | |
+| Impact | /10 | |
+
+- Average score:
+- Score change from previous iteration:
+- Weakest dimensions:
+- Next route:
+```
 
 ## Refinement Sequence
 
@@ -90,6 +110,13 @@ decision: proceed / refine / retrieve_sources / pivot / park
 next_action:
 ```
 
+Then ask the user to choose the next iteration action unless this is an explicit final stop:
+
+```text
+next_iteration_options: review_and_refine / retrieve_and_refine / data_gate_refine / identification_refine / choose_backup / run_mcts / park / kill
+user_choice_needed:
+```
+
 Only `green + green` should proceed directly to a full blueprint. Yellow requires validation. Red requires repair, downgrade, pivot, or park.
 
-Return to `references/00_master_router.md` with: data gate, identification gate, decision, next action, and whether to use a backup branch.
+Return to `references/00_master_router.md` with: score state, data gate, identification gate, decision, next action, and whether to use a backup branch.

@@ -6,6 +6,8 @@ Use this after the literature crowding gate when the student's original topic is
 
 This module is called by `references/00_master_router.md`. It should return screened candidate branches and backup options to the router; it should not refine every branch into a full thesis blueprint.
 
+Every generated branch must receive novelty, clarity, feasibility, effectiveness, and impact scores before it can be recommended, rejected, or stored as a backup.
+
 ## When To Use
 
 Use this module when:
@@ -119,9 +121,9 @@ Reject branches that survive only by adding decorative mechanisms, arbitrary het
 
 Use this compact table before any full thesis blueprint:
 
-| Branch | Source from original topic | Dimension | Candidate question | Closest literature pattern | Data path | Main design | Defense risk | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | proceed / verify / pivot / park / kill |
+| Branch | Source from original topic | Dimension | Candidate question | N/C/F/E/I | Average | Closest literature pattern | Data path | Main design | Defense risk | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | | | proceed / verify / pivot / park / kill |
 
 Then give:
 
@@ -129,6 +131,7 @@ Then give:
 - **Why not the others**: the binding risk for rejected branches.
 - **First verification task**: usually a literature search plus data metadata check.
 - **Do not claim yet**: causal, novelty, or mechanism claims not yet supported.
+- **Next iteration request**: ask whether to refine the recommended branch, run more MCTS, verify literature/data, choose a backup, park, or kill.
 
 Only after a branch receives `proceed` or `verify` should the normal thesis blueprint begin.
 

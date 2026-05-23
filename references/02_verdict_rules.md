@@ -75,6 +75,9 @@ Typical decision: `kill` or `park`.
 For every verdict, include:
 
 - one-sentence conclusion;
+- the five-dimensional score state for the idea or branch being judged;
 - the binding constraint;
 - the smallest action that could change the verdict;
 - what the user should stop assuming.
+
+If the verdict is not a final one-shot stop, end by asking the user to choose the next iteration action.

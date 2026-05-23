@@ -12,7 +12,9 @@
 - Binding risk:
 - Next route:
 
-## 0b. Initial Ideation Review
+## 0b. Per-Idea And Per-Iteration IRIS Review
+Required for every idea, every candidate branch, and every refinement iteration. If multiple branches are listed, score each branch separately before recommending or rejecting it.
+
 | Criterion | Score | Feedback |
 | --- | --- | --- |
 | Novelty | /10 | Provisional until literature is checked. |
@@ -22,7 +24,10 @@
 | Impact | /10 | |
 
 - Average score:
+- Score change from previous iteration: improved / flat / worse / not available
 - Weakest dimensions:
+- MCTS status: run / skipped
+- If skipped, why:
 - Next route:
 
 ## 0c. IRIS-Style Idea Tree
@@ -122,6 +127,19 @@ Day 7:
 - Excellent thesis version:
 - Working paper version:
 - Top-field/top-journal version:
+
+## 12. Next Iteration
+Skip this only for a clearly final one-shot answer or a dead idea where the user did not ask for alternatives.
+
+请选择下一步：
+1. `review_and_refine`: 继续打磨当前最佳分支；
+2. `refresh_idea`: 保留兴趣但换一个更远方向；
+3. `retrieve_and_refine`: 先查/核对最接近文献；
+4. `data_gate_refine`: 先按可得数据重写题目；
+5. `identification_refine`: 先按可用变异重写题目；
+6. `run_mcts`: 再跑 2-5 轮分支搜索；
+7. `choose_branch`: 从候选题池中选一个；
+8. `park/kill`: 暂停或放弃当前方向。
 ```
 
 For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 4-11 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
@@ -151,11 +169,11 @@ After the user selects one branch, update the candidate bank and mark non-select
 ```markdown
 # Idea Screening Table
 
-| Rank | Candidate idea | One-sentence question | Feasibility | Data access | Identification | Advisor acceptance | Overall | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | | | | | | | | |
-| 2 | | | | | | | | |
-| 3 | | | | | | | | |
+| Rank | Candidate idea | One-sentence question | N/C/F/E/I score | Average | Data access | Identification | Advisor acceptance | Overall | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | | | | | | | | | |
+| 2 | | | | | | | | | |
+| 3 | | | | | | | | | |
 
 ## Recommended Choice
 [Pick the best fit for the user's deadline, data access, and ambition.]
@@ -164,7 +182,7 @@ After the user selects one branch, update the candidate bank and mark non-select
 [State the binding risk for each rejected idea.]
 
 ## Next Step
-[Give the first data or literature task.]
+[Give the first data or literature task and ask which candidate or iteration action the user wants next.]
 ```
 
 ## First-Week Validation Plan

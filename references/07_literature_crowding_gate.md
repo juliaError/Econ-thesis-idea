@@ -6,6 +6,8 @@ Use this before narrowing a master's thesis topic when the idea sits in a crowde
 
 This module is called by `references/00_master_router.md`. Return a compact crowding status to the router instead of independently building the rest of the workflow.
 
+The master router's scoring contract still applies. When this gate is reported for an idea or branch, include or preserve that idea's novelty, clarity, feasibility, effectiveness, and impact scores. Do not let a literature summary replace the score table.
+
 ## When This Gate Is Mandatory
 
 Run this gate before title polishing, mechanism design, or a full blueprint when most of the following hold:
@@ -67,12 +69,13 @@ If the original X-Y package is `high` or `saturated` but the student wants to ke
 
 When this gate is triggered, lead with:
 
-1. `Literature crowding`: low / medium / high / saturated.
-2. `Closest literature pattern`: what existing papers have already done.
-3. `Defense risk`: the question an advisor or committee is likely to ask.
-4. `Decision`: proceed / pivot / park / kill / downgrade.
-5. `Smallest viable next step`: a concrete literature or data check.
+1. `IRIS review`: five-dimensional scores for the idea or branch, average score, weakest dimensions, and next route.
+2. `Literature crowding`: low / medium / high / saturated.
+3. `Closest literature pattern`: what existing papers have already done.
+4. `Defense risk`: the question an advisor or committee is likely to ask.
+5. `Decision`: proceed / pivot / park / kill / downgrade.
+6. `Smallest viable next step`: a concrete literature or data check.
 
 Only provide a full thesis blueprint after the idea passes this gate, after a pivot-lab branch passes its filters, or after the user explicitly chooses to proceed despite the risk.
 
-Return to `references/00_master_router.md` with: crowding level, decision, binding defense risk, and recommended next route.
+Return to `references/00_master_router.md` with: score state, crowding level, decision, binding defense risk, and recommended next route.

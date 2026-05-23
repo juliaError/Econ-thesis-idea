@@ -23,7 +23,7 @@ claim_type:
 main_missing_piece:
 ```
 
-Use the card to help the initial ideation review. Do not over-academicize the idea so early that the user's original curiosity, constraint, or advisor requirement disappears.
+Use the card to help the mandatory ideation review. Do not over-academicize the idea so early that the user's original curiosity, constraint, or advisor requirement disappears.
 
 ## Default Modes
 
@@ -134,4 +134,4 @@ If the idea is descriptive:
 How does [outcome/fact] vary across [groups/space/time], and what economic mechanism might explain it?
 ```
 
-Use big-noun compression after the raw interest card and initial ideation review, not as a premature final title. If several translations are plausible, show 2-3 options and ask the user to choose or correct the intended object.
+Use big-noun compression after the raw interest card and mandatory ideation review, not as a premature final title. If several translations are plausible, show 2-3 options and ask the user to choose or correct the intended object.

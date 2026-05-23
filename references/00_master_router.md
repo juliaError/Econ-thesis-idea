@@ -7,7 +7,7 @@ Use this file as the total controller for multi-step `thesis-idea` work. It deci
 The router should keep the process ordered:
 
 ```text
-raw interest -> ideation review -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> data and identification gates -> verdict -> thesis blueprint
+raw interest -> per-idea ideation review -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> data and identification gates -> verdict -> thesis blueprint
 ```
 
 ## Routing Architecture
@@ -79,9 +79,11 @@ First preserve the raw wording. Then create a provisional academic translation a
 
 Do not lock the final title at this stage. If the input is too vague, still produce the card and ask at most one high-impact question.
 
-## Stage 2: Initial Ideation Review
+## Stage 2: Mandatory Ideation Review
 
-Review the idea card before literature and data gates. Score from 0 to 10:
+Review the idea card before literature and data gates. This is mandatory for the first idea, but it is not limited to the first pass.
+
+Every idea, every candidate branch, and every refinement iteration must be scored from 0 to 10:
 
 | Criterion | Question |
 | --- | --- |
@@ -91,7 +93,15 @@ Review the idea card before literature and data gates. Score from 0 to 10:
 | Effectiveness | Would the design answer the user's intended question? |
 | Impact | Would the answer matter for economics, policy, or thesis defense? |
 
-Then list the weakest 2-3 dimensions and route:
+Then report:
+
+- average score;
+- score change from the previous iteration when available;
+- weakest 2-3 dimensions;
+- whether MCTS/tree exploration was run or skipped;
+- next route.
+
+Then route by the weakest dimensions:
 
 | Weakest dimension | Next route |
 | --- | --- |
@@ -103,6 +113,8 @@ Then list the weakest 2-3 dimensions and route:
 
 Do not claim true novelty without literature search.
 
+Do not output only a literature summary, revised topic sentence, or verdict. Any branch that is introduced, compared, advanced, selected, or refined must carry its own score table or compact score row. If the task is not complete in one answer, end with a next-iteration request that asks the user to choose the next action.
+
 ## Stage 2b: IRIS-Style Tree Exploration
 
 Route to `references/10_iris_ideation_loop.md` when the first review creates several plausible translations, the user wants exploration, the idea is broad, or the pivot lab produces multiple viable branches.
@@ -110,7 +122,7 @@ Route to `references/10_iris_ideation_loop.md` when the first review creates sev
 Use a small tree, not open-ended brainstorming:
 
 - generate or refine research briefs;
-- score each node on novelty, clarity, feasibility, effectiveness, and impact;
+- score every node on novelty, clarity, feasibility, effectiveness, and impact before selection, expansion, or comparison;
 - use `generate`, `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, or `direct_feedback`;
 - run 2-5 MCTS/UCT iterations by default;
 - track node visits and value;
@@ -125,7 +137,7 @@ Route to `references/07_literature_crowding_gate.md` when:
 - the user is in thesis rescue mode;
 - the topic is a crowded China or applied-economics theme;
 - the idea uses standard public data and standard panel FE/DID/mediation patterns;
-- the initial ideation review suggests novelty is the binding risk.
+- the mandatory ideation review suggests novelty is the binding risk.
 
 If crowding is `low` or `medium`, continue to data and identification gates. If crowding is `high` or `saturated`, route to the pivot lab or recommend `park`/`kill`.
 
@@ -214,3 +226,20 @@ At the end of each substantive exchange, include a compact routing state when us
 ```
 
 Use this state to keep long conversations from drifting away from the skill.
+
+For any non-final exchange, also include a compact next-iteration menu:
+
+```markdown
+## Next Iteration
+请选择下一步：
+1. `review_and_refine`: 继续打磨当前最佳分支；
+2. `refresh_idea`: 保留兴趣但换一个更远方向；
+3. `retrieve_and_refine`: 先核查最接近文献；
+4. `data_gate_refine`: 先按可得数据重写；
+5. `identification_refine`: 先按可用变异重写；
+6. `run_mcts`: 再跑 2-5 轮分支搜索；
+7. `choose_branch`: 从候选题池中选一个；
+8. `park/kill`: 暂停或放弃当前方向。
+```
+
+If the user explicitly asks for a one-shot final answer, or the idea is clearly killed/parked with no continuation requested, the next-iteration menu may be replaced by a final stop reason.

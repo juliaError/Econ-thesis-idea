@@ -22,6 +22,34 @@ Use this module when:
 
 Skip full tree search for a tiny one-off diagnosis, an urgent deadline with one obvious data path, or a case where the data or theory gate is already red.
 
+## Mandatory Per-Idea And Per-Iteration Review
+
+Every idea, every candidate branch, and every refinement iteration must include at least a one-node IRIS review, even when full MCTS is skipped. A node cannot be selected, expanded, compared, recommended, parked, or killed until it has a five-dimensional score.
+
+Minimum required output:
+
+```markdown
+## Mandatory IRIS Review
+| Criterion | Score | Feedback |
+| --- | --- | --- |
+| Novelty | /10 | |
+| Clarity | /10 | |
+| Feasibility | /10 | |
+| Effectiveness | /10 | |
+| Impact | /10 | |
+
+- Average score:
+- Score change from previous iteration: improved / flat / worse / not available
+- Weakest dimensions:
+- MCTS status: run / skipped
+- If skipped, why:
+- Next recommended action:
+```
+
+Do not output only a literature summary, revised title, or refined research question. The score table is mandatory for every version being compared or advanced. If multiple branches are shown, score each branch separately. If a branch was refined, score the old and new versions or state the score change.
+
+If the response advances the task beyond a one-shot final stop, it must also include a next-iteration request. The request should name a recommended action and ask the user to choose or override it.
+
 ## Brief Format
 
 Each node should contain a compact research brief:
@@ -147,6 +175,25 @@ UCT = value + c * sqrt(log(parent_visits + 1) / (child_visits + 1))
 
 Use `c = 1.4` by default. Use a lower `c` when the user has a tight deadline and a higher `c` when exploration is the explicit goal.
 
+## Next-Iteration Request
+
+End each non-final ideation response by asking the user to choose the next action. Use a compact menu:
+
+```markdown
+## Next Iteration
+请选择下一步：
+1. `review_and_refine`: 继续打磨当前最佳分支；
+2. `refresh_idea`: 保留兴趣但换一个更远的方向；
+3. `retrieve_and_refine`: 先查/核对最接近文献；
+4. `data_gate_refine`: 先按可得数据重写题目；
+5. `identification_refine`: 先按可用变异重写题目；
+6. `run_mcts`: 再跑 2-5 轮分支搜索；
+7. `choose_branch`: 你从候选题池中选一个；
+8. `park/kill`: 暂停或放弃当前方向。
+```
+
+If the best action is obvious, recommend one, but still let the user choose or override it. Do not silently continue through multiple major stages without user selection when there are meaningful alternatives.
+
 ## Output Template
 
 ```markdown
@@ -173,6 +220,10 @@ Use `c = 1.4` by default. Use a lower `c` when the user has a tight deadline and
 - Data:
 - Causality:
 - Mechanism:
+
+## Next Iteration
+- Recommended next action:
+- User choice needed:
 ```
 
 After choosing the best branch, return to `references/00_master_router.md`. The selected branch must still pass the literature crowding, data feasibility, and identification gates before a full thesis blueprint.

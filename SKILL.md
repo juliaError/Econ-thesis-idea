@@ -54,7 +54,7 @@ Default flow:
 1. **Master routing**: for multi-step work, load `references/00_master_router.md` first. It owns stage order, candidate-bank state, and handoffs between modules.
 2. **Profile and mode**: infer the user's stage, deadline, data access, method level, advisor preference, and ambition level; then choose thesis rescue, research-design strengthening, or top-field/top-journal mode. See `references/01_modes_and_inputs.md`.
 3. **Raw interest intake**: accept a user's interest, advisor direction, policy, variable, phenomenon, or vague intuition. Preserve the user's wording, then create a provisional academic translation without locking the final title. See `references/00_master_router.md` and `references/01_modes_and_inputs.md`.
-4. **Initial ideation review**: score the early idea on novelty, clarity, feasibility, effectiveness, and impact. Treat novelty as provisional until literature is checked. Use the weakest dimensions to decide the next route.
+4. **Initial and iterative ideation review**: score the early idea, every later candidate branch, and every refinement version on novelty, clarity, feasibility, effectiveness, and impact. Treat novelty as provisional until literature is checked. Use the weakest dimensions to decide the next route.
 5. **IRIS-style tree exploration**: when several plausible branches exist, run a small IRIS-style loop with research briefs, review/refine actions, node visits, value, UCT selection, and gate-adjusted rewards. See `references/10_iris_ideation_loop.md`.
 6. **Paper type**: classify the idea as empirical, policy evaluation, measurement/facts, theory, policy report, or high-ambition research idea before diagnosing it. See `references/01_modes_and_inputs.md` and `references/04_identification_diagnostics.md`.
 7. **Literature crowding gate for thesis topics**: for master's students, thesis rescue mode, and crowded China topics such as digitalization, common prosperity, digital finance, green finance, smart cities, low-carbon pilots, ESG, high-quality development, rural revitalization, and new quality productive forces, search Chinese and English literature before narrowing the title. If the closest papers already exhaust the question, data, method, and mechanism, say so and recommend `park`, `kill`, or a major pivot. See `references/07_literature_crowding_gate.md`.
@@ -69,6 +69,20 @@ Default flow:
 16. **Design pattern check**: when helpful, map the idea to a reusable research design pattern. See `references/06_research_design_patterns.md`.
 
 If the user gives too little information, still provide an initial diagnosis from available facts, then ask at most one high-impact question.
+
+## Mandatory IRIS Output
+
+For every idea, every candidate branch, and every refinement iteration, always include an explicit five-dimensional ideation score table:
+
+- novelty;
+- clarity;
+- feasibility;
+- effectiveness;
+- impact.
+
+Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. If the task is not complete in one answer, end with a clear next-iteration request that asks the user to choose one next action, such as `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, `choose_branch`, `run_mcts`, `park`, or `kill`.
+
+Do not treat a literature summary, a verdict, or a polished topic sentence as a complete `thesis-idea` response unless the scoring and next-iteration request are present.
 
 ## Hard Gates
 
@@ -95,7 +109,7 @@ For empirical ideas, check data access before intellectual excitement:
 For one idea, default to:
 
 0a. **总控路由状态**: current stage, selected candidate, backup candidates, next route, and blocking gate.
-0b. **初始 ideation 评测**: novelty, clarity, feasibility, effectiveness, impact, weakest dimensions, and next action.
+0b. **逐 idea / 逐轮 ideation 评测**: mandatory novelty, clarity, feasibility, effectiveness, impact scores for every idea, candidate branch, and refinement iteration, plus average score, score change when available, weakest dimensions, and next action.
 0c. **IRIS-style tree**: brief nodes, actions, scores, visits, value, gate-adjusted reward, best branch, and backups when tree exploration is used.
 0d. **文献拥挤度 gate**: low / medium / high / saturated, closest literature pattern, defense risk, and whether to continue.
 0e. **拥挤题目生发**: if the original topic is too crowded but the user wants alternatives, screen horizontal, vertical, and reverse branches before selecting a new candidate.
@@ -112,6 +126,7 @@ For one idea, default to:
 9. **第一周验证计划**: 3-7 day validation tasks.
 10. **导师汇报 memo**: a short advisor-facing summary.
 11. **升级/降级路径**: thesis, excellent thesis, working paper, and top-field/top-journal versions where relevant.
+12. **下一轮迭代请求**: ask the user to choose the next refinement, retrieval, MCTS, branch-selection, data, identification, park, or kill action.
 
 For multiple ideas, use the screening table in `references/05_output_templates.md` and recommend one primary path.
 
@@ -127,7 +142,7 @@ For multiple ideas, use the screening table in `references/05_output_templates.m
 
 Load only the relevant files:
 
-- `references/00_master_router.md`: total routing, project state, initial ideation review, candidate bank, user selection, and handoff rules.
+- `references/00_master_router.md`: total routing, project state, mandatory ideation review, candidate bank, user selection, and handoff rules.
 - `references/01_modes_and_inputs.md`: user modes, paper types, input fields, missing-information rule.
 - `references/02_verdict_rules.md`: green/yellow/red feasibility and proceed/pivot/park/kill/upgrade/downgrade decisions.
 - `references/03_data_feasibility.md`: data gate, variable map, authorized channels, platform-lead boundary, unsupported claims.
