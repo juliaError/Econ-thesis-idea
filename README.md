@@ -236,6 +236,18 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 
 This skill is for research design support. It does not replace advisor judgment, literature review, source verification, data access checks, empirical execution, or the student's own academic responsibility. It must not fabricate papers, citations, policies, data, coefficients, institutional facts, variables, or results.
 
+## 灵感来源与引用
+
+本项目的 IRIS-style idea tree 只是在抽象层面受 IRIS 论文启发：Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`。
+
+本项目没有包含 IRIS 的源码路径、源码映射、源码、prompt、UI、README 文案或运行说明；也不是 IRIS 的复刻版。本项目只借鉴“多维度评估、迭代 refinement、MCTS/UCT 分支探索”这些论文层面的公开方法思想，并将其重新设计为经济学毕业论文选题与研究设计流程。
+
+## Inspiration And Citation
+
+The IRIS-style idea tree in this project is inspired only at the abstract method level by: Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`.
+
+This project does not include IRIS source paths, source mappings, source code, prompts, UI, README wording, or setup instructions, and it is not a reimplementation of IRIS. It only adapts publicly described methodological ideas such as multi-dimensional evaluation, iterative refinement, and MCTS/UCT branch exploration into an economics thesis topic-selection and research-design workflow.
+
 ## 许可
 
 本仓库原创内容采用 Creative Commons Attribution-NonCommercial 4.0 International（CC BY-NC 4.0）许可。商业使用需要取得仓库维护者的单独书面许可。详情见 `LICENSE`。
