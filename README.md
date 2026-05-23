@@ -160,6 +160,24 @@ For a single idea, the default output includes:
 
 ## 安装 🚀
 
+### 方法一（推荐）：让你的 agent 帮你安装
+
+把这个项目网站发给你的 Codex 或其他本地 AI agent：
+
+```text
+https://github.com/juliaError/Econ-thesis-idea
+```
+
+然后对它说：
+
+```text
+请帮我安装这个 Codex skill。把仓库克隆到 ~/.codex/skills/thesis-idea；如果目录已存在，请先确认是更新还是覆盖。安装后提醒我重启或刷新 Codex，让 skill 列表重新加载。
+```
+
+如果你的 agent 没有本地文件系统或终端权限，请使用方法二手动安装。
+
+### 方法二：手动安装
+
 将这个仓库克隆到本地 Codex skills 目录：
 
 ```bash
@@ -170,6 +188,24 @@ git clone https://github.com/juliaError/Econ-thesis-idea.git ~/.codex/skills/the
 安装后，重启或刷新 Codex，让 skill 列表重新加载。
 
 ## Install 🚀
+
+### Method 1 (Recommended): Ask Your Agent To Install It
+
+Send this project page to your Codex agent or another local AI agent:
+
+```text
+https://github.com/juliaError/Econ-thesis-idea
+```
+
+Then tell it:
+
+```text
+Please install this Codex skill for me. Clone the repository into ~/.codex/skills/thesis-idea. If the directory already exists, ask me whether to update or overwrite it first. After installation, remind me to restart or refresh Codex so the skill list is reloaded.
+```
+
+If your agent does not have local filesystem or terminal access, use Method 2.
+
+### Method 2: Manual Install
 
 Clone this repository into your local Codex skills directory:
 
