@@ -354,17 +354,21 @@ This skill is for research design support. It does not replace advisor judgment,
 
 This project was initiated, designed, and maintained by the repository maintainer. Codex assisted with structuring the public skill, splitting rules into references, drafting the README and web AI prompt, validation workflow, and local synchronization. Key design choices, research standards, public boundaries, and final maintenance responsibility remain with the maintainer. This note records AI-assisted development transparently; it does not outsource academic judgment, data verification, or thesis responsibility to AI.
 
-## 灵感来源与引用 📚
+## 致谢与引用 📚
 
-本项目的 IRIS-style idea tree 只是在抽象层面受 IRIS 论文启发：Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`。
+本项目感谢 IRIS 论文带来的方法启发。IRIS 将研究 idea 的生成、评估和改进组织成可交互、可迭代、可比较的过程；这一思路启发了本项目在“毕业论文 idea 打磨器”中设计多维评分、连续 refinement 和小规模 MCTS/UCT 分支比较。
 
-本项目没有包含 IRIS 的源码路径、源码映射、源码、prompt、UI、README 文案或运行说明；也不是 IRIS 的复刻版。本项目只借鉴“多维度评估、迭代 refinement、MCTS/UCT 分支探索”这些论文层面的公开方法思想，并将其重新设计为经济学毕业论文选题与研究设计流程。
+如果你在研究或开发中引用本项目中的 IRIS-style idea tree，请同时引用 IRIS 论文：Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`。
 
-## Inspiration And Citation 📚
+为清楚说明引用边界：本项目是在经济学毕业论文选题与研究设计场景中的重新设计，没有复用 IRIS 的源码路径、源码映射、源码、prompt、UI、README 文案或运行说明，也不是 IRIS 的复刻版。
 
-The IRIS-style idea tree in this project is inspired only at the abstract method level by: Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`.
+## Acknowledgements And Citation 📚
 
-This project does not include IRIS source paths, source mappings, source code, prompts, UI, README wording, or setup instructions, and it is not a reimplementation of IRIS. It only adapts publicly described methodological ideas such as multi-dimensional evaluation, iterative refinement, and MCTS/UCT branch exploration into an economics thesis topic-selection and research-design workflow.
+This project gratefully acknowledges the IRIS paper as an important source of methodological inspiration. IRIS shows how research ideation can be organized as an interactive, iterative, and comparable process; that helped shape this project's use of multi-dimensional scoring, iterative refinement, and small MCTS/UCT branch comparison for economics thesis topic design.
+
+If you cite or build on the IRIS-style idea tree in this project, please also cite the IRIS paper: Garikaparthi, Aniketh, Manasi Patwardhan, Lovekesh Vig, and Arman Cohan. 2025. “IRIS: Interactive Research Ideation System for Accelerating Scientific Discovery.” ACL 2025 System Demonstrations. DOI: `10.18653/v1/2025.acl-demo.57`.
+
+For clarity about citation boundaries: this repository is a redesign for economics thesis topic selection and research design. It does not reuse IRIS source paths, source mappings, source code, prompts, UI, README wording, or setup instructions, and it is not a reimplementation of IRIS.
 
 ## 许可 📄
 
