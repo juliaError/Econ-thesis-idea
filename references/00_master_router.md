@@ -113,7 +113,7 @@ Then route by the weakest dimensions:
 
 Do not claim true novelty without literature search.
 
-Do not output only a literature summary, revised topic sentence, or verdict. Any branch that is introduced, compared, advanced, selected, or refined must carry its own score table or compact score row. If the task is not complete in one answer, end with a next-iteration request that asks the user to choose the next action.
+Do not output only a literature summary, revised topic sentence, or verdict. Any branch that is introduced, compared, advanced, selected, or refined must carry its own score table or compact score row. End with an iteration decision that says whether to continue, freeze, optionally continue, or stop/park.
 
 ## Stage 2b: IRIS-Style Tree Exploration
 
@@ -227,19 +227,21 @@ At the end of each substantive exchange, include a compact routing state when us
 
 Use this state to keep long conversations from drifting away from the skill.
 
-For any non-final exchange, also include a compact next-iteration menu:
+For every substantive exchange, also include a compact iteration decision:
 
 ```markdown
-## Next Iteration
-请选择下一步：
-1. `review_and_refine`: 继续打磨当前最佳分支；
-2. `refresh_idea`: 保留兴趣但换一个更远方向；
-3. `retrieve_and_refine`: 先核查最接近文献；
-4. `data_gate_refine`: 先按可得数据重写；
-5. `identification_refine`: 先按可用变异重写；
-6. `run_mcts`: 再跑 2-5 轮分支搜索；
-7. `choose_branch`: 从候选题池中选一个；
-8. `park/kill`: 暂停或放弃当前方向。
+## Iteration Decision
+- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
+- Reason:
+- Recommended action:
+- User options:
 ```
 
-If the user explicitly asks for a one-shot final answer, or the idea is clearly killed/parked with no continuation requested, the next-iteration menu may be replaced by a final stop reason.
+Use these status rules:
+
+- `continue_required`: any score is below 6, average score is below 7, the question/data/identification is still underspecified, gates are red or unresolved, or meaningful branches remain but the user has not selected one.
+- `ready_to_freeze`: average score is about 7.5 or higher, no dimension is below 6.5, data path and identification or descriptive strategy are concrete enough, the closest-literature risk is not fatal, and the one-sentence question, variables, sample, main comparison, and unsupported claims are clear.
+- `optional_continue`: the idea can proceed as a thesis, but one more iteration could improve ambition, novelty, data grounding, mechanism, or identification.
+- `stop_or_park`: data, literature, identification, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or theory-route choices.
+
+For `continue_required`, ask the user to choose the next action. For `ready_to_freeze`, recommend freezing and moving to blueprint or first-week validation, while noting optional continuation choices. For `stop_or_park`, do not ask the user to keep refining the dead branch unless they explicitly want a rescue attempt.

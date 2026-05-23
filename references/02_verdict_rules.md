@@ -80,4 +80,4 @@ For every verdict, include:
 - the smallest action that could change the verdict;
 - what the user should stop assuming.
 
-If the verdict is not a final one-shot stop, end by asking the user to choose the next iteration action.
+End with an iteration decision: `continue_required / ready_to_freeze / optional_continue / stop_or_park`. Ask the user to choose a next iteration action only when continuation is required or genuinely useful. If the current version is ready, recommend freezing it and moving to blueprint or first-week validation.

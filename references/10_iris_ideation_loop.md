@@ -48,7 +48,7 @@ Minimum required output:
 
 Do not output only a literature summary, revised title, or refined research question. The score table is mandatory for every version being compared or advanced. If multiple branches are shown, score each branch separately. If a branch was refined, score the old and new versions or state the score change.
 
-If the response advances the task beyond a one-shot final stop, it must also include a next-iteration request. The request should name a recommended action and ask the user to choose or override it.
+Each response must include an iteration decision. The decision may recommend freezing the current branch instead of continuing. Ask the user to choose a next action only when continuation is required or useful.
 
 ## Brief Format
 
@@ -175,24 +175,26 @@ UCT = value + c * sqrt(log(parent_visits + 1) / (child_visits + 1))
 
 Use `c = 1.4` by default. Use a lower `c` when the user has a tight deadline and a higher `c` when exploration is the explicit goal.
 
-## Next-Iteration Request
+## Iteration Decision
 
-End each non-final ideation response by asking the user to choose the next action. Use a compact menu:
+End each substantive ideation response with a stop-or-continue judgment:
 
 ```markdown
-## Next Iteration
-请选择下一步：
-1. `review_and_refine`: 继续打磨当前最佳分支；
-2. `refresh_idea`: 保留兴趣但换一个更远的方向；
-3. `retrieve_and_refine`: 先查/核对最接近文献；
-4. `data_gate_refine`: 先按可得数据重写题目；
-5. `identification_refine`: 先按可用变异重写题目；
-6. `run_mcts`: 再跑 2-5 轮分支搜索；
-7. `choose_branch`: 你从候选题池中选一个；
-8. `park/kill`: 暂停或放弃当前方向。
+## Iteration Decision
+- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
+- Reason:
+- Recommended action:
+- User options:
 ```
 
-If the best action is obvious, recommend one, but still let the user choose or override it. Do not silently continue through multiple major stages without user selection when there are meaningful alternatives.
+Use these rules:
+
+- `continue_required`: any score is below 6, average score is below 7, the idea lacks a clear question/data/design, gates are red or unresolved, or several branches remain without user selection.
+- `ready_to_freeze`: average score is about 7.5 or higher, no score is below 6.5, data and design are concrete enough for the user's thesis level, and the next iteration is likely to add little value.
+- `optional_continue`: the idea can proceed, but one more iteration could improve ambition, novelty, data grounding, mechanism, or identification.
+- `stop_or_park`: the branch is blocked by saturated literature, unavailable data, unrepairable identification, or a failed theory route.
+
+For `continue_required`, ask the user to choose an action from `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, `run_mcts`, `choose_branch`, or `park/kill`. For `ready_to_freeze`, recommend moving to the thesis blueprint or first-week validation plan; still mention that the user may optionally continue if they want a higher-ambition version. Do not silently continue through multiple major stages without user selection when there are meaningful alternatives.
 
 ## Output Template
 
@@ -221,8 +223,9 @@ If the best action is obvious, recommend one, but still let the user choose or o
 - Causality:
 - Mechanism:
 
-## Next Iteration
+## Iteration Decision
 - Recommended next action:
+- Status:
 - User choice needed:
 ```
 

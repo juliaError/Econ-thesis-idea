@@ -131,7 +131,7 @@ Then give:
 - **Why not the others**: the binding risk for rejected branches.
 - **First verification task**: usually a literature search plus data metadata check.
 - **Do not claim yet**: causal, novelty, or mechanism claims not yet supported.
-- **Next iteration request**: ask whether to refine the recommended branch, run more MCTS, verify literature/data, choose a backup, park, or kill.
+- **Iteration decision**: classify whether the branch search needs more iteration, is ready to freeze into one selected branch, can optionally continue, or should stop/park.
 
 Only after a branch receives `proceed` or `verify` should the normal thesis blueprint begin.
 

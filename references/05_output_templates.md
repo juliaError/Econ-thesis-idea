@@ -128,18 +128,21 @@ Day 7:
 - Working paper version:
 - Top-field/top-journal version:
 
-## 12. Next Iteration
-Skip this only for a clearly final one-shot answer or a dead idea where the user did not ask for alternatives.
+## 12. Iteration Decision
+Required for every substantive output. The decision controls whether more iteration is needed or merely optional.
 
-请选择下一步：
-1. `review_and_refine`: 继续打磨当前最佳分支；
-2. `refresh_idea`: 保留兴趣但换一个更远方向；
-3. `retrieve_and_refine`: 先查/核对最接近文献；
-4. `data_gate_refine`: 先按可得数据重写题目；
-5. `identification_refine`: 先按可用变异重写题目；
-6. `run_mcts`: 再跑 2-5 轮分支搜索；
-7. `choose_branch`: 从候选题池中选一个；
-8. `park/kill`: 暂停或放弃当前方向。
+- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
+- Why:
+- Recommended action:
+- If continuing, choose one:
+  1. `review_and_refine`: continue polishing the current best branch;
+  2. `refresh_idea`: preserve the interest but move farther away;
+  3. `retrieve_and_refine`: check close literature first;
+  4. `data_gate_refine`: rewrite around obtainable data;
+  5. `identification_refine`: rewrite around usable variation;
+  6. `run_mcts`: run 2-5 more branch-search rounds;
+  7. `choose_branch`: select from the candidate bank;
+  8. `park/kill`: pause or abandon the current branch.
 ```
 
 For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 4-11 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
@@ -181,8 +184,8 @@ After the user selects one branch, update the candidate bank and mark non-select
 ## Why Not The Others
 [State the binding risk for each rejected idea.]
 
-## Next Step
-[Give the first data or literature task and ask which candidate or iteration action the user wants next.]
+## Iteration Decision
+[State whether to continue, freeze, optionally continue, or stop/park; ask for a choice only when the user must choose among branches or continuation actions.]
 ```
 
 ## First-Week Validation Plan

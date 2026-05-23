@@ -110,11 +110,13 @@ decision: proceed / refine / retrieve_sources / pivot / park
 next_action:
 ```
 
-Then ask the user to choose the next iteration action unless this is an explicit final stop:
+Then give an iteration decision:
 
 ```text
-next_iteration_options: review_and_refine / retrieve_and_refine / data_gate_refine / identification_refine / choose_backup / run_mcts / park / kill
-user_choice_needed:
+iteration_status: continue_required / ready_to_freeze / optional_continue / stop_or_park
+recommended_action:
+optional_actions: review_and_refine / retrieve_and_refine / data_gate_refine / identification_refine / choose_backup / run_mcts / park / kill
+user_choice_needed: yes / no
 ```
 
 Only `green + green` should proceed directly to a full blueprint. Yellow requires validation. Red requires repair, downgrade, pivot, or park.

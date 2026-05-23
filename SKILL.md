@@ -80,9 +80,16 @@ For every idea, every candidate branch, and every refinement iteration, always i
 - effectiveness;
 - impact.
 
-Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. If the task is not complete in one answer, end with a clear next-iteration request that asks the user to choose one next action, such as `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, `choose_branch`, `run_mcts`, `park`, or `kill`.
+Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. End each substantive response with an **Iteration Decision**, not always a forced continuation request.
 
-Do not treat a literature summary, a verdict, or a polished topic sentence as a complete `thesis-idea` response unless the scoring and next-iteration request are present.
+Use four statuses:
+
+- `continue_required`: the idea is not mature enough; ask the user to choose the next action.
+- `ready_to_freeze`: the current version is good enough to freeze and move to thesis blueprint or first-week validation; continuing is optional.
+- `optional_continue`: the current version can proceed, but extra iteration could improve ambition, novelty, data, or identification.
+- `stop_or_park`: do not keep iterating this branch unless the user explicitly wants a rescue attempt; suggest backup, downgrade, park, kill, or theory route.
+
+Do not treat a literature summary, a verdict, or a polished topic sentence as a complete `thesis-idea` response unless the scoring and iteration decision are present.
 
 ## Hard Gates
 
@@ -126,7 +133,7 @@ For one idea, default to:
 9. **第一周验证计划**: 3-7 day validation tasks.
 10. **导师汇报 memo**: a short advisor-facing summary.
 11. **升级/降级路径**: thesis, excellent thesis, working paper, and top-field/top-journal versions where relevant.
-12. **下一轮迭代请求**: ask the user to choose the next refinement, retrieval, MCTS, branch-selection, data, identification, park, or kill action.
+12. **迭代状态判断**: classify as `continue_required / ready_to_freeze / optional_continue / stop_or_park`, recommend whether to freeze or continue, and show continuation options only when useful.
 
 For multiple ideas, use the screening table in `references/05_output_templates.md` and recommend one primary path.
 

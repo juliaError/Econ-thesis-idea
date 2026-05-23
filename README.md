@@ -32,7 +32,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - 不生成空泛题目，而是诊断、压力测试和打磨 idea。
 - 每个 idea、每个候选分支、每次 refinement 迭代都必须输出 novelty、clarity、feasibility、effectiveness、impact 五维评分、平均分、最弱项和下一步路由。
 - 用总控路由管理原始兴趣、IRIS-style 多维评分、MCTS/UCT 树搜索、文献拥挤度、候选题池、数据筛选、识别诊断和论文蓝图。
-- 只要不是明确的一次性终止结论，就必须给出下一轮 iteration 选项，并请求用户选择继续打磨、检索、数据筛选、识别重写、MCTS、选分支、暂停或放弃。
+- 每轮都必须给出 `Iteration Decision`：`continue_required`、`ready_to_freeze`、`optional_continue` 或 `stop_or_park`。当题目已经成熟时，建议冻结并进入论文蓝图或第一周验证；继续打磨只是用户的可选项。
 - 对数字化、共同富裕等拥挤题目，先查中英文接近文献，必要时建议 `park/kill/pivot`。
 - 对原题过于拥挤但兴趣仍有价值的情况，使用横向、纵向、逆向三维生发法寻找相邻方向。
 - 通过文献拥挤度 gate 或三维生发后，保留候选题池，先冻结用户选中的候选题，再做数据可得性、识别、变量、样本、主回归和表图精炼。
@@ -44,7 +44,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - Does not generate empty topic lists; it diagnoses, pressure-tests, and polishes an idea.
 - Requires five-dimensional scores for every idea, candidate branch, and refinement iteration: novelty, clarity, feasibility, effectiveness, and impact, plus average score, weakest dimensions, and next route.
 - Uses a master router to manage raw-interest intake, IRIS-style multi-dimensional scoring, MCTS/UCT tree search, literature crowding, candidate banks, data screening, identification diagnosis, and thesis blueprints.
-- Unless the answer is an explicit one-shot stop, it must offer next-iteration options and ask the user to choose whether to refine, retrieve literature, run data screening, rewrite identification, run MCTS, choose a branch, park, or kill.
+- Every round must include an `Iteration Decision`: `continue_required`, `ready_to_freeze`, `optional_continue`, or `stop_or_park`. When the topic is mature enough, the skill recommends freezing it and moving to the thesis blueprint or first-week validation; further refinement becomes a user option.
 - For crowded topics such as digitalization and common prosperity, checks close Chinese and English literature first and may recommend `park/kill/pivot`.
 - If the exact topic is too crowded but the underlying interest is still useful, uses horizontal, vertical, and reverse branching to find adjacent directions.
 - After the literature crowding gate or branch search, keeps a candidate bank and freezes the user's selected candidate before refining data feasibility, identification, variables, sample, main regression, tables, and figures.
@@ -65,7 +65,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 11. 执行经验研究数据门槛：相关文献、公开数据库、本地材料或授权渠道必须支持可信数据路径，经验 idea 才能获得 `green/proceed`。
 12. 先寻找可用变异，再讨论 DID、IV、RDD、固定效应、shift-share 或其他方法。
 13. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
-14. 只要不是明确一次性终止结论，就在每轮结尾给出下一轮 iteration 选项，并请求用户选择。
+14. 在每轮结尾给出 `Iteration Decision`，判断是否必须继续、可以冻结、可选继续，或应该暂停/放弃当前分支。
 15. 对可行或修复后的 idea，产出论文蓝图：章节功能、主回归或核心比较、变量、数据、表格、图形、第一周验证任务、导师 memo，以及升级或降级路径。
 
 ## Core Workflow
@@ -83,7 +83,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 11. Apply the empirical data gate: prior literature, public databases, local materials, or authorized channels must support a credible data path before an empirical idea can receive `green/proceed`.
 12. Search for usable variation before naming DID, IV, RDD, fixed effects, shift-share, or other methods.
 13. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
-14. Unless the answer is an explicit one-shot stop, end each round with next-iteration options and ask the user to choose.
+14. End each round with an `Iteration Decision` that says whether continuation is required, the idea is ready to freeze, continuation is optional, or the branch should be stopped or parked.
 15. For viable or repaired ideas, produce a thesis blueprint with section roles, main regression or comparison, variables, data, tables, figures, first-week validation tasks, advisor memo, and upgrade or downgrade paths.
 
 ## 数据可行性规则
@@ -123,7 +123,7 @@ For China-related topics, English-language China papers and Chinese economics or
 - 导师 memo；
 - 包含论文结构、主回归、变量、数据、表格和图形的论文蓝图；
 - 升级和降级路径。
-- 下一轮 iteration 选项和用户选择请求，除非这是明确的一次性终止结论。
+- 迭代状态判断：必须继续、可以冻结、可选继续，或应该暂停/放弃当前分支。
 
 ## Output Contract
 
@@ -146,7 +146,7 @@ For a single idea, the default output includes:
 - advisor memo;
 - thesis blueprint with structure, main regression, variables, data, tables, and figures;
 - upgrade and downgrade path.
-- next-iteration options and a request for the user's choice, unless the answer is an explicit one-shot stop.
+- an iteration decision: continue required, ready to freeze, optional continuation, or stop/park this branch.
 
 ## 安装
 
