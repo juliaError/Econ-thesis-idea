@@ -218,22 +218,76 @@ After installation, restart or refresh Codex so the skill list is reloaded.
 
 ## 使用 🛠️
 
-中文示例：
+你不需要一开始就写完整 prompt。可以直接发一个研究直觉、初步 idea、导师方向、政策、变量、现象，甚至一句很模糊的话。
+
+### 基础版
 
 ```text
-用 thesis-idea 作为我的毕业论文 idea 打磨器。我有一个关于[主题]的经济学毕业论文 idea。请判断它是否可行，检查数据路径，压力测试识别思路，并把它整理成论文蓝图。
-如果这个题目属于数字化、共同富裕、数字金融、绿色金融、ESG、智慧城市、低碳城市、高质量发展等拥挤方向，请先查中英文接近文献，判断是否已经做无可做；如果空间不足，请直接建议我换题、暂缓或大幅转向。
-如果原题太拥挤但我仍想保留部分兴趣，请从原题的 X、Y、机制和反向因果出发，按横向、纵向、逆向三个维度生发相邻方向，并筛选哪些值得继续验证。
+用 thesis-idea 帮我打磨这个想法：
+我想研究超级大型公司跟国家经济发展有什么关系。
+```
+
+```text
+用 thesis-idea 帮我看看导师给的课题：
+导师让我研究数字化与共同富裕的课题。
+```
+
+### 高级版
+
+如果你已经知道自己想要更完整的诊断，可以用下面这种写法：
+
+```text
+用 thesis-idea 作为我的毕业论文 idea 打磨器。
+我有一个关于[主题]的经济学毕业论文 idea。
+请判断它是否可行，检查数据路径，压力测试识别思路，并把它整理成论文蓝图。
+
+如果这个题目属于数字化、共同富裕、数字金融、绿色金融、ESG、
+智慧城市、低碳城市、高质量发展等拥挤方向，
+请先查中英文接近文献，判断是否已经做无可做；
+如果空间不足，请直接建议我换题、暂缓或大幅转向。
+
+如果原题太拥挤但我仍想保留部分兴趣，
+请从原题的 X、Y、机制和反向因果出发，
+按横向、纵向、逆向三个维度生发相邻方向，并筛选哪些值得继续验证。
 ```
 
 ## Use 🛠️
 
-English example:
+You do not need a full prompt at the beginning. You can send a rough intuition, early idea, advisor direction, policy, variable, phenomenon, or even a vague sentence.
+
+### Basic Version
 
 ```text
-Use thesis-idea as my Thesis Idea Builder. I have an economics thesis idea about [topic]. Please diagnose whether it is feasible, check the data path, pressure-test identification, and turn it into a thesis blueprint.
-If this is a crowded topic such as digitalization, common prosperity, digital finance, green finance, ESG, smart cities, low-carbon cities, or high-quality development, first inspect close Chinese and English literature and tell me whether prior papers already exhaust the idea. If the remaining space is too thin, recommend that I change, park, or substantially pivot the topic.
-If the exact topic is too crowded but I still want to preserve part of the interest, branch from the original X, Y, mechanisms, and reverse causal direction through horizontal, vertical, and reverse searches, then screen which adjacent directions deserve validation.
+Use thesis-idea to polish this idea:
+I want to study how super-large firms relate to national economic development.
+```
+
+```text
+Use thesis-idea to check this advisor-given topic:
+My advisor asked me to study digitalization and common prosperity.
+```
+
+### Advanced Version
+
+If you already want a fuller diagnosis, use a prompt like this:
+
+```text
+Use thesis-idea as my Thesis Idea Builder.
+I have an economics thesis idea about [topic].
+Please diagnose whether it is feasible, check the data path,
+pressure-test identification, and turn it into a thesis blueprint.
+
+If this is a crowded topic such as digitalization, common prosperity,
+digital finance, green finance, ESG, smart cities, low-carbon cities,
+or high-quality development, first inspect close Chinese and English literature
+and tell me whether prior papers already exhaust the idea.
+If the remaining space is too thin, recommend that I change, park,
+or substantially pivot the topic.
+
+If the exact topic is too crowded but I still want to preserve part of the interest,
+branch from the original X, Y, mechanisms, and reverse causal direction
+through horizontal, vertical, and reverse searches,
+then screen which adjacent directions deserve validation.
 ```
 
 ## 仓库结构 🗂️
