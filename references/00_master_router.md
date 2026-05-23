@@ -7,7 +7,7 @@ Use this file as the total controller for multi-step `thesis-idea` work. It deci
 The router should keep the process ordered:
 
 ```text
-raw interest -> per-idea ideation review -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> data and identification gates -> verdict -> thesis blueprint
+raw interest -> per-idea ideation review -> paper-type route -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> type-specific gates -> verdict -> thesis blueprint
 ```
 
 ## Routing Architecture
@@ -42,13 +42,15 @@ Candidate records should contain:
 - `academic_translation`: provisional research-language version;
 - `source`: original / horizontal-X / horizontal-Y / vertical / reverse-X / reverse-Y / user feedback;
 - `question`: one-sentence candidate question;
+- `paper_type`: empirical causal / measurement-facts / theory / structural-quantitative / policy report / mixed / unclear;
 - `crowding`: low / medium / high / saturated / not checked;
-- `data_gate`: green / yellow / red / not checked;
-- `identification_gate`: green / yellow / red / not checked;
+- `data_gate`: green / yellow / red / not applicable / not checked;
+- `identification_gate`: green / yellow / red / not applicable / not checked;
+- `type_gate`: green / yellow / red / not checked;
 - `ideation_score`: average of novelty, clarity, feasibility, effectiveness, and impact when scored;
 - `tree_node`: linked IRIS-style node ID if tree exploration is used;
 - `visits` and `value`: lightweight MCTS state when relevant;
-- `status`: active / backup / rejected / parked / killed;
+- `candidate_state`: active / backup / rejected / parked / killed;
 - `next_action`: literature check, data check, user choice, refinement, pivot, blueprint, or stop.
 
 ## Stage 1: Raw Interest Intake
@@ -89,7 +91,7 @@ Every idea, every candidate branch, and every refinement iteration must be score
 | --- | --- |
 | Novelty | Is there a plausible margin beyond obvious existing work? Mark as provisional until literature is checked. |
 | Clarity | Can the idea be stated as an object, relationship, or fact? |
-| Feasibility | Is there a plausible path to data, model, or evidence? |
+| Feasibility | Is there a plausible path to data, measurement, model, proof, or evidence? |
 | Effectiveness | Would the design answer the user's intended question? |
 | Impact | Would the answer matter for economics, policy, or thesis defense? |
 
@@ -107,8 +109,8 @@ Then route by the weakest dimensions:
 | --- | --- |
 | Clarity | refine the idea card, ask one question, or generate 2-3 candidate translations |
 | Novelty | run `references/07_literature_crowding_gate.md` |
-| Feasibility | run `references/03_data_feasibility.md` before blueprint |
-| Effectiveness | run `references/04_identification_diagnostics.md` or downgrade claim |
+| Feasibility | run `references/11_paper_type_gates.md`, then the relevant data, measurement, theory, or structural gate |
+| Effectiveness | run `references/04_identification_diagnostics.md` for empirical causal ideas or `references/11_paper_type_gates.md` for other types |
 | Impact | narrow the welfare object, mechanism, or setting before full design |
 
 Do not claim true novelty without literature search.
@@ -129,6 +131,23 @@ Use a small tree, not open-ended brainstorming:
 - apply thesis-gate penalties when literature, data, identification, or theory gates are known.
 
 Tree search is only a candidate-exploration method. After a best branch is chosen, return to the router and run literature, data, and identification gates before a thesis blueprint.
+
+When deciding whether a branch should continue, freeze, or stop is ambiguous, run a small MCTS/UCT comparison unless the case is obvious or the user has a tight deadline. In user-facing output, summarize this as a "小规模分支比较"; do not expose UCT formulas, internal status codes, or tree bookkeeping unless the user asks for technical details.
+
+## Stage 2c: Paper-Type Route
+
+Route to `references/11_paper_type_gates.md` before diagnosing data, identification, or blueprint.
+
+Classify each candidate as:
+
+- empirical causal;
+- measurement/facts/descriptive;
+- theory;
+- structural/quantitative/computational;
+- policy report;
+- mixed.
+
+Do not force a theory, measurement, or structural idea into a main regression. For non-empirical types, replace data/identification gates with the relevant measurement, model, proof, moment, calibration, or policy-evidence gate.
 
 ## Stage 3: Literature Crowding Gate
 
@@ -166,8 +185,8 @@ Keep other viable branches as backups:
 | ID | Candidate | Why keep it | Current risk | Return if |
 | --- | --- | --- | --- | --- |
 | c1 | | primary | | |
-| c2 | | backup | | c1 fails data gate |
-| c3 | | backup | | c1 fails identification gate |
+| c2 | | backup | | c1 fails data, model, or measurement gate |
+| c3 | | backup | | c1 fails identification, theory, or structural gate |
 ```
 
 Do not refine every branch into a full blueprint. Refine only the selected branch.
@@ -179,24 +198,25 @@ Route to `references/09_selected_topic_refinement.md` after the user chooses a b
 Freeze the selected candidate. Convert it into:
 
 - one-sentence research question;
-- data and variable map;
-- sample construction;
-- identification or descriptive strategy;
-- main regression or comparison;
-- table and figure plan;
+- data, model, measurement, or theory object map;
+- sample construction, model setup, measurement coverage, or theory primitives;
+- identification, validation, theoretical, structural, or descriptive strategy;
+- main regression, comparison, measurement rule, proposition, or model block;
+- table, figure, proposition, fit, or counterfactual plan;
 - unsupported claims;
 - first validation tasks.
 
-If data or identification becomes red, return to the candidate bank and test the next backup branch.
+If the relevant type-specific gate becomes red, return to the candidate bank and test the next backup branch.
 
 ## Stage 7: Gates And Verdict
 
 Use these gates before a full blueprint:
 
-1. Data gate: `references/03_data_feasibility.md`.
-2. Identification gate: `references/04_identification_diagnostics.md`.
-3. Verdict rules: `references/02_verdict_rules.md`.
-4. Research design patterns when useful: `references/06_research_design_patterns.md`.
+1. Paper-type gate: `references/11_paper_type_gates.md`.
+2. Data gate when the type uses data: `references/03_data_feasibility.md`.
+3. Identification gate for empirical causal claims: `references/04_identification_diagnostics.md`.
+4. Verdict rules: `references/02_verdict_rules.md`.
+5. Research design patterns when useful: `references/06_research_design_patterns.md`.
 
 Only move to a full thesis blueprint when the idea is green or repairable yellow. For red ideas, recommend pivot, park, kill, downgrade, or a strict theory route.
 
@@ -210,7 +230,7 @@ Route to `references/05_output_templates.md` for:
 - advisor memo;
 - thesis blueprint.
 
-The final blueprint should specify section roles, main regression or comparison, variables, data, tables, figures, unsupported claims, first-week validation tasks, advisor memo, and upgrade/downgrade paths.
+The final blueprint should match the paper type. Empirical ideas need main regression or comparison, variables, data, tables, and figures. Measurement/facts ideas need concept, measurement rule, validation, fact tables, and figures. Theory ideas need primitives, timing, equilibrium, propositions, and comparative statics. Structural/quantitative ideas need model blocks, moments, estimation or calibration, fit, counterfactuals, and computation checks.
 
 ## Router Output
 
@@ -230,18 +250,18 @@ Use this state to keep long conversations from drifting away from the skill.
 For every substantive exchange, also include a compact iteration decision:
 
 ```markdown
-## Iteration Decision
-- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
-- Reason:
-- Recommended action:
-- User options:
+## 是否继续打磨
+- 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
+- 理由：
+- 建议下一步：
+- 可选项：
 ```
 
 Use these status rules:
 
-- `continue_required`: any score is below 6, average score is below 7, the question/data/identification is still underspecified, gates are red or unresolved, or meaningful branches remain but the user has not selected one.
-- `ready_to_freeze`: average score is about 7.5 or higher, no dimension is below 6.5, data path and identification or descriptive strategy are concrete enough, the closest-literature risk is not fatal, and the one-sentence question, variables, sample, main comparison, and unsupported claims are clear.
-- `optional_continue`: the idea can proceed as a thesis, but one more iteration could improve ambition, novelty, data grounding, mechanism, or identification.
-- `stop_or_park`: data, literature, identification, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or theory-route choices.
+- 建议继续打磨: any score is below 6, average score is below 7, the question/data/model/identification is still underspecified, gates are red or unresolved, or meaningful branches remain but the user has not selected one.
+- 建议冻结当前版本: average score is about 7.5 or higher, no dimension is below 6.5, type-specific gates are concrete enough, the closest-literature risk is not fatal, and the one-sentence question plus blueprint objects are clear.
+- 可以推进，也可继续升级: the idea can proceed as a thesis, but one more iteration could improve ambition, novelty, data grounding, model, mechanism, identification, or quantification.
+- 建议暂停或更换路线: data, literature, identification, measurement, structural, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or a different paper type.
 
-For `continue_required`, ask the user to choose the next action. For `ready_to_freeze`, recommend freezing and moving to blueprint or first-week validation, while noting optional continuation choices. For `stop_or_park`, do not ask the user to keep refining the dead branch unless they explicitly want a rescue attempt.
+Do not show internal route codes. Ask the user to choose a next action only when real choice is needed. If freezing is recommended, say so directly and move to blueprint or first-week validation.

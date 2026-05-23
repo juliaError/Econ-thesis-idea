@@ -61,7 +61,7 @@ Use this section only when tree exploration is used.
 [Turn the raw idea into a testable economics question.]
 
 ## 2. Paper Type And Mode
-- Type: empirical / policy evaluation / measurement / theory / policy report / high-ambition idea
+- Type: empirical causal / measurement-facts / theory / structural-quantitative / policy report / mixed
 - Mode: thesis rescue / research-design strengthening / top-field or top-journal
 - Why:
 
@@ -73,40 +73,40 @@ Use this section only when tree exploration is used.
 ## 4. Minimum Viable Thesis Version
 - Title:
 - Core question:
-- Sample:
-- Time period:
-- Outcome:
-- Treatment or key explanatory variable:
-- Baseline method:
+- Type-specific minimum version:
+- Empirical causal: sample, period, outcome, treatment/key variable, baseline method.
+- Measurement/facts: concept, measurement rule, coverage, validation fact, main figures.
+- Theory: agents, choices, constraints, timing, friction, equilibrium, proposition.
+- Structural/quantitative: model block, data moments, estimation/calibration, fit, counterfactual.
 
-## 5. Data And Variable Map
-| Component | Candidate variable | Data source | Difficulty | Notes |
-| --- | --- | --- | --- | --- |
-| Treatment/key variable | | | | |
-| Outcome | | | | |
-| Mechanism | | | | |
-| Controls | | | | |
-| Unit | | | | |
-| Time | | | | |
+## 5. Data / Model / Measurement Map
+| Component | Object | Source or model role | Agent-side evidence | User-side confirmation | Difficulty | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Outcome / fact / target moment | | | | | | |
+| Treatment / key variable / primitive | | | | | | |
+| Mechanism / parameter / friction | | | | | | |
+| Controls / validation / benchmark | | | | | | |
+| Unit / agent / state | | | | | | |
+| Time / timing / horizon | | | | | | |
 
-## 6. Identification Options
-| Design | Required variation | Main assumption | Main threat | Feasibility |
+## 6. Design Options
+| Route | Required object | Main assumption | Main threat | Feasibility |
 | --- | --- | --- | --- | --- |
-| Panel FE | | | | |
-| DID/event study | | | | |
-| IV | | | | |
-| RDD | | | | |
-| Descriptive facts | | | | |
+| Empirical causal | variation / comparison | | | |
+| Measurement/facts | concept / measurement / validation | | | |
+| Theory | primitives / equilibrium / proposition | | | |
+| Structural/quantitative | moments / parameters / counterfactual | | | |
+| Policy report | evidence / option / implementation | | | |
 
 ## 7. What Not To Claim
 [Unsupported causal, mechanism, policy, novelty, or external-validity claims.]
 
 ## 8. Thesis Blueprint
 - Section plan:
-- Main regression or comparison:
-- Main table:
-- Robustness tables:
-- Mechanism or heterogeneity tables:
+- Main regression, measurement design, model proposition, or structural block:
+- Main table, figure, proposition, or counterfactual:
+- Robustness, validation, comparative statics, sensitivity, or fit checks:
+- Mechanism, heterogeneity, decomposition, extension, or policy exercise:
 - Figures:
 - Appendix:
 
@@ -128,21 +128,13 @@ Day 7:
 - Working paper version:
 - Top-field/top-journal version:
 
-## 12. Iteration Decision
+## 12. 是否继续打磨
 Required for every substantive output. The decision controls whether more iteration is needed or merely optional.
 
-- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
-- Why:
-- Recommended action:
-- If continuing, choose one:
-  1. `review_and_refine`: continue polishing the current best branch;
-  2. `refresh_idea`: preserve the interest but move farther away;
-  3. `retrieve_and_refine`: check close literature first;
-  4. `data_gate_refine`: rewrite around obtainable data;
-  5. `identification_refine`: rewrite around usable variation;
-  6. `run_mcts`: run 2-5 more branch-search rounds;
-  7. `choose_branch`: select from the candidate bank;
-  8. `park/kill`: pause or abandon the current branch.
+- 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
+- 理由：
+- 建议下一步：
+- 如果需要用户选择，给出自然语言选项，例如继续打磨当前分支、换一个相邻方向、先查文献、先确认数据权限、按模型重写、从候选题池选择、暂停或放弃。
 ```
 
 For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 4-11 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
@@ -184,8 +176,8 @@ After the user selects one branch, update the candidate bank and mark non-select
 ## Why Not The Others
 [State the binding risk for each rejected idea.]
 
-## Iteration Decision
-[State whether to continue, freeze, optionally continue, or stop/park; ask for a choice only when the user must choose among branches or continuation actions.]
+## 是否继续打磨
+[State in natural language whether to continue, freeze, optionally upgrade, or stop/change route; ask for a choice only when the user must choose among branches or continuation actions.]
 ```
 
 ## First-Week Validation Plan

@@ -16,9 +16,9 @@ Candidate-branch tables may temporarily use `verify` or `refine` as workflow sta
 Use `green` when most conditions hold:
 
 - the research question is clear in one sentence;
-- the data path is credible;
-- core variables are measurable;
-- there is basic identification or a credible descriptive/factual strategy;
+- the data, model, proof, or measurement path is credible for the paper type;
+- core variables, concepts, primitives, or moments are defined;
+- there is basic identification, credible descriptive/factual strategy, model logic, or theoretical mechanism;
 - the minimum version fits the user's deadline and skill level;
 - positive, negative, and null results are interpretable;
 - an advisor can understand the design.
@@ -30,8 +30,8 @@ Typical decision: `proceed`, sometimes `upgrade`.
 Use `yellow` when the direction is promising but needs repair:
 
 - topic is valuable but too broad;
-- data may be obtainable but is unverified;
-- identification exists but assumptions are strong;
+- data may be obtainable but user-side access is unconfirmed;
+- identification, measurement, model, or theory assumptions are strong;
 - mechanism set is too large;
 - outcome or treatment must be redefined;
 - the thesis version is feasible but cannot support strong causal claims.
@@ -44,6 +44,8 @@ Use `red` when current investment is not justified:
 
 - key variable cannot be measured;
 - data are unavailable or cleaning cost exceeds the deadline;
+- theory route lacks modelable primitives or propositions;
+- structural/quantitative route lacks a model-data mapping or identifiable/calibratable moments;
 - the idea has broad concepts but no economics question;
 - the closest literature already uses the same X, Y, data, unit, period, and method, and the student has no new data, setting, measurement, mechanism, or identification;
 - identification is clearly endogenous and not repairable;
@@ -80,4 +82,11 @@ For every verdict, include:
 - the smallest action that could change the verdict;
 - what the user should stop assuming.
 
-End with an iteration decision: `continue_required / ready_to_freeze / optional_continue / stop_or_park`. Ask the user to choose a next iteration action only when continuation is required or genuinely useful. If the current version is ready, recommend freezing it and moving to blueprint or first-week validation.
+End with a user-facing iteration decision using natural language only:
+
+- 建议继续打磨;
+- 建议冻结当前版本;
+- 可以推进，也可继续升级;
+- 建议暂停或更换路线.
+
+Ask the user to choose a next action only when continuation is required or genuinely useful. If the current version is ready, recommend freezing it and moving to blueprint or first-week validation. Do not expose internal route labels.

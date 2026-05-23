@@ -1,5 +1,7 @@
 # Identification Diagnostics
 
+Use this file mainly for empirical causal claims. For measurement/facts, theory, structural/quantitative, or policy-report ideas, first route through `references/11_paper_type_gates.md`. Do not force non-causal projects into DID, IV, RDD, or main-regression language.
+
 ## Usable Variation Search
 
 Before naming a method, ask:
@@ -79,6 +81,21 @@ Use only when:
 - propositions or comparative statics can be proved or reasoned through;
 - the model differs from existing models;
 - empirical or policy implications are clear.
+
+For full theory gating and model blueprint, use `references/11_paper_type_gates.md`.
+
+## Structural, Quantitative, And Computational Models
+
+Use when the project needs a model-data mapping rather than a simple regression:
+
+- agents, states, choices, constraints, shocks, and equilibrium or solution concept are clear;
+- data moments or calibration targets correspond to model objects;
+- parameters are identified, calibrated, or bounded with a defensible argument;
+- model fit and validation moments can be shown;
+- counterfactuals answer the research question;
+- computation is feasible for the user's deadline and skill level.
+
+Do not call a project "quantitative" just because it has many regressions. It needs an explicit model, moments, and counterfactual or simulation purpose.
 
 ## Policy Report
 

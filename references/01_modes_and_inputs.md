@@ -90,6 +90,7 @@ Classify before diagnosing:
 | Policy evaluation | treated/control groups, timing, pre-trend | endogenous policy, contamination, unclear window |
 | Measurement/facts paper | new measure or stable fact | no economics meaning, only charts |
 | Theory paper | new mechanism, formal setup, propositions | intuition without model, no literature distinction |
+| Structural/quantitative paper | model-data mapping, moments, fit, counterfactuals | black-box model, unidentified parameters |
 | Policy report | facts, policy relevance, feasible options | weak evidence, promotional cases |
 | High-ambition idea | puzzle, new data/mechanism/identification | blunt contribution, old question with new sample |
 
@@ -103,7 +104,7 @@ paper_goal: course_paper / thesis / working_paper / journal_submission / policy_
 field: labor / development / urban / finance / io / political_economy / innovation / trade / macro / other
 time_limit: weeks_or_months_until_deadline
 data_access: public_data / school_database / firm_data / survey_data / no_data_yet / unknown
-method_level: descriptive / panel_fe / did / iv / rdd / structural / theory / unknown
+method_level: descriptive / measurement / panel_fe / did / iv / rdd / structural / calibration / simulation / theory / unknown
 advisor_preference: causal_identification / policy_relevance / simple_feasible / theory / unknown
 initial_idea: user_raw_idea
 must_use_data: optional

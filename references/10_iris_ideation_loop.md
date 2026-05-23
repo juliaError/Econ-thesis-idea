@@ -96,7 +96,7 @@ Each node stores:
 - `review_scores`;
 - `review_feedback`;
 - `retrieved_knowledge` if literature or data sources were checked;
-- `gate_status`: crowding, data, and identification status if known;
+- `gate_status`: crowding, paper-type, data, measurement, model, theory, structural, and identification status if known;
 - `depth`, `visits`, and `value`.
 
 ## Actions
@@ -110,8 +110,9 @@ Use these actions:
 | `refresh_idea` | the node is stale, crowded, or too narrow | substantially different branch preserving part of the original interest |
 | `retrieve_and_refine` | literature/data grounding is needed | revised brief using inspected sources or clearly marked source tasks |
 | `direct_feedback` | user chooses, rejects, or corrects a direction | child node incorporating user feedback |
-| `data_gate_refine` | feasibility is weak | brief revised around obtainable data |
-| `identification_refine` | effectiveness or causal credibility is weak | brief revised around usable variation or downgraded claim |
+| `data_gate_refine` | data access or evidence path is weak | brief revised around obtainable or user-confirmable data |
+| `identification_refine` | causal credibility is weak | brief revised around usable variation or downgraded claim |
+| `type_gate_refine` | the branch is being forced into the wrong paper type | brief revised as empirical, measurement/facts, theory, structural/quantitative, or policy report |
 
 ## Review Rubric
 
@@ -121,7 +122,7 @@ Score each node from 0 to 10:
 | --- | --- |
 | Novelty | Meaningfully different from obvious existing approaches; provisional until literature is checked |
 | Clarity | Question, objects, mechanism, and setting are understandable |
-| Feasibility | Data, model, or validation path can realistically be attempted |
+| Feasibility | Data, measurement, model, proof, computation, or validation path can realistically be attempted |
 | Effectiveness | Proposed design can answer the stated question |
 | Impact | Result would matter for economics, policy, thesis defense, or the user's goal |
 
@@ -149,9 +150,10 @@ Apply caps when gate evidence is known:
 | Data gate `red` for an empirical claim | 0.35 |
 | Identification gate `red` for a causal claim | 0.45 |
 | Theory gate `red` for a pure theory route | 0.35 |
+| Structural/quantitative gate `red` for model-data mapping | 0.40 |
 | Major advisor-defense risk unresolved | 0.60 |
 
-Yellow gates do not kill the node, but they should reduce confidence and set the next action to `retrieve_and_refine`, `data_gate_refine`, or `identification_refine`.
+Yellow gates do not kill the node, but they should reduce confidence and set the next action to retrieve, data, identification, model, measurement, or theory refinement.
 
 Never let a high IRIS score override a red thesis gate.
 
@@ -175,26 +177,26 @@ UCT = value + c * sqrt(log(parent_visits + 1) / (child_visits + 1))
 
 Use `c = 1.4` by default. Use a lower `c` when the user has a tight deadline and a higher `c` when exploration is the explicit goal.
 
-## Iteration Decision
+## Stop-Or-Continue Judgment
 
-End each substantive ideation response with a stop-or-continue judgment:
+End each substantive ideation response with a stop-or-continue judgment, but do not expose internal route codes in user-facing output:
 
 ```markdown
-## Iteration Decision
-- Status: continue_required / ready_to_freeze / optional_continue / stop_or_park
-- Reason:
-- Recommended action:
-- User options:
+## 是否继续打磨
+- 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
+- 理由：
+- 建议下一步：
+- 可选项：
 ```
 
 Use these rules:
 
-- `continue_required`: any score is below 6, average score is below 7, the idea lacks a clear question/data/design, gates are red or unresolved, or several branches remain without user selection.
-- `ready_to_freeze`: average score is about 7.5 or higher, no score is below 6.5, data and design are concrete enough for the user's thesis level, and the next iteration is likely to add little value.
-- `optional_continue`: the idea can proceed, but one more iteration could improve ambition, novelty, data grounding, mechanism, or identification.
-- `stop_or_park`: the branch is blocked by saturated literature, unavailable data, unrepairable identification, or a failed theory route.
+- 建议继续打磨: any score is below 6, average score is below 7, the idea lacks a clear question, type route, data/model/proof/design, gates are red or unresolved, or several branches remain without user selection.
+- 建议冻结当前版本: average score is about 7.5 or higher, no score is below 6.5, and the type-specific blueprint is concrete enough for the user's thesis level.
+- 可以推进，也可继续升级: the idea can proceed, but one more iteration could improve ambition, novelty, data grounding, model, mechanism, identification, or quantification.
+- 建议暂停或更换路线: the branch is blocked by saturated literature, unavailable data, unrepairable identification, failed measurement, failed structural mapping, or failed theory route.
 
-For `continue_required`, ask the user to choose an action from `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, `run_mcts`, `choose_branch`, or `park/kill`. For `ready_to_freeze`, recommend moving to the thesis blueprint or first-week validation plan; still mention that the user may optionally continue if they want a higher-ambition version. Do not silently continue through multiple major stages without user selection when there are meaningful alternatives.
+When the choice is ambiguous, run a 2-5 step MCTS/UCT comparison and summarize it as "小规模分支比较". If the case is obvious, state why MCTS was skipped. Ask the user to choose an action only when a real choice remains. If freezing is recommended, move to thesis blueprint or first-week validation while mentioning that the user may optionally pursue a higher-ambition version.
 
 ## Output Template
 
@@ -223,9 +225,9 @@ For `continue_required`, ask the user to choose an action from `review_and_refin
 - Causality:
 - Mechanism:
 
-## Iteration Decision
+## 是否继续打磨
 - Recommended next action:
-- Status:
+- 判断:
 - User choice needed:
 ```
 

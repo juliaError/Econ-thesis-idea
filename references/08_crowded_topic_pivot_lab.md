@@ -111,8 +111,8 @@ For each promising branch, inspect enough literature to avoid reinventing the sa
 Each branch must pass four filters before becoming a candidate thesis:
 
 1. **Crowding**: not already the same X-Y-data-method package.
-2. **Data**: at least one credible public, school, local, replication, or authorized data path.
-3. **Design**: a descriptive or causal strategy that can be explained without method decoration.
+2. **Feasibility**: a credible data path, measurement path, theory model path, or structural/quantitative model-data path.
+3. **Design**: an empirical, descriptive, measurement, theory, structural/quantitative, or policy-report strategy that can be explained without method decoration.
 4. **Defense**: a plausible answer to "what is new compared with the closest papers?"
 
 Reject branches that survive only by adding decorative mechanisms, arbitrary heterogeneity, a new buzzword, or an unsupported causal method.
@@ -121,9 +121,9 @@ Reject branches that survive only by adding decorative mechanisms, arbitrary het
 
 Use this compact table before any full thesis blueprint:
 
-| Branch | Source from original topic | Dimension | Candidate question | N/C/F/E/I | Average | Closest literature pattern | Data path | Main design | Defense risk | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | | | proceed / verify / pivot / park / kill |
+| Branch | Source from original topic | Dimension | Candidate question | Paper type | N/C/F/E/I | Average | Closest literature pattern | Data/model path | Main design | Defense risk | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | | | | proceed / verify / pivot / park / kill |
 
 Then give:
 
@@ -131,7 +131,7 @@ Then give:
 - **Why not the others**: the binding risk for rejected branches.
 - **First verification task**: usually a literature search plus data metadata check.
 - **Do not claim yet**: causal, novelty, or mechanism claims not yet supported.
-- **Iteration decision**: classify whether the branch search needs more iteration, is ready to freeze into one selected branch, can optionally continue, or should stop/park.
+- **是否继续打磨**: use natural language to say whether the branch search needs more iteration, is ready to freeze into one selected branch, can optionally continue, or should stop/change route.
 
 Only after a branch receives `proceed` or `verify` should the normal thesis blueprint begin.
 
