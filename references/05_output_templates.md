@@ -25,14 +25,27 @@
 - Weakest dimensions:
 - Next route:
 
-## 0c. Literature Crowding Gate
+## 0c. IRIS-Style Idea Tree
+Use this section only when tree exploration is used.
+
+| Node | Parent | Action | Title | Scores | Visits | Value | Gate status | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| n0 | - | raw | | N/C/F/E/I | | | | root |
+| n1 | n0 | generate / review_and_refine / refresh_idea / retrieve_and_refine | | | | | | active |
+
+- Best branch:
+- Backup branches:
+- Weakest remaining dimensions:
+- Next gate:
+
+## 0d. Literature Crowding Gate
 - Literature crowding: low / medium / high / saturated / not checked
 - Closest literature pattern:
 - Defense risk:
 - Decision before focusing: proceed / pivot / park / kill / downgrade
 - Why continue or stop:
 
-## 0d. Candidate Bank
+## 0e. Candidate Bank
 | ID | Candidate | Source | Status | Why keep or reject | Return if |
 | --- | --- | --- | --- | --- | --- |
 | c0 | original interest | raw input | active / rejected / parked | | |

@@ -1,10 +1,10 @@
 # 毕业论文 idea 打磨器
 
-`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它用总控路由把原始兴趣、ideation 初评、文献拥挤度、三维题目搜选、数据可行性、识别诊断和论文蓝图串起来：先帮助研究生和研究初学者判断题目是否已经被中英文文献挤满；如果原题过于拥挤但兴趣仍有价值，再从原题的 X、Y、机制或反向因果中生发相邻方向，最后把仍有空间的 idea 转化为更可行的研究问题、数据路径、识别方案和论文蓝图。
+`thesis-idea` 是一个面向经济学毕业论文选题和早期研究设计的 Codex skill。它用总控路由把原始兴趣、IRIS-style ideation 初评与树搜索、文献拥挤度、三维题目搜选、数据可行性、识别诊断和论文蓝图串起来：先帮助研究生和研究初学者判断题目是否已经被中英文文献挤满；如果原题过于拥挤但兴趣仍有价值，再从原题的 X、Y、机制或反向因果中生发相邻方向，最后把仍有空间的 idea 转化为更可行的研究问题、数据路径、识别方案和论文蓝图。
 
 # Thesis Idea Builder
 
-`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It uses a master router to connect raw-interest intake, initial ideation review, literature crowding, three-dimensional topic branching, data feasibility, identification diagnosis, and thesis blueprints. It first checks whether a topic is already crowded in Chinese and English literature; if the exact topic is saturated but the underlying interest is still useful, it branches from the original X, Y, mechanism, or reverse causal direction to find adjacent options, then turns viable ideas into research questions, data paths, identification plans, and thesis blueprints.
+`thesis-idea` is a Codex skill for economics thesis topic selection and early research design. It uses a master router to connect raw-interest intake, IRIS-style ideation review and tree search, literature crowding, three-dimensional topic branching, data feasibility, identification diagnosis, and thesis blueprints. It first checks whether a topic is already crowded in Chinese and English literature; if the exact topic is saturated but the underlying interest is still useful, it branches from the original X, Y, mechanism, or reverse causal direction to find adjacent options, then turns viable ideas into research questions, data paths, identification plans, and thesis blueprints.
 
 ## 模型要求提示
 
@@ -30,7 +30,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 
 - 面向经济学毕业论文选题和研究设计。
 - 不生成空泛题目，而是诊断、压力测试和打磨 idea。
-- 用总控路由管理原始兴趣、ideation 初评、文献拥挤度、候选题池、数据筛选、识别诊断和论文蓝图。
+- 用总控路由管理原始兴趣、IRIS-style 多维评分、MCTS/UCT 树搜索、文献拥挤度、候选题池、数据筛选、识别诊断和论文蓝图。
 - 对数字化、共同富裕等拥挤题目，先查中英文接近文献，必要时建议 `park/kill/pivot`。
 - 对原题过于拥挤但兴趣仍有价值的情况，使用横向、纵向、逆向三维生发法寻找相邻方向。
 - 通过文献拥挤度 gate 或三维生发后，保留候选题池，先冻结用户选中的候选题，再做数据可得性、识别、变量、样本、主回归和表图精炼。
@@ -40,7 +40,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 
 - Serves economics thesis topic selection and research design.
 - Does not generate empty topic lists; it diagnoses, pressure-tests, and polishes an idea.
-- Uses a master router to manage raw-interest intake, initial ideation review, literature crowding, candidate banks, data screening, identification diagnosis, and thesis blueprints.
+- Uses a master router to manage raw-interest intake, IRIS-style multi-dimensional scoring, MCTS/UCT tree search, literature crowding, candidate banks, data screening, identification diagnosis, and thesis blueprints.
 - For crowded topics such as digitalization and common prosperity, checks close Chinese and English literature first and may recommend `park/kill/pivot`.
 - If the exact topic is too crowded but the underlying interest is still useful, uses horizontal, vertical, and reverse branching to find adjacent directions.
 - After the literature crowding gate or branch search, keeps a candidate bank and freezes the user's selected candidate before refining data feasibility, identification, variables, sample, main regression, tables, and figures.
@@ -51,32 +51,34 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 1. 先用总控路由记录当前阶段、活跃候选题、备选候选题、阻塞风险和下一步模块。
 2. 接受用户的原始兴趣、导师方向、政策、变量、现象或口语化直觉，保留原话并生成临时 idea card。
 3. 做第一轮 ideation 初评：novelty、clarity、feasibility、effectiveness、impact，并根据最弱项决定下一步。
-4. 判断用户阶段、截止时间、数据权限、方法水平、导师偏好和目标层级。
-5. 对硕士生和拥挤题目先执行文献拥挤度 gate：查中英文接近文献，判断是否已有相同 X、Y、数据、方法和机制。
-6. 若原题 `high/saturated` 但用户仍想保留部分兴趣，进入拥挤题目生发模块：横向拆 X/Y、纵向追机制链、逆向问“什么导致 X/Y”。
-7. 对多个可行分支建立候选题池，让用户选择一个主线，同时保留其他方向作为备选。
-8. 用户选中一个候选题后，冻结该分支，不再继续泛化生发。
-9. 将选中候选题改写成一句可检验的经济学研究问题，并压成最小可行设计。
-10. 执行经验研究数据门槛：相关文献、公开数据库、本地材料或授权渠道必须支持可信数据路径，经验 idea 才能获得 `green/proceed`。
-11. 先寻找可用变异，再讨论 DID、IV、RDD、固定效应、shift-share 或其他方法。
-12. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
-13. 对可行或修复后的 idea，产出论文蓝图：章节功能、主回归或核心比较、变量、数据、表格、图形、第一周验证任务、导师 memo，以及升级或降级路径。
+4. 当存在多个可能方向时，运行小规模 IRIS-style MCTS/UCT 树搜索：生成 research brief，执行 review/refine/refresh/retrieve 等动作，记录 visits/value，并用文献、数据和识别 gate 调整 reward。
+5. 判断用户阶段、截止时间、数据权限、方法水平、导师偏好和目标层级。
+6. 对硕士生和拥挤题目先执行文献拥挤度 gate：查中英文接近文献，判断是否已有相同 X、Y、数据、方法和机制。
+7. 若原题 `high/saturated` 但用户仍想保留部分兴趣，进入拥挤题目生发模块：横向拆 X/Y、纵向追机制链、逆向问“什么导致 X/Y”。
+8. 对多个可行分支建立候选题池，让用户选择一个主线，同时保留其他方向作为备选。
+9. 用户选中一个候选题后，冻结该分支，不再继续泛化生发。
+10. 将选中候选题改写成一句可检验的经济学研究问题，并压成最小可行设计。
+11. 执行经验研究数据门槛：相关文献、公开数据库、本地材料或授权渠道必须支持可信数据路径，经验 idea 才能获得 `green/proceed`。
+12. 先寻找可用变异，再讨论 DID、IV、RDD、固定效应、shift-share 或其他方法。
+13. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
+14. 对可行或修复后的 idea，产出论文蓝图：章节功能、主回归或核心比较、变量、数据、表格、图形、第一周验证任务、导师 memo，以及升级或降级路径。
 
 ## Core Workflow
 
 1. Use the master router to track the current stage, active candidate, backup candidates, blocking risk, and next module.
 2. Accept the user's raw interest, advisor direction, policy, variable, phenomenon, or colloquial intuition; preserve the wording and create a temporary idea card.
 3. Run the first ideation review: novelty, clarity, feasibility, effectiveness, and impact, then route by the weakest dimensions.
-4. Classify the user's stage, deadline, data access, method level, advisor preference, and ambition level.
-5. For master's students and crowded topics, run a literature crowding gate first: inspect close Chinese and English papers and check whether the same X, Y, data, method, and mechanism already exist.
-6. If the original idea is `high/saturated` but the user wants to preserve part of the interest, run the crowded topic pivot lab: horizontal X/Y splitting, vertical mechanism-chain search, and reverse-causality search.
-7. Build a candidate bank for viable branches, ask the user to choose one primary branch, and keep other directions as backups.
-8. After the user selects one candidate, freeze that branch instead of continuing broad ideation.
-9. Rewrite the selected candidate into a testable economics question and compress it into a minimum viable design.
-10. Apply the empirical data gate: prior literature, public databases, local materials, or authorized channels must support a credible data path before an empirical idea can receive `green/proceed`.
-11. Search for usable variation before naming DID, IV, RDD, fixed effects, shift-share, or other methods.
-12. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
-13. For viable or repaired ideas, produce a thesis blueprint with section roles, main regression or comparison, variables, data, tables, figures, first-week validation tasks, advisor memo, and upgrade or downgrade paths.
+4. When several possible directions exist, run a small IRIS-style MCTS/UCT tree search: generate research briefs, apply review/refine/refresh/retrieve actions, track visits/value, and use literature, data, and identification gates to adjust reward.
+5. Classify the user's stage, deadline, data access, method level, advisor preference, and ambition level.
+6. For master's students and crowded topics, run a literature crowding gate first: inspect close Chinese and English papers and check whether the same X, Y, data, method, and mechanism already exist.
+7. If the original idea is `high/saturated` but the user wants to preserve part of the interest, run the crowded topic pivot lab: horizontal X/Y splitting, vertical mechanism-chain search, and reverse-causality search.
+8. Build a candidate bank for viable branches, ask the user to choose one primary branch, and keep other directions as backups.
+9. After the user selects one candidate, freeze that branch instead of continuing broad ideation.
+10. Rewrite the selected candidate into a testable economics question and compress it into a minimum viable design.
+11. Apply the empirical data gate: prior literature, public databases, local materials, or authorized channels must support a credible data path before an empirical idea can receive `green/proceed`.
+12. Search for usable variation before naming DID, IV, RDD, fixed effects, shift-share, or other methods.
+13. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
+14. For viable or repaired ideas, produce a thesis blueprint with section roles, main regression or comparison, variables, data, tables, figures, first-week validation tasks, advisor memo, and upgrade or downgrade paths.
 
 ## 数据可行性规则
 
@@ -100,6 +102,7 @@ For China-related topics, English-language China papers and Chinese economics or
 
 - 一句话研究问题；
 - 总控路由状态和第一轮 ideation 初评；
+- IRIS-style idea tree：节点、动作、五维评分、visits、value、gate-adjusted reward、最佳分支和备选分支；
 - 文献拥挤度 gate，特别是拥挤题目的 closest literature pattern 和答辩风险；
 - 拥挤题目生发表：横向、纵向、逆向分支、数据路径、答辩风险和建议；
 - 候选题池：主线、备选方向、返回条件；
@@ -121,6 +124,7 @@ For a single idea, the default output includes:
 
 - one-sentence research question;
 - master-router state and initial ideation review;
+- IRIS-style idea tree with nodes, actions, five-dimensional scores, visits, value, gate-adjusted reward, best branch, and backup branches;
 - literature crowding gate, especially the closest literature pattern and defense risk for crowded topics;
 - crowded-topic pivot table with horizontal, vertical, and reverse branches, data paths, defense risks, and verdicts;
 - candidate bank with the primary branch, backup branches, and return conditions;
@@ -197,7 +201,8 @@ If the exact topic is too crowded but I still want to preserve part of the inter
     ├── 06_research_design_patterns.md
     ├── 07_literature_crowding_gate.md
     ├── 08_crowded_topic_pivot_lab.md
-    └── 09_selected_topic_refinement.md
+    ├── 09_selected_topic_refinement.md
+    └── 10_iris_ideation_loop.md
 ```
 
 ## Repository Structure
@@ -219,7 +224,8 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
     ├── 06_research_design_patterns.md
     ├── 07_literature_crowding_gate.md
     ├── 08_crowded_topic_pivot_lab.md
-    └── 09_selected_topic_refinement.md
+    ├── 09_selected_topic_refinement.md
+    └── 10_iris_ideation_loop.md
 ```
 
 ## 边界

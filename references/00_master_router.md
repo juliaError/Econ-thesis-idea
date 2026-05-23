@@ -7,7 +7,7 @@ Use this file as the total controller for multi-step `thesis-idea` work. It deci
 The router should keep the process ordered:
 
 ```text
-raw interest -> ideation review -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> data and identification gates -> verdict -> thesis blueprint
+raw interest -> ideation review -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> data and identification gates -> verdict -> thesis blueprint
 ```
 
 ## Routing Architecture
@@ -46,6 +46,8 @@ Candidate records should contain:
 - `data_gate`: green / yellow / red / not checked;
 - `identification_gate`: green / yellow / red / not checked;
 - `ideation_score`: average of novelty, clarity, feasibility, effectiveness, and impact when scored;
+- `tree_node`: linked IRIS-style node ID if tree exploration is used;
+- `visits` and `value`: lightweight MCTS state when relevant;
 - `status`: active / backup / rejected / parked / killed;
 - `next_action`: literature check, data check, user choice, refinement, pivot, blueprint, or stop.
 
@@ -100,6 +102,21 @@ Then list the weakest 2-3 dimensions and route:
 | Impact | narrow the welfare object, mechanism, or setting before full design |
 
 Do not claim true novelty without literature search.
+
+## Stage 2b: IRIS-Style Tree Exploration
+
+Route to `references/10_iris_ideation_loop.md` when the first review creates several plausible translations, the user wants exploration, the idea is broad, or the pivot lab produces multiple viable branches.
+
+Use a small tree, not open-ended brainstorming:
+
+- generate or refine research briefs;
+- score each node on novelty, clarity, feasibility, effectiveness, and impact;
+- use `generate`, `review_and_refine`, `refresh_idea`, `retrieve_and_refine`, `data_gate_refine`, `identification_refine`, or `direct_feedback`;
+- run 2-5 MCTS/UCT iterations by default;
+- track node visits and value;
+- apply thesis-gate penalties when literature, data, identification, or theory gates are known.
+
+Tree search is only a candidate-exploration method. After a best branch is chosen, return to the router and run literature, data, and identification gates before a thesis blueprint.
 
 ## Stage 3: Literature Crowding Gate
 
