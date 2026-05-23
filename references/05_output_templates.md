@@ -26,17 +26,17 @@ Required for every idea, every candidate branch, and every refinement iteration.
 - Average score:
 - Score change from previous iteration: improved / flat / worse / not available
 - Weakest dimensions:
-- MCTS status: run / skipped
-- If skipped, why:
+- 小规模分支比较：已使用 / 未使用
+- 若未使用，原因：
 - Next route:
 
-## 0c. IRIS-Style Idea Tree
-Use this section only when tree exploration is used.
+## 0c. 小规模分支比较
+Use this section only when branch exploration is used. Do not show node visits/value, UCT scores, or tree bookkeeping unless the user explicitly asks for technical details.
 
-| Node | Parent | Action | Title | Scores | Visits | Value | Gate status | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| n0 | - | raw | | N/C/F/E/I | | | | root |
-| n1 | n0 | generate / review_and_refine / refresh_idea / retrieve_and_refine | | | | | | active |
+| Candidate | Source/action | Research question | N/C/F/E/I | Average | Gate-adjusted reasoning | Main risk | Recommendation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| c1 | generate / refine / retrieve / refresh | | | | | | |
+| c2 | generate / refine / retrieve / refresh | | | | | | |
 
 - Best branch:
 - Backup branches:
@@ -134,6 +134,7 @@ Required for every substantive output. The decision controls whether more iterat
 - 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
 - 理由：
 - 建议下一步：
+- 若因单一方向明显红灯或明显可冻结而跳过 MCTS：说明跳过原因，并询问是否调用三维生发模块，沿原始 X、Y、机制或反向因果寻找相邻新方向；若当前版本可冻结，把该询问写成可选升级，而不是强制继续。
 - 如果需要用户选择，给出自然语言选项，例如继续打磨当前分支、换一个相邻方向、先查文献、先确认数据权限、按模型重写、从候选题池选择、暂停或放弃。
 ```
 
@@ -144,15 +145,18 @@ If the original idea is `high`/`saturated` but the user wants nearby alternative
 ```markdown
 ## 0b. Crowded Topic Pivot Lab
 
-| Branch | Source from original topic | Dimension | Candidate question | Closest literature pattern | Data path | Main design | Defense risk | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | proceed / verify / pivot / park / kill |
+Do not over-compress branch questions. The branch table should use readable candidate questions; if the question needs more context, keep the table cell concise and add key objects below it.
+
+| Branch | Source from original topic | Dimension | Candidate idea | Readable candidate question | Key objects | Closest literature pattern | Data path | Main design | Defense risk | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | unit; X/object; Y/fact; mechanism/comparison; claim type | | | | | proceed / verify / pivot / park / kill |
 
 Recommended branch:
 Backup branch:
 Why not the others:
 First verification task:
 Do not claim yet:
+If the recommended branch is selected, then rewrite it into a formal one-sentence research question.
 ```
 
 Only continue to a full thesis blueprint for a branch with `proceed` or `verify`.
@@ -164,7 +168,7 @@ After the user selects one branch, update the candidate bank and mark non-select
 ```markdown
 # Idea Screening Table
 
-| Rank | Candidate idea | One-sentence question | N/C/F/E/I score | Average | Data access | Identification | Advisor acceptance | Overall | Verdict |
+| Rank | Candidate idea | Readable research question | N/C/F/E/I score | Average | Data access | Identification | Advisor acceptance | Overall | Verdict |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | | | | | | | | | |
 | 2 | | | | | | | | | |

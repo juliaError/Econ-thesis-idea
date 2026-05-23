@@ -41,8 +41,8 @@ Minimum required output:
 - Average score:
 - Score change from previous iteration: improved / flat / worse / not available
 - Weakest dimensions:
-- MCTS status: run / skipped
-- If skipped, why:
+- 小规模分支比较：已使用 / 未使用
+- 若未使用，原因：
 - Next recommended action:
 ```
 
@@ -198,19 +198,25 @@ Use these rules:
 
 When the choice is ambiguous, run a 2-5 step MCTS/UCT comparison and summarize it as "小规模分支比较". If the case is obvious, state why MCTS was skipped. Ask the user to choose an action only when a real choice remains. If freezing is recommended, move to thesis blueprint or first-week validation while mentioning that the user may optionally pursue a higher-ambition version.
 
+When MCTS is skipped because there is only one branch and it is clearly data-red, type-gate-red, theory/model-red, or already ready to freeze, do not expose a technical skip label. Use natural language:
+
+- Red or blocked branch: "我没有做树搜索，因为当前只有一个方向，而且阻塞点已经很明确。你要不要调用三维生发模块，从原始 X、Y、机制或反向因果里找 2-3 个相邻新方向？"
+- Ready-to-freeze branch: "我没有做树搜索，因为当前版本已经足够冻结。可以直接进入论文蓝图；如果你还想追求更高质量或备选题，也可以调用三维生发模块再找相邻方向。"
+
 ## Output Template
 
 ```markdown
-## IRIS-Style Idea Tree
+## 小规模分支比较
 
-| Node | Parent | Action | Title | Scores | Visits | Value | Gate status | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| n0 | - | raw | | N/C/F/E/I | | | | root |
-| n1 | n0 | generate | | | | | | active |
-| n2 | n1 | review_and_refine | | | | | | backup |
+我做了小规模分支比较，重点比较每个方向的五维评分、关键 gate、最小可行版本和答辩风险。以下是用户可见摘要；不要默认展示 UCT 分数、visits/value 或节点日志。
+
+| Candidate | Source/action | Research question | N/C/F/E/I | Average | Gate-adjusted reasoning | Main risk | Recommendation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| c1 | generate / refine / retrieve / refresh | | | | | | |
+| c2 | generate / refine / retrieve / refresh | | | | | | |
 
 ## Best Branch
-- Selected node:
+- Selected candidate:
 - Why this branch:
 - Weakest remaining dimensions:
 - Next gate:

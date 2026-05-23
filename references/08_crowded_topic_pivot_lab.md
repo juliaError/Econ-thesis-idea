@@ -117,13 +117,45 @@ Each branch must pass four filters before becoming a candidate thesis:
 
 Reject branches that survive only by adding decorative mechanisms, arbitrary heterogeneity, a new buzzword, or an unsupported causal method.
 
+## Readable Candidate Questions
+
+Three-dimensional branching is an exploration stage. Do not force every branch into a maximally compressed one-sentence question. A compressed question that packs several network positions, mechanisms, and outcomes into one clause can become unreadable and make the branch look less coherent than it is.
+
+For each branch, separate:
+
+- **Candidate idea**: a short label, such as `知识共创-技术转让错配`.
+- **Readable candidate question**: one clear question, or at most two short sentences, that a graduate student and advisor can understand without decoding hidden assumptions.
+- **Key objects**: unit, X/object, Y/outcome or fact, mechanism/comparison, claim type, and likely data object.
+
+Readable branch questions should usually name:
+
+1. the unit or setting;
+2. the economic object being compared or varied;
+3. the outcome, fact, model object, or theoretical mechanism;
+4. why the contrast matters economically;
+5. whether the branch is causal, descriptive/measurement, theory, structural/quantitative, policy, or mixed.
+
+Avoid questions like:
+
+```text
+城市有强知识合作网络但弱技术转让网络时，是否更难把创新转化为增长？
+```
+
+Prefer a more explicit version:
+
+```text
+在城市创新网络中，知识共创中心性和技术转让中心性是否存在系统性错配？如果一个城市能参与知识共创、但缺少技术交易和转化网络位置，这种错配是否对应更低的专利转化、企业成长或产业升级表现？
+```
+
+Only after the user selects a branch should the router compress it into a formal one-sentence research question.
+
 ## Output Template
 
 Use this compact table before any full thesis blueprint:
 
-| Branch | Source from original topic | Dimension | Candidate question | Paper type | N/C/F/E/I | Average | Closest literature pattern | Data/model path | Main design | Defense risk | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | | | | | | | proceed / verify / pivot / park / kill |
+| Branch | Source from original topic | Dimension | Candidate idea | Readable candidate question | Key objects | Paper type | N/C/F/E/I | Average | Closest literature pattern | Data/model path | Main design | Defense risk | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A | X-side / Y-side / mechanism / reverse-X / reverse-Y | horizontal / vertical / reverse | | | unit; X/object; Y/fact; mechanism/comparison; claim type | | | | | | | | proceed / verify / pivot / park / kill |
 
 Then give:
 
@@ -131,6 +163,7 @@ Then give:
 - **Why not the others**: the binding risk for rejected branches.
 - **First verification task**: usually a literature search plus data metadata check.
 - **Do not claim yet**: causal, novelty, or mechanism claims not yet supported.
+- **Selected-branch one-sentence rewrite**: only if the user has selected or accepted one branch.
 - **是否继续打磨**: use natural language to say whether the branch search needs more iteration, is ready to freeze into one selected branch, can optionally continue, or should stop/change route.
 
 Only after a branch receives `proceed` or `verify` should the normal thesis blueprint begin.

@@ -55,13 +55,13 @@ Default flow:
 2. **Profile and mode**: infer the user's stage, deadline, data access, method level, advisor preference, and ambition level; then choose thesis rescue, research-design strengthening, or top-field/top-journal mode. See `references/01_modes_and_inputs.md`.
 3. **Raw interest intake**: accept a user's interest, advisor direction, policy, variable, phenomenon, or vague intuition. Preserve the user's wording, then create a provisional academic translation without locking the final title. See `references/00_master_router.md` and `references/01_modes_and_inputs.md`.
 4. **Initial and iterative ideation review**: score the early idea, every later candidate branch, and every refinement version on novelty, clarity, feasibility, effectiveness, and impact. Treat novelty as provisional until literature is checked. Use the weakest dimensions to decide the next route.
-5. **IRIS-style tree exploration**: when several plausible branches exist, run a small IRIS-style loop with research briefs, review/refine actions, node visits, value, UCT selection, and gate-adjusted rewards. See `references/10_iris_ideation_loop.md`.
+5. **IRIS-style branch exploration**: when several plausible branches exist, run a small IRIS-style loop with research briefs, review/refine actions, internal node visits/value, UCT selection, and gate-adjusted rewards. Summarize it to users as a small branch comparison, not as technical tree logs. See `references/10_iris_ideation_loop.md`.
 6. **Paper type route**: classify the idea as empirical causal, measurement/facts, theory, structural/quantitative, policy report, or mixed before diagnosing it. Do not force every idea into an empirical regression. See `references/01_modes_and_inputs.md` and `references/11_paper_type_gates.md`.
 7. **Literature crowding gate for thesis topics**: for master's students, thesis rescue mode, and crowded China topics such as digitalization, common prosperity, digital finance, green finance, smart cities, low-carbon pilots, ESG, high-quality development, rural revitalization, and new quality productive forces, search Chinese and English literature before narrowing the title. If the closest papers already exhaust the question, data, method, and mechanism, say so and recommend `park`, `kill`, or a major pivot. See `references/07_literature_crowding_gate.md`.
-8. **Crowded topic pivot lab**: when the original topic is `high` or `saturated` but the user still wants to preserve part of the interest, branch from the original X/Y through horizontal, vertical, and reverse searches before building any new thesis. Save viable branches in a candidate bank. See `references/08_crowded_topic_pivot_lab.md`.
+8. **Crowded topic pivot lab**: when the original topic is `high` or `saturated` but the user still wants to preserve part of the interest, branch from the original X/Y through horizontal, vertical, and reverse searches before building any new thesis. Use readable candidate questions in this stage; do not over-compress complex branches into cryptic one-sentence questions. Save viable branches in a candidate bank. See `references/08_crowded_topic_pivot_lab.md`.
 9. **User selection and fallback**: ask the user to choose one preferred branch when multiple viable candidates remain. Keep the others as fallback branches for the current task.
 10. **Selected-topic refinement**: after the user chooses one candidate branch, stop broad search and compress that candidate into a minimum viable research design. For empirical ideas, define data, identification, variables, sample, main regression, and tables/figures. For measurement, theory, and structural/quantitative ideas, use the type-specific blueprint. See `references/09_selected_topic_refinement.md` and `references/11_paper_type_gates.md`.
-11. **One-sentence question**: only after the ideation review, IRIS tree, crowding gate, pivot lab, or selected-topic refinement, compress vague nouns into a testable relationship: `Does X affect Y, through mechanism Z, in setting P, using variation V?`
+11. **One-sentence question**: only after a branch has been selected or is clear enough, compress vague nouns into a testable relationship: `Does X affect Y, through mechanism Z, in setting P, using variation V?` During three-dimensional branching, prefer a readable research question plus key objects over forced compression.
 12. **Data and access split**: for data-using ideas, separate agent-side evidence checks from user-side access confirmation. Do not say data are available when only a literature precedent or platform lead exists. See `references/03_data_feasibility.md`.
 13. **Identification, model, or measurement pressure test**: search for usable variation for causal empirical work; for measurement, theory, or structural/quantitative work, apply the relevant type-specific gate instead. See `references/04_identification_diagnostics.md` and `references/11_paper_type_gates.md`.
 14. **Verdict and decision**: give both a feasibility color and an action decision. See `references/02_verdict_rules.md`.
@@ -81,6 +81,8 @@ For every idea, every candidate branch, and every refinement iteration, always i
 - impact.
 
 Also include the average score, weakest 2-3 dimensions, score change from the previous iteration when available, and the next route. If tree exploration is skipped, state why. End each substantive response with a public-facing stop-or-continue judgment under `是否继续打磨`, not an internal status code.
+
+If tree exploration is skipped because there is only one branch and it is clearly blocked, or because the current version is clearly ready to freeze, do not silently stop. State the reason, then ask whether the user wants to call the three-dimensional branching module to search adjacent new ideas from the original X, Y, mechanism, or reverse causal direction. For clearly freezable ideas, frame this as optional exploration; for clearly blocked ideas, frame it as the recommended pivot option.
 
 Do not expose internal route labels such as snake_case status codes in user-facing output. Use natural public labels: `建议继续打磨`, `建议冻结当前版本`, `可以推进，也可继续升级`, or `建议暂停或更换路线`.
 
@@ -114,9 +116,9 @@ For one idea, default to:
 
 0a. **总控路由状态**: current stage, selected candidate, backup candidates, next route, and blocking gate.
 0b. **逐 idea / 逐轮 ideation 评测**: mandatory novelty, clarity, feasibility, effectiveness, impact scores for every idea, candidate branch, and refinement iteration, plus average score, score change when available, weakest dimensions, and next action.
-0c. **IRIS-style tree**: brief nodes, actions, scores, visits, value, gate-adjusted reward, best branch, and backups when tree exploration is used.
+0c. **小规模分支比较**: when tree exploration is used, show branch-level scores, gate-adjusted reasoning, best branch, and backups; do not expose node visits/value or UCT bookkeeping unless the user asks for technical details.
 0d. **文献拥挤度 gate**: low / medium / high / saturated, closest literature pattern, defense risk, and whether to continue.
-0e. **拥挤题目生发**: if the original topic is too crowded but the user wants alternatives, screen horizontal, vertical, and reverse branches before selecting a new candidate.
+0e. **拥挤题目生发**: if the original topic is too crowded but the user wants alternatives, screen horizontal, vertical, and reverse branches before selecting a new candidate. Use readable candidate questions and separate key objects; do not force every branch into a single compressed sentence.
 0f. **候选题池**: primary branch, backup branches, why they are kept, and when to return to them.
 0g. **选中题目精炼**: after the user selects one candidate, freeze that branch and convert it into a minimum viable design instead of reopening broad ideation.
 1. **一句话重写**: a testable research question.
@@ -156,7 +158,7 @@ Load only the relevant files:
 - `references/07_literature_crowding_gate.md`: Chinese/English literature search-first rule, crowded-topic stop rules, and ways to find remaining thesis space.
 - `references/08_crowded_topic_pivot_lab.md`: branch from a saturated topic through horizontal, vertical, and reverse searches, then screen adjacent thesis candidates.
 - `references/09_selected_topic_refinement.md`: after a candidate is selected, freeze broad search and refine it into a minimum viable economics research design.
-- `references/10_iris_ideation_loop.md`: IRIS-style research brief, review/refine actions, multi-dimensional scoring, lightweight MCTS/UCT tree search, visits/value tracking, and gate-adjusted reward.
+- `references/10_iris_ideation_loop.md`: IRIS-style research brief, review/refine actions, multi-dimensional scoring, lightweight MCTS/UCT branch exploration, internal visits/value tracking, gate-adjusted reward, and user-facing small branch comparison.
 - `references/11_paper_type_gates.md`: type-specific gates and blueprints for empirical causal, measurement/facts, theory, structural/quantitative, policy report, and mixed designs.
 
 ## Academic Integrity Boundary

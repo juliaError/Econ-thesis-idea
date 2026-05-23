@@ -134,6 +134,11 @@ Tree search is only a candidate-exploration method. After a best branch is chose
 
 When deciding whether a branch should continue, freeze, or stop is ambiguous, run a small MCTS/UCT comparison unless the case is obvious or the user has a tight deadline. In user-facing output, summarize this as a "小规模分支比较"; do not expose UCT formulas, internal status codes, or tree bookkeeping unless the user asks for technical details.
 
+If MCTS is skipped because there is only one branch and the decision is obvious, still handle the user's choice space explicitly:
+
+- If the branch is clearly red or not worth continuing, state why tree search was unnecessary, then ask whether to call the three-dimensional branching module in Stage 4 to look for adjacent new ideas from the original X, Y, mechanism, or reverse causal direction.
+- If the branch is clearly ready to freeze, recommend freezing and moving to blueprint or first-week validation, then offer optional three-dimensional branching only if the user still wants alternative or higher-ambition directions.
+
 ## Stage 2c: Paper-Type Route
 
 Route to `references/11_paper_type_gates.md` before diagnosing data, identification, or blueprint.
@@ -173,6 +178,8 @@ The pivot lab should generate branches from the original idea:
 - reverse from Y as a cause of later behavior or policy response.
 
 Screen each branch on literature crowding, data path, design, defense risk, and user fit. Put viable branches into the candidate bank.
+
+In this stage, do not force each branch into an over-compressed one-sentence question. Use a readable candidate question and, when needed, a separate key-object note that names the unit, X/object, Y/outcome or fact, mechanism/comparison, and claim type. The formal one-sentence research question can be produced after the user selects a branch.
 
 ## Stage 5: User Selection
 
@@ -265,3 +272,5 @@ Use these status rules:
 - 建议暂停或更换路线: data, literature, identification, measurement, structural, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or a different paper type.
 
 Do not show internal route codes. Ask the user to choose a next action only when real choice is needed. If freezing is recommended, say so directly and move to blueprint or first-week validation.
+
+When MCTS was skipped because one branch was obviously blocked or obviously freezable, include a natural-language question about whether to use the three-dimensional branching module. Do this even when no further MCTS choice is needed, because the real user choice may be whether to accept the verdict or search for adjacent alternatives.
