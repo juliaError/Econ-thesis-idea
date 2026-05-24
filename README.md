@@ -33,6 +33,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - 检查题目是否太拥挤、数据是否现实可得、识别或模型路径是否站得住。
 - 每轮给出五维评分：新意、清晰度、可行性、有效性和影响。
 - 支持经验因果、测度/事实、理论、结构/量化、政策报告和混合型论文。
+- 支持从其他学科寻找可迁移的工具、结构或模型思路。
 - 先判断是否继续打磨；成熟后再输出第一周验证计划、导师 memo 和论文蓝图。
 
 ## Core Features ✨
@@ -42,6 +43,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - Checks whether a topic is too crowded, whether data access is realistic, and whether the identification or model path is defensible.
 - Gives five-dimensional scores in each round: novelty, clarity, feasibility, effectiveness, and impact.
 - Supports empirical causal, measurement/facts, theory, structural/quantitative, policy report, and mixed thesis designs.
+- Looks for transferable tools, structures, or model ideas from other fields.
 - Decides whether to keep polishing first; mature ideas then receive first-week validation plans, advisor memos, and thesis blueprints.
 
 ## 安装 🚀
@@ -202,6 +204,7 @@ For China-related topics, English-language China papers and Chinese economics or
 - 是否继续打磨，以及下一轮最该做什么；
 - 文献拥挤度、近似文献和答辩风险；
 - 可行的数据、测度、模型或理论路径；
+- 如有需要，给出跨领域迁移路线及其风险；
 - 识别、测度、理论或结构/量化方案及主要威胁；
 - 现在不能声称的内容；
 - 如果已经建议冻结或可以推进，再输出第一周验证计划、导师 memo、论文蓝图，以及升级、降级或转向建议。
@@ -216,6 +219,7 @@ For a single idea, the default output includes:
 - whether to keep polishing and what the next iteration should do;
 - literature crowding, close papers, and defense risks;
 - feasible data, measurement, model, or theory paths;
+- when useful, cross-field transfer routes and their risks;
 - identification, measurement, theory, or structural/quantitative options and major threats;
 - claims the user should not make yet;
 - if the idea is ready to freeze or proceed, first-week validation plan, advisor memo, thesis blueprint, and upgrade/downgrade/pivot suggestions.
@@ -281,7 +285,8 @@ The following sections are mainly for people who want to understand, maintain, o
     ├── 08_crowded_topic_pivot_lab.md
     ├── 09_selected_topic_refinement.md
     ├── 10_iris_ideation_loop.md
-    └── 11_paper_type_gates.md
+    ├── 11_paper_type_gates.md
+    └── 12_cognitive_transfer_search.md
 ```
 
 ### Repository Structure 🗂️
@@ -305,7 +310,8 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
     ├── 08_crowded_topic_pivot_lab.md
     ├── 09_selected_topic_refinement.md
     ├── 10_iris_ideation_loop.md
-    └── 11_paper_type_gates.md
+    ├── 11_paper_type_gates.md
+    └── 12_cognitive_transfer_search.md
 ```
 
 ### 工作流程 🧭
@@ -315,6 +321,7 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 3. 对每个 idea、候选分支和迭代版本做五维评分：novelty、clarity、feasibility、effectiveness、impact，并根据最弱项决定下一步。
 4. 当存在多个可能方向时，运行小规模 IRIS-style MCTS/UCT 分支比较：生成 research brief，先评分每个方向，再执行 review/refine/refresh/retrieve 等动作；内部可记录 visits/value，但对外只总结为“小规模分支比较”和推荐路线。
 5. 如果只有一个方向且明显红灯或明显可冻结，可以不跑 MCTS，但要说明原因，并询问是否调用三维生发模块寻找相邻新方向。
+   认知迁移搜索是增强模块：当用户要求跨领域迁移，或新意、机制、理论、模型、测度路径卡住时，先把 idea 抽象成问题结构卡片，再比较其他学科的工具、结构或模型思路，并用结构、操作和经济学贡献 gate 过滤。
 6. 判断用户阶段、截止时间、数据权限、方法水平、导师偏好和目标层级。
 7. 对硕士生和拥挤题目先执行文献拥挤度 gate：查中英文接近文献，判断是否已有相同 X、Y、数据、方法和机制。
 8. 若原题 `high/saturated` 但用户仍想保留部分兴趣，进入拥挤题目生发模块：横向拆 X/Y、纵向追机制链、逆向问“什么导致 X/Y”。生发阶段用“可读研究问题 + 关键对象”，不要过度压缩成难懂的一句话。
@@ -334,6 +341,7 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 3. Score every idea, candidate branch, and iteration version on novelty, clarity, feasibility, effectiveness, and impact, then route by the weakest dimensions.
 4. When several possible directions exist, run a small IRIS-style MCTS/UCT branch comparison: generate research briefs, score every branch before advancing it, and apply review/refine/refresh/retrieve actions. Visits/value may be tracked internally, but user-facing output should summarize this as a small branch comparison and recommendation.
 5. If there is only one direction and it is clearly blocked or clearly ready to freeze, MCTS may be skipped, but the output must explain why and ask whether to call the three-dimensional branching module for adjacent alternatives.
+   Cognitive Transfer Search is an enhancement module: when the user asks for cross-field transfer, or novelty, mechanism, theory, model, or measurement routes get stuck, abstract the idea into a problem structure card, compare tools, structures, or model ideas from other fields, and filter them through structure, operation, and economics-contribution gates.
 6. Classify the user's stage, deadline, data access, method level, advisor preference, and ambition level.
 7. For master's students and crowded topics, run a literature crowding gate first: inspect close Chinese and English papers and check whether the same X, Y, data, method, and mechanism already exist.
 8. If the original idea is `high/saturated` but the user wants to preserve part of the interest, run the crowded topic pivot lab: horizontal X/Y splitting, vertical mechanism-chain search, and reverse-causality search. In this stage, use readable research questions plus key objects instead of over-compressed one-sentence questions.

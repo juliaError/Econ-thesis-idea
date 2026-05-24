@@ -43,14 +43,38 @@ Use this section only when branch exploration is used. Do not show node visits/v
 - Weakest remaining dimensions:
 - Next gate:
 
-## 0d. Literature Crowding Gate
+## 0d. 认知迁移搜索 / Cognitive Transfer Search
+Use this section only when cross-field transfer is triggered by the user, weak novelty, a stuck theory/model/measurement/mechanism route, or thin ordinary pivot branches.
+
+### Problem Structure Card
+- Economic object:
+- Unit or agent:
+- Core relationship / mechanism / pattern:
+- Constraint, friction, or scarce resource:
+- Time, order, or process:
+- Network / spatial / strategic / informational / dynamic / measurement structure:
+- Desired thesis object: variable / fact / proposition / model block / table / figure / proof / counterfactual
+- Current bottleneck:
+
+### Source-Domain Transfer Candidates
+| Source domain | Transferable tool/structure | Economics mapping | Possible output | Fit/Meaning/Operation/Feasibility/Contribution | Metaphor risk | Gate result | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| mathematics / network science / information theory / ecology / epidemiology / CS / physics / OR / cognitive science | | | variable / proposition / model block / fact / figure / table / proof | | | structure / operation / contribution | recommend / backup / downgrade / reject |
+
+- Recommended route:
+- Backup route(s):
+- Main risk:
+- Why this is more than a metaphor:
+- Return to router:
+
+## 0e. Literature Crowding Gate
 - Literature crowding: low / medium / high / saturated / not checked
 - Closest literature pattern:
 - Defense risk:
 - Decision before focusing: proceed / pivot / park / kill / downgrade
 - Why continue or stop:
 
-## 0e. Candidate Bank
+## 0f. Candidate Bank
 | ID | Candidate | Source | Status | Why keep or reject | Return if |
 | --- | --- | --- | --- | --- | --- |
 | c0 | original interest | raw input | active / rejected / parked | | |

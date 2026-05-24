@@ -7,7 +7,7 @@ Use this file as the total controller for multi-step `thesis-idea` work. It deci
 The router should keep the process ordered:
 
 ```text
-raw interest -> per-idea ideation review -> paper-type route -> IRIS tree when useful -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> type-specific gates -> verdict -> thesis blueprint
+raw interest -> per-idea ideation review -> IRIS tree when useful -> paper-type route -> cognitive transfer search when triggered -> literature crowding gate -> pivot lab if needed -> user selection -> selected-topic refinement -> type-specific gates -> verdict -> thesis blueprint
 ```
 
 ## Routing Architecture
@@ -26,7 +26,7 @@ This keeps the skill from forgetting earlier gates or overloading the context wi
 Maintain a compact state table when the task spans more than one exchange:
 
 ```text
-stage | active_candidate | selected? | crowding | data_gate | identification_gate | decision | next_route
+stage | active_candidate | selected? | crowding | transfer_gate | data_gate | identification_gate | decision | next_route
 ```
 
 Use short candidate IDs:
@@ -47,11 +47,13 @@ Candidate records should contain:
 - `data_gate`: green / yellow / red / not applicable / not checked;
 - `identification_gate`: green / yellow / red / not applicable / not checked;
 - `type_gate`: green / yellow / red / not checked;
+- `transfer_gate`: green / yellow / red / not applicable / not checked;
+- `transfer_route`: source-domain transfer path if Cognitive Transfer Search is used;
 - `ideation_score`: average of novelty, clarity, feasibility, effectiveness, and impact when scored;
 - `tree_node`: linked IRIS-style node ID if tree exploration is used;
 - `visits` and `value`: lightweight MCTS state when relevant;
 - `candidate_state`: active / backup / rejected / parked / killed;
-- `next_action`: literature check, data check, user choice, refinement, pivot, blueprint, or stop.
+- `next_action`: literature check, cognitive transfer search, data check, user choice, refinement, pivot, blueprint, or stop.
 
 ## Stage 1: Raw Interest Intake
 
@@ -154,6 +156,23 @@ Classify each candidate as:
 
 Do not force a theory, measurement, or structural idea into a main regression. For non-empirical types, replace data/identification gates with the relevant measurement, model, proof, moment, calibration, or policy-evidence gate.
 
+## Stage 2d: Cognitive Transfer Search
+
+Route to `references/12_cognitive_transfer_search.md` when cross-field transfer is explicitly requested or when ordinary review, literature crowding, pivot lab, selected-topic refinement, theory gate, structural gate, measurement gate, or mechanism diagnosis suggests that novelty, model structure, proof strategy, measurement, or explanation is stuck but still salvageable.
+
+This stage can appear after ordinary ideation review, after literature crowding, after the crowded-topic pivot lab, after user selection, or after a type-specific gate. It must still return to this router before any thesis blueprint.
+
+Required behavior:
+
+- abstract the economics idea into a problem structure card;
+- search source-domain tools, structures, proof strategies, measurement ideas, or model patterns;
+- score each transfer on structural fit, economic meaning, operationality, data/model/proof feasibility, paper contribution, and misleading metaphor risk;
+- apply structure, operation, and economics-contribution gates;
+- use small MCTS/UCT branch comparison only when several transfer routes are close or the best route is unclear;
+- downgrade or reject transfers that are only metaphors and do not produce variables, propositions, model blocks, tables, figures, proof steps, or testable facts.
+
+After the recommended transfer route is chosen, return to the relevant paper-type gate. A cognitive-transfer branch still needs the usual `是否继续打磨` judgment before any first-week validation plan, advisor memo, or full thesis blueprint.
+
 ## Stage 3: Literature Crowding Gate
 
 Route to `references/07_literature_crowding_gate.md` when:
@@ -220,10 +239,11 @@ If the relevant type-specific gate becomes red, return to the candidate bank and
 Use these gates before a full blueprint:
 
 1. Paper-type gate: `references/11_paper_type_gates.md`.
-2. Data gate when the type uses data: `references/03_data_feasibility.md`.
-3. Identification gate for empirical causal claims: `references/04_identification_diagnostics.md`.
-4. Verdict rules: `references/02_verdict_rules.md`.
-5. Research design patterns when useful: `references/06_research_design_patterns.md`.
+2. Cognitive transfer gate when cross-field transfer is triggered: `references/12_cognitive_transfer_search.md`.
+3. Data gate when the type uses data: `references/03_data_feasibility.md`.
+4. Identification gate for empirical causal claims: `references/04_identification_diagnostics.md`.
+5. Verdict rules: `references/02_verdict_rules.md`.
+6. Research design patterns when useful: `references/06_research_design_patterns.md`.
 
 Only move to a full thesis blueprint when the idea is green or repairable yellow and the `是否继续打磨` judgment says `建议冻结当前版本` or `可以推进，也可继续升级`. If the judgment says `建议继续打磨`, stop with next-iteration options. For red ideas, recommend pivot, park, kill, downgrade, or a strict theory route.
 
