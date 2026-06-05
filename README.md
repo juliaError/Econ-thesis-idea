@@ -201,7 +201,7 @@ For China-related topics, English-language China papers and Chinese economics or
 - 更清楚的一句话研究问题；
 - 论文类型和可行性判断；
 - 五维评分和最需要补强的地方；
-- 是否继续打磨，以及下一轮最该做什么；
+- 是否继续打磨、下一轮最该做什么，以及可以直接回复“继续打磨”或先与导师讨论；
 - 文献拥挤度、近似文献和答辩风险；
 - 可行的数据、测度、模型或理论路径；
 - 如有需要，给出跨领域迁移路线及其风险；
@@ -216,7 +216,7 @@ For a single idea, the default output includes:
 - a clearer one-sentence research question;
 - paper type and feasibility judgment;
 - five-dimensional scores and the weakest parts to improve;
-- whether to keep polishing and what the next iteration should do;
+- whether to keep polishing, what the next iteration should do, and whether to reply "continue polishing" directly or discuss it with an advisor first;
 - literature crowding, close papers, and defense risks;
 - feasible data, measurement, model, or theory paths;
 - when useful, cross-field transfer routes and their risks;
@@ -332,7 +332,7 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 13. 对使用数据的 idea，区分 agent 证据核查和用户权限确认；先寻找可用变异、测度验证、理论机制或模型矩，再讨论 DID、IV、RDD、固定效应、结构估计、校准或仿真。
 14. 同时输出可行性判定和行动决策：`green/yellow/red` 加 `proceed/pivot/park/kill/upgrade/downgrade`。
 15. 立即用自然语言给出“是否继续打磨”，判断是否必须继续、可以冻结、可选继续升级，或应该暂停/更换路线。
-16. 只有在建议冻结或可以推进时，才产出类型匹配的论文蓝图和第一周验证计划；若建议继续打磨，则停在下一轮选项。
+16. 只有在建议冻结或可以推进时，才产出类型匹配的论文蓝图和第一周验证计划；若建议继续打磨，则停在下一轮选项，并提醒用户可以直接回复“继续打磨”，或先与导师讨论后带反馈回来。
 
 ### Core Workflow 🧭
 
@@ -352,7 +352,7 @@ This repository contains only the standalone `thesis-idea` skill and public-faci
 13. For data-using ideas, separate agent-side evidence checks from user-side access confirmation; search for usable variation, measurement validation, theory mechanism, or model moments before naming DID, IV, RDD, fixed effects, structural estimation, calibration, or simulation.
 14. Give both a feasibility verdict and an action decision: `green/yellow/red` plus `proceed/pivot/park/kill/upgrade/downgrade`.
 15. Immediately give a natural-language stop-or-continue judgment: continue polishing, freeze the current version, proceed while optionally upgrading, or pause/change route.
-16. Produce a type-matched thesis blueprint and first-week validation plan only when the idea is ready to freeze or proceed; if it still needs polishing, stop with next-iteration options.
+16. Produce a type-matched thesis blueprint and first-week validation plan only when the idea is ready to freeze or proceed; if it still needs polishing, stop with next-iteration options and remind the user that they can continue directly or discuss the current version with an advisor first.
 
 ### 开发说明 🤖
 

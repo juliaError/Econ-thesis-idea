@@ -281,6 +281,7 @@ For every substantive exchange, also include a compact iteration decision:
 - 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
 - 理由：
 - 建议下一步：
+- 用户行动提示：如果我建议继续打磨，你可以直接回复“继续打磨”，让我继续下一轮；也可以先拿当前版本和导师讨论，再把导师反馈发回来。
 - 可选项：
 ```
 
@@ -291,6 +292,6 @@ Use these status rules:
 - 可以推进，也可继续升级: the idea can proceed as a thesis, but one more iteration could improve ambition, novelty, data grounding, model, mechanism, identification, or quantification.
 - 建议暂停或更换路线: data, literature, identification, measurement, structural, or theory gates make the current branch not worth further iteration; offer backup, downgrade, park, kill, or a different paper type.
 
-Do not show internal route codes. Treat this section as the routing gate before downstream planning. If the judgment is `建议继续打磨`, stop the response here with concrete next-iteration options; do not output a first-week validation plan, advisor memo, or full thesis blueprint in the same round unless the user explicitly asks for a provisional sketch. If freezing is recommended, say so directly and then move to blueprint or first-week validation.
+Do not show internal route codes. Treat this section as the routing gate before downstream planning. If the judgment is `建议继续打磨`, stop the response here with concrete next-iteration options; do not output a first-week validation plan, advisor memo, or full thesis blueprint in the same round unless the user explicitly asks for a provisional sketch. Also tell the user they can directly reply `继续打磨` for the next refinement round, or discuss the current version with their advisor and return with feedback. If freezing is recommended, say so directly and then move to blueprint or first-week validation.
 
 When MCTS was skipped because one branch was obviously blocked or obviously freezable, include a natural-language question about whether to use the three-dimensional branching module. Do this even when no further MCTS choice is needed, because the real user choice may be whether to accept the verdict or search for adjacent alternatives.

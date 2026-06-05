@@ -100,6 +100,7 @@ Required for every substantive output. Put this section here, before any thesis 
 - 判断：建议继续打磨 / 建议冻结当前版本 / 可以推进，也可继续升级 / 建议暂停或更换路线
 - 理由：
 - 建议下一步：
+- 用户行动提示：如果我建议继续打磨，你可以直接回复“继续打磨”，让我继续下一轮；也可以先拿当前版本和导师讨论，再把导师反馈发回来。
 - 若判断为“建议继续打磨”：stop the output after this section and give 2-4 next-iteration options. Do not output sections 5-12 in this round unless the user explicitly asks for a provisional sketch.
 - 若判断为“建议冻结当前版本”或“可以推进，也可继续升级”：continue to sections 5-12.
 - 若判断为“建议暂停或更换路线”：do not output a full blueprint for the current branch; offer pivot, downgrade, park/kill, or candidate-bank options.
@@ -207,7 +208,7 @@ After the user selects one branch, update the candidate bank and mark non-select
 [State the binding risk for each rejected idea.]
 
 ## 是否继续打磨
-[State in natural language whether to continue, freeze, optionally upgrade, or stop/change route; ask for a choice only when the user must choose among branches or continuation actions.]
+[State in natural language whether to continue, freeze, optionally upgrade, or stop/change route; ask for a choice only when the user must choose among branches or continuation actions. If the judgment is 建议继续打磨, tell the user they can directly reply “继续打磨”, or discuss the current version with their advisor and return with feedback.]
 ```
 
 ## First-Week Validation Plan

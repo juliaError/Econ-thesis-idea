@@ -193,4 +193,4 @@ After Cognitive Transfer Search, always return to the master router. The selecte
 - structural/quantitative: model-data mapping, moments, estimation/calibration, fit, and counterfactual gates;
 - policy report: evidence, implementability, and policy-risk gates.
 
-Preserve the v34 stop-or-continue rule. Cognitive transfer output must still include `是否继续打磨` before any first-week validation plan, advisor memo, or full thesis blueprint. If the judgment is `建议继续打磨`, stop with next-iteration choices and do not output those downstream planning sections in the same round unless the user explicitly asks for a provisional sketch.
+Preserve the v34 stop-or-continue rule. Cognitive transfer output must still include `是否继续打磨` before any first-week validation plan, advisor memo, or full thesis blueprint. If the judgment is `建议继续打磨`, stop with next-iteration choices and do not output those downstream planning sections in the same round unless the user explicitly asks for a provisional sketch. Tell the user they can directly reply `继续打磨` for the next refinement round, or discuss the current version with their advisor and return with feedback.
