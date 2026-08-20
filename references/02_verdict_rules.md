@@ -11,6 +11,24 @@ Do not use a warm tone to hide a red verdict.
 
 Candidate-branch tables may temporarily use `verify` or `refine` as workflow statuses, but the final recommendation must still map back to one of the six decisions above.
 
+## Contribution Tier Before Crowding-Based Kill
+
+Before using `red` or `kill` because close literature exists, classify what is repeated:
+
+- **Known broad idea**: prior papers already contain the general intuition, mechanism, or policy question.
+- **Exhausted concrete design**: prior papers already cover the specific X, Y, setting, data type, unit, method, mechanism, and contribution boundary.
+
+Then assign a contribution tier:
+
+| Tier | Use when | Verdict implication |
+| --- | --- | --- |
+| `frontier despite known idea` | the broad view is known, but the project has a hard increment such as a new setting with real external-validity stakes, new measure, stronger identification, magnitude estimate, channel evidence, or boundary-condition test | do not kill by novelty alone; continue to data, identification, model, and blueprint gates |
+| `defensible thesis extension` | the broad view is known, but the project has a clear thesis-level extension in setting, sample, measurement, fact pattern, or feasible applied design | usually `yellow` with `proceed`, `pivot`, or `downgrade` depending on data and design |
+| `downgrade only` | the idea is useful only as a descriptive, measurement, policy-report, replication-plus, or ordinary thesis version | use `downgrade` before blueprint |
+| `exhausted / kill` | the concrete design and contribution boundary are already exhausted and there is no credible new increment | `red` with `park` or `kill` |
+
+Do not equate "this broad idea is not new" with `red`. A QJE-level or strong-field paper can build on a known intuition when it contributes a materially broader setting, new exposure or proximity measure, credible causal shock, magnitude estimate, channels, or boundary/external-validity evidence. A routine rerun with the same X/Y/data/method/mechanism and no contribution boundary should be downgraded or killed.
+
 ## Green
 
 Use `green` when most conditions hold:
@@ -47,11 +65,11 @@ Use `red` when current investment is not justified:
 - theory route lacks modelable primitives or propositions;
 - structural/quantitative route lacks a model-data mapping or identifiable/calibratable moments;
 - the idea has broad concepts but no economics question;
-- the closest literature already uses the same X, Y, data, unit, period, and method, and the student has no new data, setting, measurement, mechanism, or identification;
+- the closest literature already exhausts the same X, Y, data, setting, unit, period, method, mechanism, and contribution boundary, and the student has no new data, setting, measurement, channel, magnitude, boundary, or identification increment;
 - identification is clearly endogenous and not repairable;
 - sample is too small for the intended design;
 - policy rollout is selected directly on the outcome;
-- prior work already did the same thing and there is no new data, mechanism, setting, or measurement.
+- prior work already did the same concrete design and there is no new data, mechanism, setting, measurement, identification, or contribution boundary.
 
 Typical decision: `kill` or `park`.
 
@@ -62,15 +80,15 @@ Typical decision: `kill` or `park`.
 | `proceed` | move forward | data, question, identification, and scope are basically feasible |
 | `pivot` | change design but keep the useful core | mechanism matters but current data or identification fails |
 | `park` | freeze for now | idea matters but data, evidence, or timing is not ready |
-| `kill` | stop investing | core variable, data, or logic is not salvageable |
+| `kill` | stop investing | core variable, data, logic, or concrete contribution boundary is not salvageable |
 | `upgrade` | strengthen ambition | minimum version works and can add stronger mechanism, identification, or contribution |
-| `downgrade` | lower ambition | high-end design fails but thesis version can work |
+| `downgrade` | lower ambition | high-end design fails but thesis, descriptive, measurement, policy-report, or replication-plus version can work |
 
 ## Mode-Specific Mapping
 
 - Thesis rescue: prefer feasible `proceed` or honest `downgrade`; avoid overbuilding.
 - Research-design strengthening: use `pivot` aggressively when identification is weak.
-- Top-field/top-journal: use `downgrade` when the project is feasible but lacks a sharp puzzle or generalizable insight.
+- Top-field/top-journal: do not kill only because the broad idea is known; require a hard increment in setting, measurement, identification, magnitude, channel, boundary condition, or external validity. Use `downgrade` when the project is feasible but lacks that sharp puzzle or generalizable insight.
 
 ## What To Say
 
@@ -78,6 +96,7 @@ For every verdict, include:
 
 - one-sentence conclusion;
 - the five-dimensional score state for the idea or branch being judged;
+- repeat object and contribution tier when literature overlap drives the verdict;
 - the binding constraint;
 - the smallest action that could change the verdict;
 - what the user should stop assuming.

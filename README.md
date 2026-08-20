@@ -31,6 +31,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - 面向经济学毕业论文选题和研究设计。
 - 把模糊直觉、导师题目、政策、变量或现象，打磨成更清晰的研究问题。
 - 检查题目是否太拥挤、数据是否现实可得、识别或模型路径是否站得住。
+- 区分“大观点已有”和“具体设计被做尽”，避免把仍有贡献空间的重复题目过早毙掉。
 - 每轮给出五维评分：新意、清晰度、可行性、有效性和影响。
 - 支持经验因果、测度/事实、理论、结构/量化、政策报告和混合型论文。
 - 支持从其他学科寻找可迁移的工具、结构或模型思路。
@@ -41,6 +42,7 @@ Web AI tools have context limits. A safer approach is to put this prompt into th
 - Serves economics thesis topic selection and research design.
 - Turns vague intuitions, advisor-given topics, policies, variables, or phenomena into clearer research questions.
 - Checks whether a topic is too crowded, whether data access is realistic, and whether the identification or model path is defensible.
+- Distinguishes known broad ideas from exhausted concrete designs instead of rejecting useful extensions too early.
 - Gives five-dimensional scores in each round: novelty, clarity, feasibility, effectiveness, and impact.
 - Supports empirical causal, measurement/facts, theory, structural/quantitative, policy report, and mixed thesis designs.
 - Looks for transferable tools, structures, or model ideas from other fields.
@@ -202,7 +204,7 @@ For China-related topics, English-language China papers and Chinese economics or
 - 论文类型和可行性判断；
 - 五维评分和最需要补强的地方；
 - 是否继续打磨、下一轮最该做什么，以及可以直接回复“继续打磨”或先与导师讨论；
-- 文献拥挤度、近似文献和答辩风险；
+- 文献拥挤度、贡献层级、近似文献和答辩风险；
 - 可行的数据、测度、模型或理论路径；
 - 如有需要，给出跨领域迁移路线及其风险；
 - 识别、测度、理论或结构/量化方案及主要威胁；
@@ -217,7 +219,7 @@ For a single idea, the default output includes:
 - paper type and feasibility judgment;
 - five-dimensional scores and the weakest parts to improve;
 - whether to keep polishing, what the next iteration should do, and whether to reply "continue polishing" directly or discuss it with an advisor first;
-- literature crowding, close papers, and defense risks;
+- literature crowding, contribution tier, close papers, and defense risks;
 - feasible data, measurement, model, or theory paths;
 - when useful, cross-field transfer routes and their risks;
 - identification, measurement, theory, or structural/quantitative options and major threats;

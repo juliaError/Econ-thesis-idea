@@ -8,6 +8,28 @@ This module is called by `references/00_master_router.md`. Return a compact crow
 
 The master router's scoring contract still applies. When this gate is reported for an idea or branch, include or preserve that idea's novelty, clarity, feasibility, effectiveness, and impact scores. Do not let a literature summary replace the score table.
 
+## Known-Idea Versus Exhausted-Design Rule
+
+Do not treat "someone has studied the broad idea" as sufficient reason to kill a topic. First distinguish two objects:
+
+- **Known broad idea**: the general claim, mechanism, or policy question has appeared before.
+- **Exhausted concrete design**: close literature already covers the concrete X, Y, data, setting, method, mechanism, and contribution boundary.
+
+Only the second condition justifies `kill` by crowding alone. If only the broad idea is known, evaluate whether the candidate can still provide a defensible contribution through setting, measurement, identification, magnitude, channels, boundary conditions, or external validity.
+
+## Contribution Tier
+
+After checking close literature, classify the candidate:
+
+| Tier | Meaning | Default action |
+| --- | --- | --- |
+| `frontier despite known idea` | The broad idea is known, but the candidate has a hard frontier-level increment: new key measure, new policy shock, stronger identification, credible magnitude estimate, systematic channels, or important boundary/external-validity test | Do not kill; continue to data, identification, and blueprint gates |
+| `defensible thesis extension` | The broad idea is known, but the candidate has a clear thesis-level increment: new setting, local policy context, sample, descriptive fact, measurement improvement, or feasible applied extension | Proceed or pivot with modest claims |
+| `downgrade only` | The candidate is useful only as a descriptive, measurement, policy-report, replication-plus, or ordinary thesis version; contribution is not strong enough for high ambition | Downgrade before blueprint |
+| `exhausted / kill` | The concrete X, Y, data, setting, method, mechanism, and contribution boundary are already covered, with no credible new increment | Park or kill |
+
+Use this tier together with the `low / medium / high / saturated` crowding level. A topic can be crowded but still have `frontier despite known idea` if the new contribution object is strong enough.
+
 ## When This Gate Is Mandatory
 
 Run this gate before title polishing, mechanism design, or a full blueprint when most of the following hold:
@@ -40,6 +62,8 @@ Classify the field before building the thesis:
 | High | Many close papers use the same X, Y, data, and method | Park original topic or run pivot lab |
 | Saturated | The student's exact X-Y-method-data package already appears repeatedly | Kill original topic; optionally branch out |
 
+Report whether crowding comes from a known broad idea or from an exhausted concrete design. If the field is high or saturated but the concrete design has a new hard increment, do not stop at the crowding label; state the contribution tier and the gate that must validate it.
+
 ## Stop Rules
 
 Recommend `park` or `kill` instead of focusing the title when:
@@ -51,6 +75,8 @@ Recommend `park` or `kill` instead of focusing the title when:
 - the student cannot access data that would create a real distinction from existing work.
 
 Do not rescue a saturated topic by adding decorative mechanisms, arbitrary heterogeneity, a spatial model, a threshold model, or a fashionable index.
+
+Do not recommend `kill` merely because the broad claim or intuition is already present in prior work. For example, "public research funding may spill over to private innovation" can still support a frontier paper if the new design provides a materially broader setting, new proximity/exposure measure, credible causal shock, magnitude estimate, and channel evidence. By contrast, a routine rerun with the same X, Y, data type, method, mechanism, and contribution boundary should be downgraded or killed.
 
 ## Remaining-Space Search
 
@@ -71,11 +97,13 @@ When this gate is triggered, lead with:
 
 1. `IRIS review`: five-dimensional scores for the idea or branch, average score, weakest dimensions, and next route.
 2. `Literature crowding`: low / medium / high / saturated.
-3. `Closest literature pattern`: what existing papers have already done.
-4. `Defense risk`: the question an advisor or committee is likely to ask.
-5. `Decision`: proceed / pivot / park / kill / downgrade.
-6. `Smallest viable next step`: a concrete literature or data check.
+3. `Repeat object`: known broad idea / partially overlapping design / exhausted concrete design.
+4. `Contribution tier`: frontier despite known idea / defensible thesis extension / downgrade only / exhausted / kill.
+5. `Closest literature pattern`: what existing papers have already done.
+6. `Defense risk`: the question an advisor or committee is likely to ask.
+7. `Decision`: proceed / pivot / park / kill / downgrade.
+8. `Smallest viable next step`: a concrete literature or data check.
 
 Only provide a full thesis blueprint after the idea passes this gate, after a pivot-lab branch passes its filters, or after the user explicitly chooses to proceed despite the risk.
 
-Return to `references/00_master_router.md` with: score state, crowding level, decision, binding defense risk, and recommended next route.
+Return to `references/00_master_router.md` with: score state, crowding level, repeat object, contribution tier, decision, binding defense risk, and recommended next route.

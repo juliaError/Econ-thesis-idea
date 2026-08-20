@@ -69,6 +69,9 @@ Use this section only when cross-field transfer is triggered by the user, weak n
 
 ## 0e. Literature Crowding Gate
 - Literature crowding: low / medium / high / saturated / not checked
+- Repeat object: known broad idea / partially overlapping design / exhausted concrete design
+- Contribution tier: frontier despite known idea / defensible thesis extension / downgrade only / exhausted / kill
+- Candidate increment: setting / measurement / identification / magnitude / channel / boundary or external validity / thesis-level sample or fact / none
 - Closest literature pattern:
 - Defense risk:
 - Decision before focusing: proceed / pivot / park / kill / downgrade
@@ -92,6 +95,7 @@ Use this section only when cross-field transfer is triggered by the user, weak n
 ## 3. Feasibility Verdict
 - Feasibility: green / yellow / red
 - Decision: proceed / pivot / park / kill / upgrade / downgrade
+- Contribution tier when literature overlap matters: frontier despite known idea / defensible thesis extension / downgrade only / exhausted / kill / not applicable
 - Binding constraint:
 
 ## 4. 是否继续打磨
@@ -165,7 +169,7 @@ Day 7:
 - Top-field/top-journal version:
 ```
 
-For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the student has no new data, setting, measurement, mechanism, or identification. Do not produce sections 5-12 unless the idea passes the crowding gate or the user explicitly chooses to proceed despite the risk.
+For crowded master's topics, output section 0 first and stop there if the idea is `high`/`saturated` and the concrete design is exhausted with no new data, setting, measurement, mechanism, magnitude, channel, boundary, or identification increment. Do not kill merely because the broad idea is known. Do not produce sections 5-12 unless the idea passes the crowding and contribution-tier gates or the user explicitly chooses to proceed despite the risk.
 
 If the original idea is `high`/`saturated` but the user wants nearby alternatives, output the pivot lab before sections 1-11:
 
@@ -195,11 +199,11 @@ After the user selects one branch, update the candidate bank and mark non-select
 ```markdown
 # Idea Screening Table
 
-| Rank | Candidate idea | Readable research question | N/C/F/E/I score | Average | Data access | Identification | Advisor acceptance | Overall | Verdict |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | | | | | | | | | |
-| 2 | | | | | | | | | |
-| 3 | | | | | | | | | |
+| Rank | Candidate idea | Readable research question | N/C/F/E/I score | Average | Contribution tier | Data access | Identification / model / measurement | Advisor acceptance | Overall | Verdict |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | | | | | | | | | | |
+| 2 | | | | | | | | | | |
+| 3 | | | | | | | | | | |
 
 ## Recommended Choice
 [Pick the best fit for the user's deadline, data access, and ambition.]
